@@ -178,19 +178,19 @@ export function Hero() {
           <div className="hero-fade w-full max-w-lg flex flex-col gap-5 mt-2">
             
             {/* Search Bar with Beam Effect - Cleaner look */}
-            <div className="group w-full shiny-beam-input relative bg-surface rounded-2xl border border-border transition-all focus-within:ring-2 focus-within:ring-accent/20 hover:shadow-lg hover:shadow-accent/5">
+            <div className="group w-full shiny-beam-input relative bg-surface rounded-full border border-border/50 transition-all focus-within:ring-2 focus-within:ring-primary/5 hover:border-primary/20 shadow-sm hover:shadow-md">
               <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none z-10">
-                <Search className="text-secondary group-focus-within:text-accent transition-colors" size={20} />
+                <Search className="text-secondary group-focus-within:text-primary transition-colors" size={20} />
               </div>
               <input
                 type="text"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
-                placeholder="Find vendors, venues..."
-                className="w-full pl-12 pr-4 py-4 bg-transparent border-none rounded-2xl text-primary placeholder:text-secondary/70 focus:outline-none focus:ring-0 text-base font-medium relative z-10"
+                placeholder="Search vendors, venues, or ideas..."
+                className="w-full pl-12 pr-4 py-4 bg-transparent border-none rounded-full text-primary placeholder:text-secondary/60 focus:outline-none focus:ring-0 text-base font-normal relative z-10"
               />
-              <div className="absolute right-2 top-2 bottom-2">
-                 <button className="h-full bg-primary hover:opacity-90 text-background px-4 rounded-xl text-sm font-bold transition-all shadow-md cursor-pointer flex items-center gap-2">
+              <div className="absolute right-1.5 top-1.5 bottom-1.5">
+                 <button className="h-full bg-primary hover:bg-primary/90 text-background px-6 rounded-full text-sm font-medium transition-all shadow-sm cursor-pointer flex items-center gap-2">
                    Search
                  </button>
               </div>
