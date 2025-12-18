@@ -115,7 +115,7 @@ export function Hero() {
           width: startWidth,
           height: startHeight,
           borderRadius: "2.5rem",
-          zIndex: 50,
+          zIndex: 40, // Lower z-index so it doesn't cover navbar (z-50)
           boxShadow: "0 0 0 rgba(0,0,0,0)"
         },
         {
@@ -125,6 +125,7 @@ export function Hero() {
           height: "98vh",
           borderRadius: "1.5rem",
           boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)", // Modern deep shadow
+          zIndex: 40, // Maintain lower z-index than navbar
           duration: 1,
           ease: "power3.inOut" // Smoother easing
         }, 
