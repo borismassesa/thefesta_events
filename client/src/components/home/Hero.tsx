@@ -218,10 +218,22 @@ export function Hero() {
 
           </div>
 
-          {/* Minimal Trust Badge instead of large Banner */}
-          <div className="hero-fade flex items-center gap-2 text-xs text-secondary/60 mt-4 px-4 py-2 bg-surface/50 rounded-full border border-border/50 backdrop-blur-sm">
-             <Sparkles size={12} className="text-accent" />
-             <span>Join <strong>250,000+</strong> couples planning their dream wedding</span>
+          {/* Social Proof Badge - Updated to match design */}
+          <div className="hero-fade flex items-center gap-4 mt-8 pl-2 pr-6 py-2 bg-white dark:bg-white/5 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-black/5 w-fit hover:scale-105 transition-transform duration-300 cursor-default">
+             <div className="flex -space-x-3">
+               {[10, 15, 20].map((i) => (
+                 <div key={i} className="w-10 h-10 rounded-full border-[3px] border-white dark:border-zinc-900 overflow-hidden relative ring-1 ring-black/5">
+                    <img 
+                      src={`https://picsum.photos/seed/${i}/100/100`} 
+                      alt="User" 
+                      className="w-full h-full object-cover grayscale-[20%]" 
+                    />
+                 </div>
+               ))}
+             </div>
+             <span className="text-sm text-secondary/80 font-medium">
+               Join <span className="text-primary font-bold">250,000+</span> couples planning today
+             </span>
           </div>
 
         </div>
