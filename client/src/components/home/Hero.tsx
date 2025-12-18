@@ -1,102 +1,237 @@
-import { useEffect, useRef } from "react";
-import { Apple, ArrowDown } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Search, Sparkles } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+const HERO_TABS = [
+  { id: 'venues', label: 'Venues' },
+  { id: 'vendors', label: 'Vendors' },
+  { id: 'photos', label: 'Photos' },
+  { id: 'ideas', label: 'Ideas' }
+];
+
+const POPULAR_TAGS = ['Rustic', 'Beach', 'Vintage', 'Modern', 'Boho'];
+
+const HERO_SLIDES = [
+  {
+    id: 1,
+    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    poster: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerJoyrides.jpg",
+    author: "Evergreen Films",
+    avatar: "https://picsum.photos/seed/vid1/50/50",
+    color: "#e8f4f8"
+  },
+  {
+    id: 2,
+    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    poster: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg",
+    author: "Love & Lens",
+    avatar: "https://picsum.photos/seed/vid2/50/50",
+    color: "#f8e8e8"
+  },
+  {
+    id: 3,
+    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    poster: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerEscapes.jpg",
+    author: "Rustic Barns Co.",
+    avatar: "https://picsum.photos/seed/vid3/50/50",
+    color: "#e8f8ec"
+  },
+];
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Intro Animation
-      const tl = gsap.timeline();
-      tl.from('.hero-title span span', { y: '110%', duration: 1, stagger: 0.1, ease: "power4.out" }, 0.5)
-        .to('.hero-desc, .hero-btns', { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: "power2.out" }, "-=0.5");
+  const [activeTab, setActiveTab] = useState('venues');
+  const [searchText, setSearchText] = useState('');
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-      // Scroll Animation
-      const scrollTl = gsap.timeline({
+  useEffect(() => {
+    // Hero Animations with GSAP
+    const ctx = gsap.context(() => {
+      // Intro Animation Timeline
+      const tl = gsap.timeline();
+      
+      // Animate text elements stagger in
+      tl.from('.hero-content > *', { 
+        y: 20, 
+        opacity: 0, 
+        duration: 0.8, 
+        stagger: 0.1, 
+        ease: "power2.out" 
+      });
+
+      // Animate visual element
+      tl.from('.hero-visual', {
+        x: 20,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out"
+      }, "-=0.6");
+
+      // Scroll Trigger for Parallax/Fade
+      gsap.to(containerRef.current, {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=150%",
-          pin: true,
+          end: "bottom top",
           scrub: true
-        }
+        },
+        y: 50,
+        opacity: 0.8
       });
 
-      scrollTl.to(".hero-visual", {
-        width: "100vw",
-        height: "100vh",
-        top: 0,
-        right: 0,
-        opacity: 1,
-        mixBlendMode: "normal",
-        borderRadius: 0,
-        ease: "power2.inOut"
-      }, 0)
-      .to("#hero-img", {
-        rotation: 0,
-        scale: 1,
-        filter: "blur(0px) grayscale(0%)",
-        borderRadius: 0,
-        opacity: 1,
-        ease: "power2.inOut"
-      }, 0);
-
     }, containerRef);
-    
-    return () => ctx.revert();
+
+    // Slide Interval
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 5000); 
+
+    return () => {
+      ctx.revert();
+      clearInterval(timer);
+    };
   }, []);
 
   return (
-    <div ref={containerRef} className="relative h-screen w-full overflow-hidden border-b border-border">
-      <section id="hero" className="relative h-full flex flex-col justify-center px-[5vw] pt-20">
-        <div className="hero-glow"></div>
-
-        {/* Visual Abstract */}
-        <div className="hero-visual absolute right-0 md:right-[10%] top-1/4 w-[300px] md:w-[500px] aspect-[4/5] md:aspect-square opacity-60 z-0 pointer-events-none mix-blend-screen overflow-hidden rounded-2xl">
-          <img 
-            id="hero-img" 
-            src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" 
-            className="w-full h-full object-cover rotate-12 blur-md grayscale opacity-80 will-change-transform origin-center scale-110" 
-            alt="Abstract Data" 
-          />
-        </div>
-
-        <div className="z-10 max-w-4xl mt-12 md:mt-0 relative">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/10 bg-primary/5 mb-8 backdrop-blur-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-            <span className="text-[10px] uppercase tracking-widest font-mono text-secondary">
-              New Issue Available
-            </span>
-          </div>
-
-          <h1 className="hero-title text-[clamp(3rem,8vw,7rem)] leading-[0.9] font-semibold tracking-tight text-primary mb-8">
-            <span className="block overflow-hidden"><span className="block">Information</span></span>
-            <span className="block overflow-hidden"><span className="block text-secondary italic font-serif pr-4">Refined</span></span>
-            <span className="block overflow-hidden"><span className="block">For clarity.</span></span>
+    <div ref={containerRef} className="relative w-full overflow-hidden border-b border-border bg-background">
+      <section id="hero" className="w-full max-w-[1400px] mx-auto px-6 py-8 md:py-32 lg:py-40 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        
+        {/* Text Content */}
+        <div className="hero-content flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
+          
+          {/* Headline */}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary leading-[1.1] tracking-tight">
+            Plan Less <br/> Celebrate More
           </h1>
-
-          <p className="hero-desc text-lg md:text-xl text-secondary max-w-md leading-relaxed mb-10 opacity-0 translate-y-4">
-            A digital magazine designed for the focused mind. Curated journalism, zero distractions, infinite depth.
+          
+          {/* Subhead */}
+          <p className="text-secondary text-lg md:text-xl max-w-lg leading-relaxed">
+            Search over 250,000 local professionals, find the perfect venue, and create your wedding website—all in one place.
           </p>
 
-          <div className="hero-btns flex gap-4 opacity-0 translate-y-4">
-            <button className="btn-glow px-8 py-3 rounded-full text-sm font-medium text-white flex items-center gap-2">
-              <span>Download for iOS</span>
-              <Apple size={16} />
-            </button>
-            <button className="px-8 py-3 rounded-full text-sm font-medium text-secondary hover:text-primary transition-colors border border-transparent hover:border-primary/10">
-              Read Web Version
-            </button>
+          {/* Input Area Wrapper */}
+          <div className="w-full max-w-xl flex flex-col gap-6">
+            
+            {/* Tabs */}
+            <div className="bg-surface p-1.5 rounded-full inline-flex self-center lg:self-start border border-border">
+              {HERO_TABS.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
+                    activeTab === tab.id
+                      ? 'bg-background text-primary shadow-sm'
+                      : 'text-secondary hover:text-primary'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Search Bar with Beam Effect */}
+            <div className="group w-full shiny-beam-input relative bg-surface rounded-full border border-border transition-all focus-within:ring-2 focus-within:ring-accent/20">
+              <div className="absolute inset-y-0 left-6 flex items-center pointer-events-none z-10">
+                <Search className="text-secondary group-focus-within:text-accent transition-colors" size={20} />
+              </div>
+              <input
+                type="text"
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+                placeholder="Search vendors, venues, or ideas..."
+                className="w-full pl-14 pr-16 py-5 bg-transparent border-none rounded-full text-primary placeholder:text-secondary focus:outline-none focus:ring-0 text-base md:text-lg relative z-10"
+              />
+              <button className="absolute right-3 top-2.5 bg-accent hover:brightness-110 text-white p-2.5 rounded-full transition-colors shadow-lg shadow-accent/20 z-10 cursor-pointer">
+                 <Search size={20} />
+              </button>
+            </div>
+
+            {/* Popular Tags */}
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3 items-center text-sm">
+              <span className="text-secondary font-medium">Trending:</span>
+              {POPULAR_TAGS.map((tag) => (
+                <button
+                  key={tag}
+                  className="px-3 py-1 border border-border rounded-full text-secondary hover:border-accent hover:text-accent transition-colors bg-surface"
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
           </div>
+
+          {/* Get Matched Banner */}
+          <div className="w-full max-w-xl bg-gradient-to-r from-accent/5 to-background border border-accent/10 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 mt-4 backdrop-blur-sm">
+            <div className="flex items-center gap-3">
+               <div className="bg-background p-2 rounded-full shadow-sm text-accent border border-border">
+                  <Sparkles size={20} />
+               </div>
+               <div className="text-left">
+                  <div className="flex items-center gap-2 mb-0.5">
+                     <h3 className="font-bold text-primary">Get Matched Now</h3>
+                     <span className="bg-accent text-white text-[10px] font-bold px-1.5 py-0.5 rounded uppercase">Free</span>
+                  </div>
+                  <p className="text-sm text-secondary leading-tight">Tell us your style, we'll find your dream team.</p>
+               </div>
+            </div>
+             <button className="bg-primary text-background px-5 py-2.5 rounded-full text-sm font-bold hover:opacity-90 transition-all whitespace-nowrap cursor-pointer">
+               Start Planning
+             </button>
+          </div>
+
         </div>
 
-        <div className="absolute bottom-8 left-[5vw] flex items-center gap-4 text-xs font-mono text-secondary uppercase tracking-widest">
-          <ArrowDown size={16} className="animate-bounce" />
-          <span>Scroll to explore</span>
+        {/* Hero Visual - Video Carousel */}
+        <div className="hero-visual hidden lg:block relative w-full aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl group bg-surface border border-border">
+          
+          {HERO_SLIDES.map((slide, index) => (
+            <div 
+              key={slide.id}
+              className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+                index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+              }`}
+              style={{ backgroundColor: slide.color }}
+            >
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster={slide.poster}
+                className="w-full h-full object-cover"
+              >
+                <source src={slide.video} type="video/mp4" />
+              </video>
+              {/* Dark overlay for better text contrast if needed */}
+              <div className="absolute inset-0 bg-black/10"></div>
+            </div>
+          ))}
+          
+          {/* Dynamic Artist Credit */}
+          <div className="absolute bottom-6 right-6 flex items-center gap-3 bg-white/90 dark:bg-black/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg hover:scale-105 transition-all cursor-pointer z-20 border border-white/20">
+            <span className="text-sm font-semibold text-black dark:text-white transition-all duration-300">
+              {HERO_SLIDES[currentSlide].author}
+            </span>
+            <img 
+              src={HERO_SLIDES[currentSlide].avatar} 
+              alt="Artist" 
+              className="w-8 h-8 rounded-full border border-gray-200" 
+            />
+          </div>
+          
+          {/* Slide Indicators */}
+          <div className="absolute bottom-6 left-6 flex gap-2 z-20">
+              {HERO_SLIDES.map((_, idx) => (
+                  <div 
+                      key={idx} 
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                          idx === currentSlide ? 'w-6 bg-white shadow-[0_0_10px_rgba(0,0,0,0.3)]' : 'w-1.5 bg-white/50'
+                      }`}
+                  />
+              ))}
+          </div>
+
         </div>
       </section>
     </div>
