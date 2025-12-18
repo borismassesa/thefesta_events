@@ -200,15 +200,15 @@ export function Hero() {
 
             {/* Quick Actions Row */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-2 items-center text-xs font-medium">
-              <span className="text-secondary/60 uppercase tracking-wider mr-1">Browse:</span>
+              <span className="text-secondary/80 uppercase tracking-wider mr-1">Browse:</span>
               {HERO_TABS.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`px-3 py-1.5 rounded-lg border transition-all duration-200 ${
                     activeTab === tab.id
-                      ? 'bg-secondary text-background border-secondary'
-                      : 'bg-transparent border-border text-secondary hover:border-primary/50 hover:text-primary'
+                      ? 'bg-primary text-background border-primary'
+                      : 'bg-transparent border-border text-secondary hover:border-primary/50 hover:text-primary hover:bg-surface'
                   }`}
                 >
                   {tab.label}
