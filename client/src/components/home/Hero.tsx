@@ -79,6 +79,15 @@ export function Hero() {
         ease: "power3.out"
       }, 0);
 
+      // Calculate initial position relative to viewport/container
+      const rect = visualRef.current!.getBoundingClientRect();
+      const containerRect = containerRef.current!.getBoundingClientRect();
+      
+      const relativeTop = rect.top - containerRect.top;
+      const relativeRight = containerRect.right - rect.right;
+      const relativeWidth = rect.width;
+      const relativeHeight = rect.height;
+
       // Scroll Trigger for Visual Expansion (Cinematic Effect)
       // Visual expands to cover the full viewport
       const scrollTl = gsap.timeline({
@@ -100,19 +109,28 @@ export function Hero() {
       }, 0);
 
       // 2. Visual expands to fullscreen from the right
-      scrollTl.to(visualRef.current, {
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        width: "100vw",
-        height: "100vh",
-        borderRadius: 0,
-        x: 0, 
-        left: 'auto', // Important: don't animate left, let it be controlled by width + right
-        zIndex: 50, 
-        duration: 1,
-        ease: "power2.inOut"
-      }, 0);
+      // We start from the computed absolute position to avoid jumps
+      scrollTl.fromTo(visualRef.current, 
+        {
+          position: 'absolute',
+          top: relativeTop,
+          right: relativeRight,
+          width: relativeWidth,
+          height: relativeHeight,
+          borderRadius: "2.5rem",
+          zIndex: 50
+        },
+        {
+          top: 0,
+          right: 0,
+          width: "100vw",
+          height: "100vh",
+          borderRadius: 0,
+          duration: 1,
+          ease: "power2.inOut"
+        }, 
+        0
+      );
 
       // 3. Optional: Zoom effect on video inside
       scrollTl.fromTo(".hero-video", 
