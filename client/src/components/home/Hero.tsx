@@ -41,6 +41,9 @@ const HERO_SLIDES = [
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const visualRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
   const [activeTab, setActiveTab] = useState('venues');
   const [searchText, setSearchText] = useState('');
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -51,34 +54,72 @@ export function Hero() {
       // Intro Animation Timeline
       const tl = gsap.timeline();
       
-      // Animate text elements stagger in
-      tl.from('.hero-content > *', { 
+      // Animate text elements stagger in (Revealing from masked overflow)
+      tl.from('.hero-word span', { 
+        y: '110%', 
+        duration: 1, 
+        stagger: 0.1, 
+        ease: "power4.out" 
+      }, 0.5);
+
+      // Animate other content fade in
+      tl.from('.hero-fade', { 
         y: 20, 
         opacity: 0, 
         duration: 0.8, 
         stagger: 0.1, 
         ease: "power2.out" 
-      });
+      }, "-=0.5");
 
-      // Animate visual element
-      tl.from('.hero-visual', {
-        x: 20,
+      // Animate visual element entry
+      tl.from(visualRef.current, {
+        x: 100,
         opacity: 0,
-        duration: 1,
-        ease: "power2.out"
-      }, "-=0.6");
+        duration: 1.2,
+        ease: "power3.out"
+      }, 0);
 
-      // Scroll Trigger for Parallax/Fade
-      gsap.to(containerRef.current, {
+      // Scroll Trigger for Visual Expansion (Cinematic Effect)
+      // Visual expands to cover the full viewport
+      const scrollTl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "bottom top",
+          end: "+=150%", // Determines how long the scroll takes
+          pin: true,
           scrub: true
-        },
-        y: 50,
-        opacity: 0.8
+        }
       });
+
+      // 1. Text fades out and moves up
+      scrollTl.to(contentRef.current, {
+        opacity: 0,
+        y: -50,
+        duration: 0.5,
+        ease: "power2.out"
+      }, 0);
+
+      // 2. Visual expands to fullscreen
+      scrollTl.to(visualRef.current, {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        borderRadius: 0,
+        x: 0, // Reset any previous transform
+        right: 0, // Ensure it covers width
+        zIndex: 50, // Bring to front
+        duration: 1,
+        ease: "power2.inOut"
+      }, 0);
+
+      // 3. Optional: Zoom effect on video inside
+      scrollTl.fromTo(".hero-video", 
+        { scale: 1.1 },
+        { scale: 1, duration: 1, ease: "power2.inOut" }, 
+        0
+      );
 
     }, containerRef);
 
@@ -94,24 +135,29 @@ export function Hero() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full overflow-hidden border-b border-border bg-background">
-      <section id="hero" className="w-full max-w-[1400px] mx-auto px-6 py-8 md:py-32 lg:py-40 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <div ref={containerRef} className="relative h-screen w-full overflow-hidden border-b border-border bg-background">
+      <section id="hero" className="w-full h-full max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative">
         
         {/* Text Content */}
-        <div className="hero-content flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
+        <div ref={contentRef} className="hero-content flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 z-10">
           
-          {/* Headline */}
+          {/* Headline with Masked Reveal */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary leading-[1.1] tracking-tight">
-            Plan Less <br/> Celebrate More
+            <span className="block overflow-hidden hero-word">
+              <span className="block">Plan Less</span>
+            </span>
+            <span className="block overflow-hidden hero-word">
+              <span className="block">Celebrate More</span>
+            </span>
           </h1>
           
           {/* Subhead */}
-          <p className="text-secondary text-lg md:text-xl max-w-lg leading-relaxed">
+          <p className="hero-fade text-secondary text-lg md:text-xl max-w-lg leading-relaxed">
             Search over 250,000 local professionals, find the perfect venue, and create your wedding website—all in one place.
           </p>
 
           {/* Input Area Wrapper */}
-          <div className="w-full max-w-xl flex flex-col gap-6">
+          <div className="hero-fade w-full max-w-xl flex flex-col gap-6">
             
             {/* Tabs */}
             <div className="bg-surface p-1.5 rounded-full inline-flex self-center lg:self-start border border-border">
@@ -162,7 +208,7 @@ export function Hero() {
           </div>
 
           {/* Get Matched Banner */}
-          <div className="w-full max-w-xl bg-gradient-to-r from-accent/5 to-background border border-accent/10 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 mt-4 backdrop-blur-sm">
+          <div className="hero-fade w-full max-w-xl bg-gradient-to-r from-accent/5 to-background border border-accent/10 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 mt-4 backdrop-blur-sm">
             <div className="flex items-center gap-3">
                <div className="bg-background p-2 rounded-full shadow-sm text-accent border border-border">
                   <Sparkles size={20} />
@@ -183,7 +229,7 @@ export function Hero() {
         </div>
 
         {/* Hero Visual - Video Carousel */}
-        <div className="hero-visual hidden lg:block relative w-full aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl group bg-surface border border-border">
+        <div ref={visualRef} className="hero-visual hidden lg:block relative w-full aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl group bg-surface border border-border z-20">
           
           {HERO_SLIDES.map((slide, index) => (
             <div 
@@ -199,7 +245,7 @@ export function Hero() {
                 loop
                 playsInline
                 poster={slide.poster}
-                className="w-full h-full object-cover"
+                className="hero-video w-full h-full object-cover"
               >
                 <source src={slide.video} type="video/mp4" />
               </video>
