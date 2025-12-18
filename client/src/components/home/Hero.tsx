@@ -80,13 +80,10 @@ export function Hero() {
       }, 0);
 
       // Calculate initial position relative to viewport/container
-      const rect = visualRef.current!.getBoundingClientRect();
-      const containerRect = containerRef.current!.getBoundingClientRect();
-      
-      const relativeTop = rect.top - containerRect.top;
-      const relativeRight = containerRect.right - rect.right;
-      const relativeWidth = rect.width;
-      const relativeHeight = rect.height;
+      const startLeft = visualRef.current!.offsetLeft;
+      const startTop = visualRef.current!.offsetTop;
+      const startWidth = visualRef.current!.offsetWidth;
+      const startHeight = visualRef.current!.offsetHeight;
 
       // Scroll Trigger for Visual Expansion (Cinematic Effect)
       // Visual expands to cover the full viewport
@@ -108,26 +105,28 @@ export function Hero() {
         ease: "power2.out"
       }, 0);
 
-      // 2. Visual expands to fullscreen from the right
+      // 2. Visual expands to fullscreen
       // We start from the computed absolute position to avoid jumps
       scrollTl.fromTo(visualRef.current, 
         {
           position: 'absolute',
-          top: relativeTop,
-          right: relativeRight,
-          width: relativeWidth,
-          height: relativeHeight,
+          left: startLeft,
+          top: startTop,
+          width: startWidth,
+          height: startHeight,
           borderRadius: "2.5rem",
-          zIndex: 50
+          zIndex: 50,
+          boxShadow: "0 0 0 rgba(0,0,0,0)"
         },
         {
-          top: 0,
-          right: 0,
-          width: "100vw",
-          height: "100vh",
-          borderRadius: 0,
+          left: "1vw",
+          top: "1vh",
+          width: "98vw",
+          height: "98vh",
+          borderRadius: "1.5rem",
+          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)", // Modern deep shadow
           duration: 1,
-          ease: "power2.inOut"
+          ease: "power3.inOut" // Smoother easing
         }, 
         0
       );
