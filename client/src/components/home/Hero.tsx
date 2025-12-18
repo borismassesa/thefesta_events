@@ -116,12 +116,14 @@ export function Hero() {
           height: startHeight,
           borderRadius: "2.5rem",
           zIndex: 40, // Lower z-index so it doesn't cover navbar (z-50)
-          boxShadow: "0 0 0 rgba(0,0,0,0)"
+          boxShadow: "0 0 0 rgba(0,0,0,0)",
+          xPercent: 0
         },
         {
-          left: "2.5vw",
-          top: "90px", // Push below navbar (approx 80px + margin)
-          width: "95vw",
+          left: "50%", // Robust centering
+          xPercent: -50,
+          top: "90px", // Push below navbar
+          width: "94vw", // Slightly narrower to prevent edge clutter
           height: "calc(100vh - 110px)", // consistent bottom margin
           borderRadius: "1.5rem",
           boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)", // Modern deep shadow
