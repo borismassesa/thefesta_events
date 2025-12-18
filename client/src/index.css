@@ -2,7 +2,6 @@
 
 @theme {
   --font-sans: 'Inter', sans-serif;
-  --font-serif: 'Playfair Display', serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   --color-background: var(--background);
