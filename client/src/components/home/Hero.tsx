@@ -239,55 +239,57 @@ export function Hero() {
         </div>
 
         {/* Hero Visual - Video Carousel */}
-        <div ref={visualRef} className="hero-visual hidden lg:block relative w-full aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl group bg-surface border border-border z-20">
-          
-          {HERO_SLIDES.map((slide, index) => (
-            <div 
-              key={slide.id}
-              className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
-                index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
-              }`}
-              style={{ backgroundColor: slide.color }}
-            >
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                poster={slide.poster}
-                className="hero-video w-full h-full object-cover"
+        <div className="hidden lg:block lg:pr-12">
+          <div ref={visualRef} className="hero-visual relative w-full aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl group bg-surface border border-border z-20">
+            
+            {HERO_SLIDES.map((slide, index) => (
+              <div 
+                key={slide.id}
+                className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+                  index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                }`}
+                style={{ backgroundColor: slide.color }}
               >
-                <source src={slide.video} type="video/mp4" />
-              </video>
-              {/* Dark overlay for better text contrast if needed */}
-              <div className="absolute inset-0 bg-black/10"></div>
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  poster={slide.poster}
+                  className="hero-video w-full h-full object-cover"
+                >
+                  <source src={slide.video} type="video/mp4" />
+                </video>
+                {/* Dark overlay for better text contrast if needed */}
+                <div className="absolute inset-0 bg-black/10"></div>
+              </div>
+            ))}
+            
+            {/* Dynamic Artist Credit */}
+            <div className="absolute bottom-6 right-6 flex items-center gap-3 bg-surface/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg hover:scale-105 transition-all cursor-pointer z-20 border border-border">
+              <span className="text-sm font-semibold text-primary transition-all duration-300">
+                {HERO_SLIDES[currentSlide].author}
+              </span>
+              <img 
+                src={HERO_SLIDES[currentSlide].avatar} 
+                alt="Artist" 
+                className="w-8 h-8 rounded-full border border-border" 
+              />
             </div>
-          ))}
-          
-          {/* Dynamic Artist Credit */}
-          <div className="absolute bottom-6 right-6 flex items-center gap-3 bg-surface/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg hover:scale-105 transition-all cursor-pointer z-20 border border-border">
-            <span className="text-sm font-semibold text-primary transition-all duration-300">
-              {HERO_SLIDES[currentSlide].author}
-            </span>
-            <img 
-              src={HERO_SLIDES[currentSlide].avatar} 
-              alt="Artist" 
-              className="w-8 h-8 rounded-full border border-border" 
-            />
-          </div>
-          
-          {/* Slide Indicators */}
-          <div className="absolute bottom-6 left-6 flex gap-2 z-20">
-              {HERO_SLIDES.map((_, idx) => (
-                  <div 
-                      key={idx} 
-                      className={`h-1.5 rounded-full transition-all duration-300 ${
-                          idx === currentSlide ? 'w-6 bg-white shadow-[0_0_10px_rgba(0,0,0,0.3)]' : 'w-1.5 bg-white/50'
-                      }`}
-                  />
-              ))}
-          </div>
+            
+            {/* Slide Indicators */}
+            <div className="absolute bottom-6 left-6 flex gap-2 z-20">
+                {HERO_SLIDES.map((_, idx) => (
+                    <div 
+                        key={idx} 
+                        className={`h-1.5 rounded-full transition-all duration-300 ${
+                            idx === currentSlide ? 'w-6 bg-white shadow-[0_0_10px_rgba(0,0,0,0.3)]' : 'w-1.5 bg-white/50'
+                        }`}
+                    />
+                ))}
+            </div>
 
+          </div>
         </div>
       </section>
     </div>
