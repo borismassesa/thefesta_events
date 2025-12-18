@@ -19,7 +19,7 @@ const HERO_SLIDES = [
     poster: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerJoyrides.jpg",
     author: "Evergreen Films",
     avatar: "https://picsum.photos/seed/vid1/50/50",
-    color: "#e8f4f8"
+    color: "var(--surface)"
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const HERO_SLIDES = [
     poster: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg",
     author: "Love & Lens",
     avatar: "https://picsum.photos/seed/vid2/50/50",
-    color: "#f8e8e8"
+    color: "var(--surface)"
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const HERO_SLIDES = [
     poster: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerEscapes.jpg",
     author: "Rustic Barns Co.",
     avatar: "https://picsum.photos/seed/vid3/50/50",
-    color: "#e8f8ec"
+    color: "var(--surface)"
   },
 ];
 
@@ -219,10 +219,10 @@ export function Hero() {
           </div>
 
           {/* Social Proof Badge - Updated to match design */}
-          <div className="hero-fade flex items-center gap-4 mt-8 pl-2 pr-6 py-2 bg-white dark:bg-white/5 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-black/5 w-fit hover:scale-105 transition-transform duration-300 cursor-default">
+          <div className="hero-fade flex items-center gap-4 mt-8 pl-2 pr-6 py-2 bg-surface rounded-full shadow-sm border border-border w-fit hover:scale-105 transition-transform duration-300 cursor-default">
              <div className="flex -space-x-3">
                {[10, 15, 20].map((i) => (
-                 <div key={i} className="w-10 h-10 rounded-full border-[3px] border-white dark:border-zinc-900 overflow-hidden relative ring-1 ring-black/5">
+                 <div key={i} className="w-10 h-10 rounded-full border-[3px] border-surface overflow-hidden relative ring-1 ring-border">
                     <img 
                       src={`https://picsum.photos/seed/${i}/100/100`} 
                       alt="User" 
@@ -231,7 +231,7 @@ export function Hero() {
                  </div>
                ))}
              </div>
-             <span className="text-sm text-secondary/80 font-medium">
+             <span className="text-sm text-secondary font-medium">
                Join <span className="text-primary font-bold">250,000+</span> couples planning today
              </span>
           </div>
@@ -265,14 +265,14 @@ export function Hero() {
           ))}
           
           {/* Dynamic Artist Credit */}
-          <div className="absolute bottom-6 right-6 flex items-center gap-3 bg-white/90 dark:bg-black/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg hover:scale-105 transition-all cursor-pointer z-20 border border-white/20">
-            <span className="text-sm font-semibold text-black dark:text-white transition-all duration-300">
+          <div className="absolute bottom-6 right-6 flex items-center gap-3 bg-surface/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg hover:scale-105 transition-all cursor-pointer z-20 border border-border">
+            <span className="text-sm font-semibold text-primary transition-all duration-300">
               {HERO_SLIDES[currentSlide].author}
             </span>
             <img 
               src={HERO_SLIDES[currentSlide].avatar} 
               alt="Artist" 
-              className="w-8 h-8 rounded-full border border-gray-200" 
+              className="w-8 h-8 rounded-full border border-border" 
             />
           </div>
           
