@@ -177,28 +177,9 @@ export function Hero() {
           </p>
 
           {/* Input Area Wrapper - Simplified */}
-          <div className="hero-fade w-full max-w-lg flex flex-col gap-5 mt-2">
+          <div className="hero-fade w-full max-w-lg flex flex-col gap-4 mt-2">
             
-            {/* Search Bar with Beam Effect - Cleaner look */}
-            <div className="group w-full shiny-beam-input relative bg-surface rounded-full border border-border/50 transition-all focus-within:ring-2 focus-within:ring-primary/5 hover:border-primary/20 shadow-sm hover:shadow-md">
-              <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none z-10">
-                <Search className="text-secondary group-focus-within:text-primary transition-colors" size={20} />
-              </div>
-              <input
-                type="text"
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
-                placeholder="Search vendors, venues, or ideas..."
-                className="w-full pl-12 pr-4 py-4 bg-transparent border-none rounded-full text-primary placeholder:text-secondary/60 focus:outline-none focus:ring-0 text-base font-normal relative z-10"
-              />
-              <div className="absolute right-1.5 top-1.5 bottom-1.5">
-                 <button className="h-full bg-primary hover:bg-primary/90 text-background px-6 rounded-full text-sm font-medium transition-all shadow-sm cursor-pointer flex items-center gap-2">
-                   Search
-                 </button>
-              </div>
-            </div>
-
-            {/* Quick Actions Row */}
+            {/* Quick Actions Row - Moved ABOVE search bar */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-2 items-center text-xs font-medium">
               <span className="text-secondary/80 uppercase tracking-wider mr-1">Browse:</span>
               {HERO_TABS.map((tab) => (
@@ -214,6 +195,25 @@ export function Hero() {
                   {tab.label}
                 </button>
               ))}
+            </div>
+
+            {/* Search Bar with Beam Effect - Cleaner look */}
+            <div className="group w-full shiny-beam-input relative bg-surface rounded-full border border-border/50 transition-all focus-within:ring-2 focus-within:ring-primary/5 hover:border-primary/20 shadow-sm hover:shadow-md">
+              <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none z-10">
+                <Search className="text-secondary group-focus-within:text-primary transition-colors" size={20} />
+              </div>
+              <input
+                type="text"
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+                placeholder={`Search ${activeTab === 'ideas' ? 'for' : ''} ${activeTab}...`}
+                className="w-full pl-12 pr-4 py-4 bg-transparent border-none rounded-full text-primary placeholder:text-secondary/60 focus:outline-none focus:ring-0 text-base font-normal relative z-10"
+              />
+              <div className="absolute right-1.5 top-1.5 bottom-1.5">
+                 <button className="h-full bg-primary hover:bg-primary/90 text-background px-6 rounded-full text-sm font-medium transition-all shadow-sm cursor-pointer flex items-center gap-2">
+                   Search
+                 </button>
+              </div>
             </div>
 
           </div>
