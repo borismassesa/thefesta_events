@@ -157,36 +157,56 @@ export function Hero() {
       <section id="hero" className="w-full h-full max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative">
         
         {/* Text Content */}
-        <div ref={contentRef} className="hero-content flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 z-10">
+        <div ref={contentRef} className="hero-content flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 z-10">
           
           {/* Headline with Masked Reveal */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary leading-[1.1] tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.05] tracking-tight max-w-[90%] lg:max-w-none">
             <span className="block overflow-hidden hero-word">
-              <span className="block">Plan Less</span>
+              <span className="block">Plan Less.</span>
             </span>
             <span className="block overflow-hidden hero-word">
-              <span className="block">Celebrate More</span>
+              <span className="block text-secondary">Celebrate More.</span>
             </span>
           </h1>
           
-          {/* Subhead */}
-          <p className="hero-fade text-secondary text-lg md:text-xl max-w-lg leading-relaxed">
-            Search over 250,000 local professionals, find the perfect venue, and create your wedding website—all in one place.
+          {/* Subhead - Simplified */}
+          <p className="hero-fade text-secondary text-base md:text-lg max-w-md leading-relaxed">
+            Your all-in-one platform for weddings. Find venues, vendors, and inspiration instantly.
           </p>
 
-          {/* Input Area Wrapper */}
-          <div className="hero-fade w-full max-w-xl flex flex-col gap-6">
+          {/* Input Area Wrapper - Simplified */}
+          <div className="hero-fade w-full max-w-lg flex flex-col gap-5 mt-2">
             
-            {/* Tabs */}
-            <div className="bg-surface p-1.5 rounded-full inline-flex self-center lg:self-start border border-border">
+            {/* Search Bar with Beam Effect - Cleaner look */}
+            <div className="group w-full shiny-beam-input relative bg-surface rounded-2xl border border-border transition-all focus-within:ring-2 focus-within:ring-accent/20 hover:shadow-lg hover:shadow-accent/5">
+              <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none z-10">
+                <Search className="text-secondary group-focus-within:text-accent transition-colors" size={20} />
+              </div>
+              <input
+                type="text"
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+                placeholder="Find vendors, venues..."
+                className="w-full pl-12 pr-4 py-4 bg-transparent border-none rounded-2xl text-primary placeholder:text-secondary/70 focus:outline-none focus:ring-0 text-base font-medium relative z-10"
+              />
+              <div className="absolute right-2 top-2 bottom-2">
+                 <button className="h-full bg-primary hover:opacity-90 text-background px-4 rounded-xl text-sm font-bold transition-all shadow-md cursor-pointer flex items-center gap-2">
+                   Search
+                 </button>
+              </div>
+            </div>
+
+            {/* Quick Actions Row */}
+            <div className="flex flex-wrap justify-center lg:justify-start gap-2 items-center text-xs font-medium">
+              <span className="text-secondary/60 uppercase tracking-wider mr-1">Browse:</span>
               {HERO_TABS.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
+                  className={`px-3 py-1.5 rounded-lg border transition-all duration-200 ${
                     activeTab === tab.id
-                      ? 'bg-background text-primary shadow-sm'
-                      : 'text-secondary hover:text-primary'
+                      ? 'bg-secondary text-background border-secondary'
+                      : 'bg-transparent border-border text-secondary hover:border-primary/50 hover:text-primary'
                   }`}
                 >
                   {tab.label}
@@ -194,54 +214,12 @@ export function Hero() {
               ))}
             </div>
 
-            {/* Search Bar with Beam Effect */}
-            <div className="group w-full shiny-beam-input relative bg-surface rounded-full border border-border transition-all focus-within:ring-2 focus-within:ring-accent/20">
-              <div className="absolute inset-y-0 left-6 flex items-center pointer-events-none z-10">
-                <Search className="text-secondary group-focus-within:text-accent transition-colors" size={20} />
-              </div>
-              <input
-                type="text"
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
-                placeholder="Search vendors, venues, or ideas..."
-                className="w-full pl-14 pr-16 py-5 bg-transparent border-none rounded-full text-primary placeholder:text-secondary focus:outline-none focus:ring-0 text-base md:text-lg relative z-10"
-              />
-              <button className="absolute right-3 top-2.5 bg-accent hover:brightness-110 text-white p-2.5 rounded-full transition-colors shadow-lg shadow-accent/20 z-10 cursor-pointer">
-                 <Search size={20} />
-              </button>
-            </div>
-
-            {/* Popular Tags */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-3 items-center text-sm">
-              <span className="text-secondary font-medium">Trending:</span>
-              {POPULAR_TAGS.map((tag) => (
-                <button
-                  key={tag}
-                  className="px-3 py-1 border border-border rounded-full text-secondary hover:border-accent hover:text-accent transition-colors bg-surface"
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
           </div>
 
-          {/* Get Matched Banner */}
-          <div className="hero-fade w-full max-w-xl bg-gradient-to-r from-accent/5 to-background border border-accent/10 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 mt-4 backdrop-blur-sm">
-            <div className="flex items-center gap-3">
-               <div className="bg-background p-2 rounded-full shadow-sm text-accent border border-border">
-                  <Sparkles size={20} />
-               </div>
-               <div className="text-left">
-                  <div className="flex items-center gap-2 mb-0.5">
-                     <h3 className="font-bold text-primary">Get Matched Now</h3>
-                     <span className="bg-accent text-white text-[10px] font-bold px-1.5 py-0.5 rounded uppercase">Free</span>
-                  </div>
-                  <p className="text-sm text-secondary leading-tight">Tell us your style, we'll find your dream team.</p>
-               </div>
-            </div>
-             <button className="bg-primary text-background px-5 py-2.5 rounded-full text-sm font-bold hover:opacity-90 transition-all whitespace-nowrap cursor-pointer">
-               Start Planning
-             </button>
+          {/* Minimal Trust Badge instead of large Banner */}
+          <div className="hero-fade flex items-center gap-2 text-xs text-secondary/60 mt-4 px-4 py-2 bg-surface/50 rounded-full border border-border/50 backdrop-blur-sm">
+             <Sparkles size={12} className="text-accent" />
+             <span>Join <strong>250,000+</strong> couples planning their dream wedding</span>
           </div>
 
         </div>
