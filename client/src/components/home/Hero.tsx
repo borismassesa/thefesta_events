@@ -156,10 +156,10 @@ export function Hero() {
 
   return (
     <div ref={containerRef} className="relative h-screen w-full overflow-hidden border-b border-border bg-background">
-      <section id="hero" className="w-full h-full max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative">
+      <section id="hero" className="w-full h-full max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         
         {/* Text Content */}
-        <div ref={contentRef} className="hero-content flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 z-10">
+        <div ref={contentRef} className="hero-content relative flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 z-10">
           
           {/* Headline with Masked Reveal */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.05] tracking-tight max-w-[90%] lg:max-w-none">
