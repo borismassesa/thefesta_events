@@ -119,10 +119,10 @@ export function Hero() {
           boxShadow: "0 0 0 rgba(0,0,0,0)"
         },
         {
-          left: "1vw",
-          top: "1vh",
-          width: "98vw",
-          height: "98vh",
+          left: "2.5vw",
+          top: "90px", // Push below navbar (approx 80px + margin)
+          width: "95vw",
+          height: "calc(100vh - 110px)", // consistent bottom margin
           borderRadius: "1.5rem",
           boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)", // Modern deep shadow
           zIndex: 40, // Maintain lower z-index than navbar
