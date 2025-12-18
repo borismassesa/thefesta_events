@@ -53,6 +53,18 @@ export function Issues() {
       title: "Origins",
       desc: "Tracing back the roots of modern interface paradigms to the 1970s.",
       img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2574&auto=format&fit=crop"
+    },
+    {
+      id: 21,
+      title: "Spectrum",
+      desc: "Analyzing color theory in the age of HDR displays and wide gamut color spaces.",
+      img: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop"
+    },
+    {
+      id: 20,
+      title: "Silence",
+      desc: "The importance of white space and silence in visual communication.",
+      img: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=2070&auto=format&fit=crop"
     }
   ];
 
