@@ -156,7 +156,7 @@ export function Hero() {
 
   return (
     <div ref={containerRef} className="relative h-screen w-full overflow-hidden border-b border-border bg-background">
-      <section id="hero" className="w-full h-full max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <section id="hero" className="w-full h-full max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         
         {/* Text Content */}
         <div ref={contentRef} className="hero-content relative flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 z-10 w-full max-w-xl mx-auto lg:mx-0">
