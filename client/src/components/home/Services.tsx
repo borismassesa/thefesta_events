@@ -20,56 +20,64 @@ const SERVICES = [
     title: "Planning Tools",
     description: "Your master plan, simplified. From an interactive checklist that adapts to your timeline to a budget tracker that keeps finances transparent, our suite of tools ensures nothing falls through the cracks. Collaborate with your partner and planner in real-time.",
     image: planningImg,
-    link: "/services/planning"
+    link: "/services/planning",
+    ctaText: "Start Planning"
   },
   {
     id: "marketplace",
     title: "Venue Marketplace",
     description: "Discover the backdrop of your dreams. Our curated marketplace features exclusive venues tailored to your aesthetic—from sun-drenched vineyards and rustic barns to industrial lofts and grand ballrooms. Filter by capacity, style, and availability instantly.",
     image: marketplaceImg,
-    link: "/services/marketplace"
+    link: "/services/marketplace",
+    ctaText: "Browse Venues"
   },
   {
     id: "vendors",
     title: "Curated Vendors",
     description: "Assemble your dream team with confidence. We vet every photographer, florist, caterer, and entertainer to ensure they meet The Festa Standard. Browse portfolios, read verified reviews, and connect directly with professionals who understand your vision.",
     image: vendorsImg,
-    link: "/services/vendors"
+    link: "/services/vendors",
+    ctaText: "Find Pros"
   },
   {
     id: "rsvp",
     title: "RSVP & Guest List",
     description: "Guest management, mastered. Collect RSVPs, track dietary restrictions, and manage plus-ones effortlessly. Group guests into households, assign tables with a drag-and-drop floor planner, and send digital updates in seconds.",
     image: rsvpImg,
-    link: "/services/rsvp"
+    link: "/services/rsvp",
+    ctaText: "Manage Guests"
   },
   {
     id: "website",
     title: "Wedding Website",
     description: "Tell your love story with a stunning, custom website. Choose from modern, mobile-responsive templates that match your invitation suite. Share your schedule, travel details, and registry links with guests in a beautiful, centralized hub.",
     image: websiteImg,
-    link: "/services/website"
+    link: "/services/website",
+    ctaText: "Create Website"
   },
   {
     id: "advice",
     title: "Ideas & Advice",
     description: "Inspiration without the overwhelm. Explore expert-written articles, trend reports, and real wedding features to spark your creativity. Whether you're navigating etiquette dilemmas or seeking style advice, our library is your go-to resource.",
     image: adviceImg,
-    link: "/services/advice"
+    link: "/services/advice",
+    ctaText: "Get Inspired"
   },
   {
     id: "attire",
     title: "Attire & Rings",
     description: "Find the look that feels like you. Browse extensive collections of bridal gowns, suits, and accessories from top designers and boutique ateliers. Filter by silhouette, fabric, and price to discover the perfect fit for your big day.",
     image: attireImg,
-    link: "/services/attire"
+    link: "/services/attire",
+    ctaText: "Shop Collections"
   },
   {
     id: "couples",
     title: "Find Couples",
     description: "You're not in this alone. Join a vibrant community of couples planning their weddings simultaneously. Share tips, vent about stressors, exchange vendor recommendations, and find support from people who truly get it.",
     image: couplesImg,
-    link: "/services/couples"
+    link: "/services/couples",
+    ctaText: "Join Community"
   }
 ];
 
@@ -204,7 +212,7 @@ export function Services() {
               
               <Link href={service.link}>
                 <a className="inline-flex items-center text-sm font-medium text-primary hover:text-accent transition-colors group">
-                  <span className="border-b border-primary/30 pb-0.5 group-hover:border-accent">View More</span>
+                  <span className="border-b border-primary/30 pb-0.5 group-hover:border-accent">{service.ctaText}</span>
                   <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                 </a>
               </Link>
