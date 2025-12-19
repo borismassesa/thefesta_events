@@ -82,6 +82,7 @@ export function Reviews() {
   const containerRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const column1Ref = useRef<HTMLDivElement>(null);
+  const column2Ref = useRef<HTMLDivElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
