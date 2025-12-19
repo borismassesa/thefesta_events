@@ -95,7 +95,7 @@ export default function Signup() {
                  className={`text-sm font-medium py-2 rounded-md transition-all ${
                    userType === "couple" 
                    ? "bg-primary text-primary-foreground shadow-sm" 
-                   : "text-zinc-500 hover:text-primary hover:bg-zinc-100"
+                   : "text-zinc-500 hover:text-primary dark:hover:bg-zinc-800 hover:bg-zinc-200"
                  }`}
                >
                  I'm a Couple
