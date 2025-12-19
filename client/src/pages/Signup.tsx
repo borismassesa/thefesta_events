@@ -225,7 +225,7 @@ export default function Signup() {
              </button>
              <button className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-11">
                 <svg className="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-.98-.42-2.05-.42-3.01 0-1.07.47-2.09.55-3.23-.4-4.44-4.19-3.8-11.19 1.74-11.38 1.4.05 2.37.8 3.15.82.71.02 1.96-.85 3.37-.7 1.8.15 3.12.82 3.96 2.05-3.5 1.76-2.9 6.57.54 7.9-.69 1.76-1.68 3.48-3.44 5.3zM14.47 5.25c.82-1.05 1.35-2.48 1.2-3.77-1.2.07-2.65.82-3.5 1.85-.75.92-1.4 2.38-1.2 3.7 1.35.1 2.7-.75 3.5-1.78z" />
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.79-1.31.02-2.3-1.23-3.14-2.47-1.72-2.48-3-7.01-1.24-10.05.87-1.52 2.42-2.48 4.12-2.5 1.3-.03 2.52.87 3.32.87.79 0 2.28-.97 3.84-.83 1.31.11 2.5.63 3.33 1.63-2.96 1.77-2.46 6.09.66 7.37-.2 1.26-.78 2.51-1.28 3.51zM15.42 5.51c.72-1.14 1.2-2.73.99-4.32-1.38.1-3.05 1.16-3.81 2.41-.66 1.07-1.24 2.78-.92 4.22 1.54.12 3.02-1.17 3.74-2.31z" />
                 </svg>
                 Apple
              </button>
