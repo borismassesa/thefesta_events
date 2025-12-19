@@ -84,13 +84,13 @@ export default function Signup() {
           <form onSubmit={handleSubmit} className="space-y-5">
             
             {/* User Type Toggle */}
-            <div className="grid grid-cols-2 gap-1 p-1 bg-muted rounded-lg border border-border/50">
+            <div className="grid grid-cols-2 gap-1 p-1 bg-secondary/50 rounded-lg border border-border/50">
                <button
                  type="button"
                  onClick={() => setUserType("couple")}
                  className={`text-sm font-medium py-2 rounded-md transition-all ${
                    userType === "couple" 
-                   ? "bg-background text-foreground shadow-sm" 
+                   ? "bg-primary text-primary-foreground shadow-sm" 
                    : "text-muted-foreground hover:text-foreground hover:bg-background/50"
                  }`}
                >
@@ -101,7 +101,7 @@ export default function Signup() {
                  onClick={() => setUserType("vendor")}
                  className={`text-sm font-medium py-2 rounded-md transition-all ${
                    userType === "vendor" 
-                   ? "bg-background text-foreground shadow-sm" 
+                   ? "bg-primary text-primary-foreground shadow-sm" 
                    : "text-muted-foreground hover:text-foreground hover:bg-background/50"
                  }`}
                >
