@@ -127,10 +127,6 @@ export function Hero() {
 
       // Desktop & Tablet Specifics
       mm.add("(min-width: 768px)", () => {
-        // Create a placeholder to prevent layout collapse
-        // We'll insert it dynamically or just rely on existing structure?
-        // Let's rely on GSAP to handle this or just ensure the initial state is robust
-        
         // Remove Intro animation for visual to prevent conflict and ensure visibility
         gsap.set(visualRef.current, { opacity: 1, x: 0, y: 0, scale: 1 });
 
@@ -142,28 +138,16 @@ export function Hero() {
             end: "+=150%",
             pin: true,
             scrub: true,
-            // Recalculate positions on window resize
             invalidateOnRefresh: true 
           }
         });
 
-        // Function to set up the animation
         const initAnimation = () => {
              if (!visualRef.current || !containerRef.current) return;
              
-             // Ensure visual is visible before calculating
+             // Ensure visual is visible and in flow
              gsap.set(visualRef.current, { opacity: 1, clearProps: "position,left,top,width,height,transform" });
-
-             const visualRect = visualRef.current.getBoundingClientRect();
-             const containerRect = containerRef.current.getBoundingClientRect();
              
-             // Calculate offsets
-             const startLeft = visualRect.left - containerRect.left;
-             const startTop = visualRect.top - containerRect.top;
-             const startWidth = visualRect.width;
-             const startHeight = visualRect.height;
-             
-             // Clear any previous animation on the timeline
              scrollTl.clear();
 
              // 1. Fade out content
@@ -174,42 +158,59 @@ export function Hero() {
                 ease: "power2.out"
              }, 0);
 
-             // 2. Animate visual
-             // We use a set first to lock it in place, then animate
-             scrollTl.fromTo(visualRef.current, 
-              {
-                position: 'absolute',
-                left: startLeft,
-                top: startTop,
-                width: startWidth,
-                height: startHeight,
-                borderRadius: "2.5rem",
-                zIndex: 40,
-                boxShadow: "0 0 0 rgba(0,0,0,0)",
-                transformOrigin: "center center"
-              },
-              {
-                left: "50%",
-                top: "50%",
-                xPercent: -50,
-                yPercent: -50,
-                width: "94vw",
-                height: "90vh",
+             // 2. Animate visual using transforms only (performant & safe)
+             // Instead of changing layout properties, we just scale and translate
+             // to make it look like it fills the screen.
+             
+             // Calculate scaling needed
+             const viewportWidth = window.innerWidth;
+             const viewportHeight = window.innerHeight;
+             const targetWidth = viewportWidth * 0.94; // 94vw
+             const targetHeight = viewportHeight * 0.90; // 90vh
+             
+             const currentRect = visualRef.current.getBoundingClientRect();
+             const currentWidth = currentRect.width;
+             const currentHeight = currentRect.height;
+             
+             const scaleX = targetWidth / currentWidth;
+             const scaleY = targetHeight / currentHeight;
+             
+             // Calculate translation needed to center it
+             // Current center relative to viewport
+             const currentCenterX = currentRect.left + currentWidth / 2;
+             const currentCenterY = currentRect.top + currentHeight / 2;
+             
+             // Target center (viewport center)
+             const targetCenterX = viewportWidth / 2;
+             const targetCenterY = viewportHeight / 2;
+             
+             const x = targetCenterX - currentCenterX;
+             const y = targetCenterY - currentCenterY;
+
+             scrollTl.to(visualRef.current, {
+                x: x,
+                y: y,
+                scaleX: scaleX,
+                scaleY: scaleY,
                 borderRadius: "1.5rem",
                 boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
                 duration: 1,
-                ease: "power3.inOut"
-              }, 
-              0
-            );
-            
-            scrollTl.fromTo(".hero-video", { scale: 1.1 }, { scale: 1, duration: 1, ease: "power2.inOut" }, 0);
+                ease: "power3.inOut",
+                zIndex: 50 // Ensure it's on top
+             }, 0);
+             
+             // Counter-scale the video so it doesn't look stretched
+             scrollTl.fromTo(".hero-video", 
+                { scale: 1.1 }, 
+                { scaleX: 1/scaleX * 1.1, scaleY: 1/scaleY * 1.1, duration: 1, ease: "power3.inOut" }, 
+                0
+             );
         };
 
         // Initialize immediately
-        initAnimation();
+        // Use a small timeout to ensure layout is settled
+        setTimeout(initAnimation, 100);
         
-        // Also add a listener for refresh to recalculate
         ScrollTrigger.addEventListener("refreshInit", initAnimation);
       });
 
