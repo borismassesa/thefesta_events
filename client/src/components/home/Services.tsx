@@ -79,9 +79,10 @@ export function Services() {
         scrub: true,
       });
 
-      // Detect active section
+      // Detect active section and animate text
       const sections = gsap.utils.toArray<HTMLElement>(".service-item");
       sections.forEach((section, i) => {
+        // Active state for images
         ScrollTrigger.create({
           trigger: section,
           start: "top center",
@@ -92,6 +93,32 @@ export function Services() {
             }
           }
         });
+
+        // Text reveal animation
+        const content = section.querySelectorAll("h3, p");
+        
+        gsap.fromTo(content, 
+          { 
+            y: 100, 
+            opacity: 0, 
+            scale: 0.95
+          },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 1,
+            stagger: 0.1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 80%",
+              end: "top 40%",
+              scrub: 1,
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
       });
       
     }, containerRef);
@@ -151,13 +178,12 @@ export function Services() {
         </div>
 
         {/* Right Column - Scrolling Content */}
-        <div ref={rightColumnRef} className="flex flex-col py-12 lg:py-24 px-6 lg:px-16 gap-[50vh]">
+        <div ref={rightColumnRef} className="flex flex-col py-12 lg:py-24 px-6 lg:px-16 gap-24">
           {/* Service Items */}
           {SERVICES.map((service, index) => (
             <div 
               key={service.id} 
-              className="service-item min-h-[30vh] flex flex-col justify-center transition-opacity duration-500"
-              style={{ opacity: index === activeIndex ? 1 : 0.3 }}
+              className="service-item min-h-[50vh] flex flex-col justify-center"
             >
               <h3 className="text-2xl md:text-3xl font-semibold text-primary mb-4">
                 {service.title}
