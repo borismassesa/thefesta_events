@@ -18,7 +18,7 @@ export default function Signup() {
   return (
     <div className="min-h-screen w-full flex bg-background">
       {/* Left Side - Image */}
-      <div className="hidden lg:flex w-1/2 relative overflow-hidden bg-zinc-100">
+      <div className="hidden lg:flex w-1/2 relative overflow-hidden bg-muted">
         <img 
           src={signupImg} 
           alt="Wedding stationery" 
@@ -76,7 +76,7 @@ export default function Signup() {
             <h1 className="text-3xl lg:text-4xl font-semibold tracking-tight text-primary">
               Create an account
             </h1>
-            <p className="text-secondary">
+            <p className="text-muted-foreground">
               Join thousands of couples planning their big day.
             </p>
           </div>
@@ -165,7 +165,7 @@ export default function Signup() {
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
               </div>
-              <p className="text-[10px] text-secondary">
+              <p className="text-[10px] text-muted-foreground">
                 Must be at least 8 characters long.
               </p>
             </div>
@@ -191,14 +191,14 @@ export default function Signup() {
               <span className="w-full border-t border-border" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground text-secondary">
+              <span className="bg-background px-2 text-muted-foreground">
                 Or sign up with
               </span>
             </div>
           </div>
 
            <div className="grid grid-cols-2 gap-4">
-             <button className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground h-11">
+             <button className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-11">
                 <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                   <path
                     d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -227,7 +227,7 @@ export default function Signup() {
              </button>
           </div>
 
-          <div className="text-center text-sm text-secondary">
+          <div className="text-center text-sm text-muted-foreground">
             Already have an account?{" "}
             <Link href="/login">
               <a className="font-semibold text-primary hover:underline underline-offset-4">
@@ -238,7 +238,7 @@ export default function Signup() {
           
           <div className="absolute top-8 right-8 lg:top-12 lg:right-12">
             <Link href="/">
-              <a className="flex items-center text-sm font-medium text-secondary hover:text-primary transition-colors">
+              <a className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to home
               </a>

@@ -17,13 +17,13 @@ export default function Login() {
   return (
     <div className="min-h-screen w-full flex bg-background">
       {/* Left Side - Image */}
-      <div className="hidden lg:flex w-1/2 relative overflow-hidden bg-zinc-900">
+      <div className="hidden lg:flex w-1/2 relative overflow-hidden bg-background">
         <img 
           src={loginImg} 
           alt="Couple at sunset" 
           className="absolute inset-0 w-full h-full object-cover opacity-80"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30" />
         
         <div className="relative z-10 p-12 flex flex-col justify-between h-full text-white">
           <Link href="/">
@@ -44,7 +44,7 @@ export default function Login() {
       </div>
 
       {/* Right Side - Form */}
-      <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-8 sm:p-12 lg:p-24 relative">
+      <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-8 sm:p-12 lg:p-24 relative bg-background">
         <div className="w-full max-w-sm space-y-10">
           
           {/* Mobile Logo */}
@@ -58,7 +58,7 @@ export default function Login() {
             <h1 className="text-3xl lg:text-4xl font-semibold tracking-tight text-primary">
               Welcome back
             </h1>
-            <p className="text-secondary">
+            <p className="text-muted-foreground">
               Enter your details to access your account.
             </p>
           </div>
@@ -122,14 +122,14 @@ export default function Login() {
               <span className="w-full border-t border-border" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground text-secondary">
+              <span className="bg-background px-2 text-muted-foreground">
                 Or continue with
               </span>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-             <button className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground h-11">
+             <button className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-11">
                 <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                   <path
                     d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -158,7 +158,7 @@ export default function Login() {
              </button>
           </div>
 
-          <div className="text-center text-sm text-secondary">
+          <div className="text-center text-sm text-muted-foreground">
             Don't have an account?{" "}
             <Link href="/signup">
               <a className="font-semibold text-primary hover:underline underline-offset-4">
@@ -169,7 +169,7 @@ export default function Login() {
           
           <div className="absolute top-8 right-8 lg:top-12 lg:right-12">
             <Link href="/">
-              <a className="flex items-center text-sm font-medium text-secondary hover:text-primary transition-colors">
+              <a className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to home
               </a>
