@@ -176,13 +176,13 @@ export function Issues() {
                     alt={issue.title} 
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 dark:to-black/90"></div>
-                  <div className="absolute bottom-0 left-0 p-4 sm:p-6 md:p-8 w-full text-white">
-                    <div className="flex justify-between items-end border-b border-white/20 pb-2 md:pb-4 mb-2 md:mb-4">
-                      <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tighter">
+                  <div className="absolute bottom-0 left-0 p-4 sm:p-5 md:p-6 w-full text-white">
+                    <div className="flex justify-between items-end border-b border-white/20 pb-2 md:pb-3 mb-2 md:mb-3">
+                      <span className="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-semibold tracking-tighter">
                         {issue.title}
                       </span>
                     </div>
-                    <p className="text-xs sm:text-sm text-zinc-300 line-clamp-2 mb-3 md:mb-6 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-zinc-300 line-clamp-2 mb-3 md:mb-4 leading-relaxed">
                       {issue.desc}
                     </p>
                     <div className="flex justify-between items-end w-full">
