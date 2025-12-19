@@ -189,7 +189,7 @@ export function Hero() {
         scrollTl.fromTo(".hero-video", { scale: 1.1 }, { scale: 1, duration: 1, ease: "power2.inOut" }, 0);
       });
 
-        // Mobile Specifics
+      // Mobile Specifics
       mm.add("(max-width: 1023px)", () => {
         // No intro animation for visual (it stays hidden/opacity 0 via CSS or set here)
         gsap.set(visualRef.current, { opacity: 0, y: 50 }); // Ensure hidden initially
@@ -199,16 +199,16 @@ export function Hero() {
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top top",
-            end: "+=250%",
+            end: "+=150%",
             pin: true,
-            scrub: 1
+            scrub: true
           }
         });
 
         scrollTl.to(contentRef.current, {
           opacity: 0,
           y: -50,
-          duration: 1,
+          duration: 0.5,
           ease: "power2.out"
         }, 0);
 
@@ -236,21 +236,11 @@ export function Hero() {
              width: '94vw',
              height: '50vh',
              borderRadius: "1.5rem",
-             duration: 2,
-             ease: "power3.out"
+             duration: 1,
+             ease: "power3.out" // Smoother easing
           },
           0
         );
-
-        // Animate Visual Out (Slide up)
-        scrollTl.to(visualRef.current, {
-           top: '-10%',      // Move off screen top
-           yPercent: -100,   
-           opacity: 0,
-           scale: 0.9,
-           duration: 2,
-           ease: "power2.in"
-        }, "+=1");
       });
 
     }, containerRef);
