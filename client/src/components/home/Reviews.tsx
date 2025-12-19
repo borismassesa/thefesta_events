@@ -245,24 +245,26 @@ export function Reviews() {
 function ReviewCard({ review }: { review: typeof REVIEWS[0] }) {
   return (
     <div className="bg-background border border-border p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 group w-full">
-      <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 rounded-full overflow-hidden border border-border flex-shrink-0">
-          <img src={review.avatar} alt={review.name} className="w-full h-full object-cover" />
+      <div className="flex justify-between items-start mb-4">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full overflow-hidden border border-border flex-shrink-0">
+            <img src={review.avatar} alt={review.name} className="w-full h-full object-cover" />
+          </div>
+          <div>
+            <h4 className="font-semibold text-primary text-sm">{review.name}</h4>
+            <p className="text-[10px] text-secondary uppercase tracking-wide">{review.role}</p>
+          </div>
         </div>
-        <div>
-          <h4 className="font-semibold text-primary text-sm">{review.name}</h4>
-          <p className="text-[10px] text-secondary uppercase tracking-wide">{review.role}</p>
-        </div>
-      </div>
-      
-      <div className="flex gap-0.5 mb-3">
+
+        <div className="flex gap-0.5">
           {[...Array(5)].map((_, i) => (
             <Star 
               key={i} 
-              size={12} 
-              className={`${i < review.rating ? "fill-accent text-accent" : "fill-border text-border"}`} 
+              size={14} 
+              className={`${i < review.rating ? "fill-amber-400 text-amber-400" : "fill-border text-border/40"}`} 
             />
           ))}
+        </div>
       </div>
 
       <p className="text-secondary leading-relaxed text-sm italic">
