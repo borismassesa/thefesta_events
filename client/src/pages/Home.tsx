@@ -68,7 +68,7 @@ export default function Home() {
         </div>
       </div>
 
-      <Navbar onMenuClick={() => setMenuOpen(true)} />
+      <Navbar isOpen={menuOpen} onMenuClick={() => setMenuOpen(!menuOpen)} />
       <MenuOverlay isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
       
       <main>

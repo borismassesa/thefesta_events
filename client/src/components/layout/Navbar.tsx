@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { name: "Shop", href: "/shop" },
 ];
 
-export function Navbar({ onMenuClick }: { onMenuClick: () => void }) {
+export function Navbar({ onMenuClick, isOpen }: { onMenuClick: () => void; isOpen?: boolean }) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -77,11 +77,19 @@ export function Navbar({ onMenuClick }: { onMenuClick: () => void }) {
         {/* Mobile Menu Button */}
         <button 
           onClick={onMenuClick}
-          className="lg:hidden menu-btn group flex flex-col gap-[5px] w-8 items-end cursor-pointer p-1"
-          aria-label="Menu"
+          className="lg:hidden menu-btn group flex flex-col justify-center items-end w-8 h-8 cursor-pointer p-1 z-50 relative gap-[5px]"
+          aria-label={isOpen ? "Close Menu" : "Open Menu"}
         >
-          <span className="w-full h-[2px] bg-primary transition-all duration-300 group-hover:w-3/4 rounded-full"></span>
-          <span className="w-2/3 h-[2px] bg-primary transition-all duration-300 group-hover:w-full rounded-full"></span>
+          <span 
+            className={`h-[2px] bg-primary transition-all duration-300 rounded-full origin-center absolute ${
+              isOpen ? "w-6 rotate-45 translate-y-0 top-1/2 -mt-[1px]" : "w-full relative top-auto mt-0 group-hover:w-3/4"
+            }`}
+          ></span>
+          <span 
+            className={`h-[2px] bg-primary transition-all duration-300 rounded-full origin-center absolute ${
+              isOpen ? "w-6 -rotate-45 translate-y-0 top-1/2 -mt-[1px]" : "w-2/3 relative top-auto mt-0 group-hover:w-full"
+            }`}
+          ></span>
         </button>
       </div>
     </nav>
