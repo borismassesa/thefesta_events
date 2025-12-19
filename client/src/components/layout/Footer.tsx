@@ -18,21 +18,6 @@ export function Footer() {
               The all-in-one platform for modern couples to plan, design, and celebrate their dream weddings effortlessly.
             </p>
             
-            <div className="flex flex-col gap-3 mt-2">
-              <div className="flex items-center gap-3 text-secondary hover:text-primary transition-colors">
-                <MapPin size={16} />
-                <span className="text-sm">Dar es salaam, Tanzania</span>
-              </div>
-              <a href="tel:+255750240699" className="flex items-center gap-3 text-secondary hover:text-primary transition-colors">
-                <Phone size={16} />
-                <span className="text-sm">+255 750 240 699</span>
-              </a>
-              <a href="mailto:hello@thefestaevents.com" className="flex items-center gap-3 text-secondary hover:text-primary transition-colors">
-                <Mail size={16} />
-                <span className="text-sm">hello@thefestaevents.com</span>
-              </a>
-            </div>
-
             <div className="flex items-center gap-4 mt-2">
               <SocialLink href="#" icon={<Twitter size={18} />} label="Twitter" />
               <SocialLink href="#" icon={<Instagram size={18} />} label="Instagram" />
@@ -67,7 +52,22 @@ export function Footer() {
 
           {/* Newsletter Column */}
           <div className="flex flex-col gap-6">
-            <h4 className="font-semibold text-primary text-sm tracking-wide uppercase">Stay Updated</h4>
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-3 text-secondary hover:text-primary transition-colors">
+                <MapPin size={16} />
+                <span className="text-sm">Dar es salaam, Tanzania</span>
+              </div>
+              <a href="tel:+255750240699" className="flex items-center gap-3 text-secondary hover:text-primary transition-colors">
+                <Phone size={16} />
+                <span className="text-sm">+255 750 240 699</span>
+              </a>
+              <a href="mailto:hello@thefestaevents.com" className="flex items-center gap-3 text-secondary hover:text-primary transition-colors">
+                <Mail size={16} />
+                <span className="text-sm">hello@thefestaevents.com</span>
+              </a>
+            </div>
+            
+            <h4 className="font-semibold text-primary text-sm tracking-wide uppercase mt-2">Stay Updated</h4>
             <p className="text-secondary text-sm leading-relaxed">
               Subscribe to our newsletter for the latest wedding trends and planning tips.
             </p>
