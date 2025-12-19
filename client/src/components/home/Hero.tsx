@@ -3,42 +3,30 @@ import { Search, Sparkles } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
-import slide1 from "@assets/stock_images/elegant_wedding_venu_86ae752a.jpg";
-import slide2 from "@assets/stock_images/happy_bride_and_groo_e2e2dc27.jpg";
-import slide3 from "@assets/stock_images/luxury_wedding_table_da8d592c.jpg";
-import slide4 from "@assets/stock_images/outdoor_garden_weddi_24d9a869.jpg";
 
 const HERO_SLIDES = [
   {
     id: 1,
-    image: slide1,
-    author: "Grand Ballrooms",
-    location: "Dar es Salaam",
-    avatar: "https://picsum.photos/seed/venue1/50/50",
+    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    poster: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerJoyrides.jpg",
+    author: "Evergreen Films",
+    avatar: "https://picsum.photos/seed/vid1/50/50",
     color: "var(--surface)"
   },
   {
     id: 2,
-    image: slide2,
-    author: "Sunset Moments",
-    location: "Zanzibar",
-    avatar: "https://picsum.photos/seed/photo1/50/50",
+    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    poster: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg",
+    author: "Love & Lens",
+    avatar: "https://picsum.photos/seed/vid2/50/50",
     color: "var(--surface)"
   },
   {
     id: 3,
-    image: slide3,
-    author: "Luxe Events",
-    location: "Arusha",
-    avatar: "https://picsum.photos/seed/decor1/50/50",
-    color: "var(--surface)"
-  },
-  {
-    id: 4,
-    image: slide4,
-    author: "Serengeti Gardens",
-    location: "Serengeti",
-    avatar: "https://picsum.photos/seed/venue2/50/50",
+    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    poster: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerEscapes.jpg",
+    author: "Rustic Barns Co.",
+    avatar: "https://picsum.photos/seed/vid3/50/50",
     color: "var(--surface)"
   },
 ];
@@ -198,8 +186,7 @@ export function Hero() {
           0
         );
 
-        // Parallax effect on images instead of video scale
-        scrollTl.fromTo(".hero-visual img", { scale: 1.1 }, { scale: 1.0, duration: 1, ease: "power2.inOut" }, 0);
+        scrollTl.fromTo(".hero-video", { scale: 1.1 }, { scale: 1, duration: 1, ease: "power2.inOut" }, 0);
       });
 
       // Mobile Specifics
@@ -359,7 +346,7 @@ export function Hero() {
 
         </div>
 
-        {/* Hero Visual - Image Carousel */}
+        {/* Hero Visual - Video Carousel */}
         <div ref={visualRef} className="hero-visual hidden md:block relative w-full aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl group bg-surface border border-border z-20">
           
           {HERO_SLIDES.map((slide, index) => (
@@ -370,30 +357,30 @@ export function Hero() {
               }`}
               style={{ backgroundColor: slide.color }}
             >
-              <img
-                src={slide.image}
-                alt={slide.author}
-                className="w-full h-full object-cover transform scale-105"
-              />
-              {/* Subtle Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster={slide.poster}
+                className="hero-video w-full h-full object-cover"
+              >
+                <source src={slide.video} type="video/mp4" />
+              </video>
+              {/* Dark overlay for better text contrast if needed */}
+              <div className="absolute inset-0 bg-black/10"></div>
             </div>
           ))}
           
-          {/* Dynamic Artist/Location Credit */}
-          <div className="absolute bottom-4 right-4 lg:bottom-6 lg:right-6 flex items-center gap-2 lg:gap-3 bg-white/90 backdrop-blur-md px-3 py-1.5 lg:px-4 lg:py-2 rounded-full shadow-lg hover:scale-105 transition-all cursor-pointer z-20 border border-white/20">
-            <div className="flex flex-col items-end mr-1">
-               <span className="text-[10px] lg:text-xs font-bold text-primary uppercase tracking-wider">
-                {HERO_SLIDES[currentSlide].author}
-              </span>
-               <span className="text-[9px] lg:text-[10px] font-medium text-secondary">
-                {HERO_SLIDES[currentSlide].location}
-              </span>
-            </div>
+          {/* Dynamic Artist Credit */}
+          <div className="absolute bottom-4 right-4 lg:bottom-6 lg:right-6 flex items-center gap-2 lg:gap-3 bg-surface/90 backdrop-blur-sm px-3 py-1.5 lg:px-4 lg:py-2 rounded-full shadow-lg hover:scale-105 transition-all cursor-pointer z-20 border border-border">
+            <span className="text-xs lg:text-sm font-semibold text-primary transition-all duration-300">
+              {HERO_SLIDES[currentSlide].author}
+            </span>
             <img 
               src={HERO_SLIDES[currentSlide].avatar} 
-              alt="Avatar" 
-              className="w-6 h-6 lg:w-8 lg:h-8 rounded-full border border-white shadow-sm" 
+              alt="Artist" 
+              className="w-6 h-6 lg:w-8 lg:h-8 rounded-full border border-border" 
             />
           </div>
           
