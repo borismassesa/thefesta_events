@@ -42,15 +42,15 @@ export function Philosophy() {
     <section ref={containerRef} id="philosophy" className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 px-6 md:px-12 py-20 md:py-24 border-b border-border relative">
       <div className="sticky top-32 h-fit">
         <span className="font-mono text-accent text-xs tracking-widest uppercase mb-4 block">
-          Philosophy
+          The Festa Standard
         </span>
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-primary mb-8 section-title">
           <span className="inline-block overflow-hidden align-bottom">
-            <span className="inline-block pb-1">Signal over</span>
+            <span className="inline-block pb-1">Planning,</span>
           </span>
           <br />
           <span className="inline-block overflow-hidden align-bottom">
-            <span className="inline-block text-secondary pb-1">noise.</span>
+            <span className="inline-block text-secondary pb-1">perfected.</span>
           </span>
         </h2>
         <div className="hidden md:flex flex-col items-center h-[50vh] max-h-[400px] mt-8">
@@ -65,14 +65,14 @@ export function Philosophy() {
       <div className="flex flex-col gap-16 md:gap-24">
         <div className="reveal-card opacity-20 translate-y-12">
           <p className="text-lg md:text-xl leading-relaxed text-primary mb-6">
-            The internet is broken. Algorithmic feeds prioritize outrage over insight. Chronicle is a quiet space tailored for deep reading.
+            We believe your journey should be as beautiful as the destination. We strictly vet every vendor and venue, ensuring quality over quantity.
           </p>
           <div className="aspect-video bg-surface rounded-lg border border-border overflow-hidden relative group">
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
             <img 
-              src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" 
+              src="https://images.unsplash.com/photo-1519225468359-29612ab0eca9?q=80&w=2070&auto=format&fit=crop" 
               className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700" 
-              alt="Cybersecurity" 
+              alt="Curated Vendors" 
             />
             <div className="absolute bottom-4 left-4 z-20">
               <span className="text-xs font-mono text-white border border-white/20 px-2 py-1 rounded backdrop-blur-sm">
@@ -84,18 +84,18 @@ export function Philosophy() {
 
         <div className="reveal-card opacity-20 translate-y-12">
           <p className="text-lg md:text-xl leading-relaxed text-primary mb-6">
-            We collaborate with the world's leading thinkers to produce issues that stand the test of time. No clickbait. No ads.
+            Transparency is our love language. No hidden fees, no "wedding tax," and no surprises. Just powerful tools to manage your budget and guests.
           </p>
           <div className="aspect-video bg-surface rounded-lg border border-border overflow-hidden relative group">
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
             <img 
-              src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" 
+              src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2070&auto=format&fit=crop" 
               className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700" 
-              alt="Network" 
+              alt="Seamless Planning" 
             />
             <div className="absolute bottom-4 left-4 z-20">
               <span className="text-xs font-mono text-white border border-white/20 px-2 py-1 rounded backdrop-blur-sm">
-                02. Depth
+                02. Clarity
               </span>
             </div>
           </div>
