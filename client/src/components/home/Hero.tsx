@@ -222,7 +222,7 @@ export function Hero() {
               <span className="block">Plan Less,</span>
             </span>
             <span className="block hero-word">
-              <span className="block text-secondary">
+              <span className="block text-primary">
                 <TypingEffect words={TYPING_PHRASES} />
               </span>
             </span>
