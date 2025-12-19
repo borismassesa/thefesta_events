@@ -62,7 +62,7 @@ export default function ForgotPassword() {
             </Link>
           </div>
 
-          <div className="space-y-2 text-center lg:text-left">
+          <div className="space-y-2 text-center">
             <h1 className="text-3xl lg:text-4xl font-semibold tracking-tight text-primary">
               Forgot password?
             </h1>
