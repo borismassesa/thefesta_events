@@ -82,7 +82,7 @@ export function Reviews() {
   const containerRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const column1Ref = useRef<HTMLDivElement>(null);
-  const column2Ref = useRef<HTMLDivElement>(null);
+  const marqueeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -167,7 +167,7 @@ export function Reviews() {
       }
       
       // Pause on hover
-      const container = containerRef.current;
+      const container = marqueeRef.current;
       if (container) {
           container.addEventListener('mouseenter', () => {
             tween1?.pause();
@@ -231,7 +231,7 @@ export function Reviews() {
         </div>
 
         {/* Right Column: Moving Cards */}
-        <div className="relative h-[400px] md:h-[600px] overflow-hidden mask-gradient-y grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div ref={marqueeRef} className="relative h-[400px] md:h-[600px] overflow-hidden mask-gradient-y grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Vertical Gradients for masking */}
           <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-surface to-transparent z-10 pointer-events-none"></div>
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-surface to-transparent z-10 pointer-events-none"></div>
