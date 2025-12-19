@@ -216,30 +216,28 @@ export function Hero() {
         scrollTl.fromTo(visualRef.current,
           {
              opacity: 0,
-             y: 100,
-             scale: 0.9,
+             scale: 0.8,
              position: 'absolute',
              left: '50%',
              xPercent: -50,
-             top: '50%', // Start somewhat centered/lower
-             yPercent: -50,
+             top: '100%',     // Start from the very bottom
+             yPercent: 0,     // No offset initially
              width: '90vw',
-             height: 'auto',
+             height: '50vh',  // Keep consistent height
              zIndex: 40
           },
           {
              opacity: 1,
-             y: 0,
              scale: 1,
-             top: '100px',
-             yPercent: 0,
+             top: '50%',      // Move to vertical center
+             yPercent: -50,   // Center alignment
              left: '50%',
              xPercent: -50,
              width: '94vw',
              height: '50vh',
              borderRadius: "1.5rem",
              duration: 1,
-             ease: "power2.out"
+             ease: "power3.out" // Smoother easing
           },
           0
         );
