@@ -86,20 +86,32 @@ export function About() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[80%] bg-accent/10 blur-[120px] -z-10 rounded-full pointer-events-none"></div>
 
           <h3 className="leading-[1.1] md:text-6xl lg:text-7xl text-5xl font-medium text-primary/40 tracking-tight max-w-6xl">
-            <span className="reveal-text inline-block mr-3"><span className="text-primary">We are a planning</span></span>
-            <span className="reveal-text inline-block mr-3"><span className="text-primary">intelligence engine</span></span>
-            <span className="reveal-text inline-block mr-3">dedicated to</span>
-            <span className="reveal-text inline-block mr-3">transforming how</span>
-            <span className="reveal-text inline-block mr-3">couples <span className="text-primary">visualize</span></span>
-            <span className="reveal-text inline-block mr-3"><span className="text-primary">their big day.</span></span>
-            <span className="reveal-text inline-block mr-3">With a team of</span>
-            <span className="reveal-text inline-block mr-3">planners, engineers,</span>
-            <span className="reveal-text inline-block mr-3">and artists, we build</span>
-            <span className="reveal-text inline-block mr-3">tools that empower</span>
-            <span className="reveal-text inline-block mr-3"><span className="text-primary">ambitious couples</span></span>
-            <span className="reveal-text inline-block mr-3">to design, organize,</span>
-            <span className="reveal-text inline-block mr-3">and celebrate at the</span>
-            <span className="reveal-text inline-block mr-3">speed of <span className="text-primary italic font-serif text-accent">love.</span></span>
+            {[
+              { text: "We are a planning", highlight: true },
+              { text: "intelligence engine" },
+              { text: "dedicated to" },
+              { text: "transforming how" },
+              { text: "couples" },
+              { text: "visualize", highlight: true },
+              { text: "their big day.", highlight: true },
+              { text: "With a team of" },
+              { text: "planners, engineers," },
+              { text: "and artists, we build" },
+              { text: "tools that empower" },
+              { text: "ambitious couples", highlight: true },
+              { text: "to design, organize," },
+              { text: "and celebrate at the" },
+              { text: "speed of" },
+              { text: "love.", highlight: true, italic: true }
+            ].map((phrase, i) => (
+              <span key={i} className="inline mr-3">
+                {phrase.text.split(" ").map((word, j) => (
+                  <span key={j} className={`reveal-text inline-block mr-3 ${phrase.italic ? 'font-serif italic font-normal text-accent' : ''} ${phrase.highlight && !phrase.italic ? 'text-primary' : ''}`}>
+                    {word}
+                  </span>
+                ))}
+              </span>
+            ))}
           </h3>
         </div>
 
