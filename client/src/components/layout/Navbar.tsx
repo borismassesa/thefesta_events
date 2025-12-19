@@ -45,7 +45,7 @@ export function Navbar({ onMenuClick, isOpen }: { onMenuClick: () => void; isOpe
       </Link>
 
       {/* Desktop Navigation */}
-      <div className="hidden lg:flex items-center gap-8 bg-background/80 px-8 py-2.5 rounded-full border border-border backdrop-blur-md shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/20 dark:bg-zinc-900/80">
+      <div className="hidden lg:flex items-center gap-8 bg-surface/80 px-8 py-2.5 rounded-full border border-border backdrop-blur-md shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/20">
         {NAV_LINKS.map((link) => (
           <Link key={link.name} href={link.href}>
             <a className={`text-sm font-medium transition-colors hover:text-primary ${
