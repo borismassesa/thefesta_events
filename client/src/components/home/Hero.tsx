@@ -269,7 +269,7 @@ export function Hero() {
           <div style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}>
             <LightRays
               raysOrigin="top-center"
-              raysColor="#00ffff"
+              raysColor="#ffffff"
               raysSpeed={1.5}
               lightSpread={0.8}
               rayLength={1.2}
