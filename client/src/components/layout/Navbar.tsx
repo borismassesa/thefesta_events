@@ -77,19 +77,32 @@ export function Navbar({ onMenuClick, isOpen }: { onMenuClick: () => void; isOpe
         {/* Mobile Menu Button */}
         <button 
           onClick={onMenuClick}
-          className="lg:hidden menu-btn group flex flex-col justify-center items-end w-8 h-8 cursor-pointer p-1 z-50 relative gap-[5px]"
+          className={`lg:hidden group relative z-50 w-11 h-11 flex items-center justify-center rounded-full border transition-all duration-500 ${
+            isOpen 
+              ? "bg-primary border-primary rotate-90" 
+              : "bg-background/50 backdrop-blur-md border-border/60 hover:bg-primary/5"
+          }`}
           aria-label={isOpen ? "Close Menu" : "Open Menu"}
         >
-          <span 
-            className={`h-[2px] bg-primary transition-all duration-300 rounded-full origin-center absolute ${
-              isOpen ? "w-6 rotate-45 translate-y-0 top-1/2 -mt-[1px]" : "w-full relative top-auto mt-0 group-hover:w-3/4"
-            }`}
-          ></span>
-          <span 
-            className={`h-[2px] bg-primary transition-all duration-300 rounded-full origin-center absolute ${
-              isOpen ? "w-6 -rotate-45 translate-y-0 top-1/2 -mt-[1px]" : "w-2/3 relative top-auto mt-0 group-hover:w-full"
-            }`}
-          ></span>
+          <div className="relative w-5 h-3.5 flex flex-col justify-between items-end">
+             {/* Line 1 */}
+             <span 
+               className={`h-[1.5px] rounded-full transition-all duration-500 absolute right-0 ${
+                 isOpen 
+                   ? "top-1/2 -translate-y-1/2 rotate-45 bg-background w-5" 
+                   : "top-0 bg-primary w-full group-hover:w-4/5"
+               }`}
+             />
+             
+             {/* Line 2 */}
+             <span 
+               className={`h-[1.5px] rounded-full transition-all duration-500 absolute right-0 ${
+                 isOpen 
+                   ? "top-1/2 -translate-y-1/2 -rotate-45 bg-background w-5" 
+                   : "bottom-0 bg-primary w-2/3 group-hover:w-full"
+               }`}
+             />
+          </div>
         </button>
       </div>
     </nav>
