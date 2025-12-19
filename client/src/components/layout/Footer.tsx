@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Facebook, Twitter, Instagram, Linkedin, Github } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, Github, MapPin, Phone, Mail } from "lucide-react";
 
 export function Footer() {
   return (
@@ -17,9 +17,22 @@ export function Footer() {
             <p className="text-secondary text-sm leading-relaxed max-w-xs">
               The all-in-one platform for modern couples to plan, design, and celebrate their dream weddings effortlessly.
             </p>
-            <a href="mailto:hello@thefestaevents.com" className="text-sm font-medium text-primary hover:text-accent transition-colors">
-              hello@thefestaevents.com
-            </a>
+            
+            <div className="flex flex-col gap-3 mt-2">
+              <div className="flex items-center gap-3 text-secondary hover:text-primary transition-colors">
+                <MapPin size={16} />
+                <span className="text-sm">Dar es salaam, Tanzania</span>
+              </div>
+              <a href="tel:+255750240699" className="flex items-center gap-3 text-secondary hover:text-primary transition-colors">
+                <Phone size={16} />
+                <span className="text-sm">+255 750 240 699</span>
+              </a>
+              <a href="mailto:hello@thefestaevents.com" className="flex items-center gap-3 text-secondary hover:text-primary transition-colors">
+                <Mail size={16} />
+                <span className="text-sm">hello@thefestaevents.com</span>
+              </a>
+            </div>
+
             <div className="flex items-center gap-4 mt-2">
               <SocialLink href="#" icon={<Twitter size={18} />} label="Twitter" />
               <SocialLink href="#" icon={<Instagram size={18} />} label="Instagram" />
