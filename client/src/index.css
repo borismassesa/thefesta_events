@@ -9,6 +9,7 @@
   --color-surface: var(--surface);
   --color-border: var(--border);
   --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
   
@@ -22,6 +23,7 @@
     --surface: #f4f4f5;
     --border: rgba(0, 0, 0, 0.08);
     --primary: #050505;
+    --primary-foreground: #ffffff;
     --secondary: #52525b;
     --accent: #3B82F6;
     
@@ -36,6 +38,7 @@
     --surface: #0A0A0A;
     --border: rgba(255, 255, 255, 0.08);
     --primary: #FFFFFF;
+    --primary-foreground: #050505;
     --secondary: #888888;
     --accent: #3B82F6;
 
