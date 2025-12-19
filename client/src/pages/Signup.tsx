@@ -18,43 +18,47 @@ export default function Signup() {
   return (
     <div className="min-h-screen w-full flex bg-background">
       {/* Left Side - Image */}
-      <div className="hidden lg:flex w-1/2 relative overflow-hidden bg-muted">
-        <img 
-          src={signupImg} 
-          alt="Wedding stationery" 
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+      <div className="hidden lg:flex w-1/2 relative overflow-hidden bg-black">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={signupImg} 
+            alt="Wedding stationery" 
+            className="w-full h-full object-cover opacity-90 scale-105 hover:scale-100 transition-transform duration-[20s] ease-in-out"
+          />
+           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
+        </div>
         
-        <div className="relative z-10 p-12 flex flex-col justify-between h-full text-white">
-          <Link href="/">
-            <a className="font-serif text-3xl tracking-wide hover:opacity-80 transition-opacity w-fit drop-shadow-md">
-              TheFesta
-            </a>
-          </Link>
+        <div className="relative z-10 p-12 flex flex-col justify-between h-full text-white w-full">
+          <div className="flex justify-between items-start">
+            <Link href="/">
+              <a className="font-serif text-4xl tracking-wide drop-shadow-sm hover:opacity-80 transition-opacity">
+                TheFesta
+              </a>
+            </Link>
+          </div>
           
-          <div className="max-w-md">
-            <h2 className="text-4xl font-serif mb-6 leading-tight drop-shadow-md">
+          <div className="backdrop-blur-xl bg-black/20 border border-white/10 p-8 rounded-3xl shadow-2xl max-w-xl self-end">
+            <h2 className="text-3xl font-serif mb-6 leading-snug drop-shadow-md">
               Start planning the celebration of a lifetime.
             </h2>
             <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                 <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
-                    <Check className="w-4 h-4" />
+              <div className="flex items-center gap-4 group">
+                 <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-lg group-hover:bg-white/30 transition-colors">
+                    <Check className="w-5 h-5 text-white" />
                  </div>
-                 <span className="text-sm font-medium tracking-wide drop-shadow-sm">Manage guests & RSVPs easily</span>
+                 <span className="text-base font-medium tracking-wide text-white/90">Manage guests & RSVPs easily</span>
               </div>
-              <div className="flex items-center gap-3">
-                 <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
-                    <Check className="w-4 h-4" />
+              <div className="flex items-center gap-4 group">
+                 <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-lg group-hover:bg-white/30 transition-colors">
+                    <Check className="w-5 h-5 text-white" />
                  </div>
-                 <span className="text-sm font-medium tracking-wide drop-shadow-sm">Find top-rated local vendors</span>
+                 <span className="text-base font-medium tracking-wide text-white/90">Find top-rated local vendors</span>
               </div>
-              <div className="flex items-center gap-3">
-                 <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
-                    <Check className="w-4 h-4" />
+              <div className="flex items-center gap-4 group">
+                 <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-lg group-hover:bg-white/30 transition-colors">
+                    <Check className="w-5 h-5 text-white" />
                  </div>
-                 <span className="text-sm font-medium tracking-wide drop-shadow-sm">Stay on budget with smart tools</span>
+                 <span className="text-base font-medium tracking-wide text-white/90">Stay on budget with smart tools</span>
               </div>
             </div>
           </div>

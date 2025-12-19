@@ -17,28 +17,33 @@ export default function Login() {
   return (
     <div className="min-h-screen w-full flex bg-background">
       {/* Left Side - Image */}
-      <div className="hidden lg:flex w-1/2 relative overflow-hidden bg-background">
-        <img 
-          src={loginImg} 
-          alt="Couple at sunset" 
-          className="absolute inset-0 w-full h-full object-cover opacity-80"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30" />
+      <div className="hidden lg:flex w-1/2 relative overflow-hidden bg-black">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={loginImg} 
+            alt="Couple at sunset" 
+            className="w-full h-full object-cover opacity-90 scale-105 hover:scale-100 transition-transform duration-[20s] ease-in-out"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        </div>
         
-        <div className="relative z-10 p-12 flex flex-col justify-between h-full text-white">
+        <div className="relative z-10 p-12 flex flex-col justify-between h-full text-white w-full">
           <Link href="/">
-            <a className="font-serif text-3xl tracking-wide hover:opacity-80 transition-opacity w-fit">
+            <a className="font-serif text-4xl tracking-wide drop-shadow-sm hover:opacity-80 transition-opacity w-fit">
               TheFesta
             </a>
           </Link>
           
-          <div className="max-w-md">
-            <h2 className="text-4xl font-serif mb-6 leading-tight">
+          <div className="backdrop-blur-md bg-white/10 border border-white/10 p-8 rounded-3xl shadow-2xl max-w-lg">
+            <h2 className="text-3xl font-serif mb-4 leading-normal text-white">
               "The highest happiness on earth is the happiness of marriage."
             </h2>
-            <p className="text-white/70 text-sm tracking-wider uppercase">
-              — William Lyon Phelps
-            </p>
+            <div className="flex items-center gap-3">
+               <div className="h-px w-8 bg-white/60"></div>
+               <p className="text-white/80 text-sm tracking-wider uppercase font-medium">
+                 William Lyon Phelps
+               </p>
+            </div>
           </div>
         </div>
       </div>
