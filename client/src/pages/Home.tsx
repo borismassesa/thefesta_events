@@ -72,8 +72,8 @@ export default function Home() {
         <Hero />
         {/* <Marquee /> */}
         <Services />
-        <Reviews />
         <Issues />
+        <Reviews />
       </main>
     </div>
   );
