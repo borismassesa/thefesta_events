@@ -95,7 +95,7 @@ export default function Signup() {
                  className={`text-sm font-medium py-2 rounded-md transition-all ${
                    userType === "couple" 
                    ? "bg-primary text-primary-foreground shadow-sm" 
-                   : "text-zinc-500 hover:text-primary dark:hover:bg-zinc-700 hover:bg-zinc-100"
+                   : "text-zinc-500 hover:text-primary dark:hover:bg-zinc-700 hover:bg-primary/5"
                  }`}
                >
                  I'm a Couple
@@ -106,7 +106,7 @@ export default function Signup() {
                  className={`text-sm font-medium py-2 rounded-md transition-all ${
                    userType === "vendor" 
                    ? "bg-primary text-primary-foreground shadow-sm" 
-                   : "text-zinc-500 hover:text-primary dark:hover:bg-zinc-700 hover:bg-zinc-100"
+                   : "text-zinc-500 hover:text-primary dark:hover:bg-zinc-700 hover:bg-primary/5"
                  }`}
                >
                  I'm a Vendor
