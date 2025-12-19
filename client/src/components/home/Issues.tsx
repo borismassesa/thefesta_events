@@ -72,22 +72,36 @@ export function Issues() {
   return (
     <div className="relative w-full"> 
     {/* Wrapper for pin spacer */}
-      <section ref={containerRef} id="advice-ideas" className="bg-surface text-primary py-20 md:py-24 overflow-hidden relative border-b border-border">
-        <div className="px-6 md:px-12 mb-16 flex justify-between items-end">
-          <div>
-            <span className="font-mono text-accent text-xs tracking-widest uppercase mb-2 block">
-              Advice & Ideas
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight">
-              Latest <br /> Stories
-            </h2>
-          </div>
-          <div className="hidden md:flex gap-2">
-            <Link href="/services/advice">
-              <a className="text-xs font-mono text-secondary hover:text-primary transition-colors cursor-pointer">
-                VIEW ALL -&gt;
-              </a>
-            </Link>
+      <section ref={containerRef} id="advice-ideas" className="bg-surface text-primary py-20 md:py-32 overflow-hidden relative border-b border-border">
+        
+        {/* Editorial Header */}
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end border-b border-border/50 pb-12">
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="w-12 h-[1px] bg-accent"></span>
+                <span className="font-mono text-accent text-xs tracking-widest uppercase">
+                  Advice & Ideas
+                </span>
+              </div>
+              <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-primary leading-[1.1]">
+                Inspiration for <br/>
+                <span className="font-serif italic font-normal text-secondary">your big day.</span>
+              </h2>
+            </div>
+            
+            <div className="flex flex-col items-start md:items-end gap-8">
+              <p className="text-secondary text-lg md:text-xl max-w-md md:text-right leading-relaxed font-light">
+                Expert guides, trending styles, and real wedding stories to help you plan a celebration that's uniquely yours.
+              </p>
+              
+              <Link href="/services/advice">
+                <a className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-background text-sm font-medium transition-all hover:bg-primary/90 hover:scale-105">
+                  Browse All Articles
+                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              </Link>
+            </div>
           </div>
         </div>
 
