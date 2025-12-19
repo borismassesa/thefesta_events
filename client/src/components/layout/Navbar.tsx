@@ -97,6 +97,27 @@ export function Navbar({ onMenuClick, isOpen }: { onMenuClick: () => void; isOpe
 
       {/* Right Actions */}
       <div className="flex items-center gap-4 z-50">
+        <button
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="text-secondary hover:text-primary transition-colors cursor-pointer p-2 rounded-full hover:bg-primary/5"
+          aria-label="Toggle theme"
+        >
+          {mounted && theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
+
+        <div className="hidden md:flex items-center gap-3">
+            <Link href="/login">
+                <a className="text-sm font-medium text-primary hover:text-primary/80 transition-colors px-4 py-2">
+                    {t('nav.login')}
+                </a>
+            </Link>
+            <Link href="/signup">
+                <a className="text-sm font-semibold bg-primary text-background px-5 py-2.5 rounded-full hover:bg-primary/90 transition-all hover:scale-105 shadow-lg shadow-primary/20">
+                    {t('nav.getStarted')}
+                </a>
+            </Link>
+        </div>
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button 
@@ -118,27 +139,6 @@ export function Navbar({ onMenuClick, isOpen }: { onMenuClick: () => void; isOpe
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-
-        <button
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="text-secondary hover:text-primary transition-colors cursor-pointer p-2 rounded-full hover:bg-primary/5"
-          aria-label="Toggle theme"
-        >
-          {mounted && theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-        </button>
-
-        <div className="hidden md:flex items-center gap-3">
-            <Link href="/login">
-                <a className="text-sm font-medium text-primary hover:text-primary/80 transition-colors px-4 py-2">
-                    {t('nav.login')}
-                </a>
-            </Link>
-            <Link href="/signup">
-                <a className="text-sm font-semibold bg-primary text-background px-5 py-2.5 rounded-full hover:bg-primary/90 transition-all hover:scale-105 shadow-lg shadow-primary/20">
-                    {t('nav.getStarted')}
-                </a>
-            </Link>
-        </div>
         
         {/* Mobile Menu Button */}
         <button 
