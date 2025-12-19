@@ -53,7 +53,7 @@ export default function Login() {
         <div className="w-full max-w-sm space-y-10">
           
           {/* Mobile Logo */}
-          <div className="lg:hidden text-center mb-8">
+          <div className="lg:hidden text-center mb-8 mt-8">
             <Link href="/">
               <a className="font-serif text-3xl text-primary">TheFesta</a>
             </Link>
