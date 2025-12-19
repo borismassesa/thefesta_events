@@ -231,10 +231,10 @@ export function Hero() {
              opacity: 1,
              y: 0,
              scale: 1,
-             top: '90px',
+             top: '100px',
              yPercent: 0,
              width: '94vw',
-             height: 'calc(100vh - 110px)',
+             height: '50vh',
              borderRadius: "1.5rem",
              duration: 1,
              ease: "power2.out"
