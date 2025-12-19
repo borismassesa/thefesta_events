@@ -152,7 +152,7 @@ export function Community() {
                     "{vendor.quote}"
                   </p>
                   <div className="mt-1 flex items-center gap-1 text-xs text-secondary">
-                    <BadgeCheck className="w-3 h-3 text-primary fill-accent/20" />
+                    <BadgeCheck className="w-3 h-3 text-amber-500 fill-amber-500/10" />
                     Verified Pro
                   </div>
                 </div>
