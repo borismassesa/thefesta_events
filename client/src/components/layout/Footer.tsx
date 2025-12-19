@@ -17,6 +17,9 @@ export function Footer() {
             <p className="text-secondary text-sm leading-relaxed max-w-xs">
               The all-in-one platform for modern couples to plan, design, and celebrate their dream weddings effortlessly.
             </p>
+            <a href="mailto:hello@thefestaevents.com" className="text-sm font-medium text-primary hover:text-accent transition-colors">
+              hello@thefestaevents.com
+            </a>
             <div className="flex items-center gap-4 mt-2">
               <SocialLink href="#" icon={<Twitter size={18} />} label="Twitter" />
               <SocialLink href="#" icon={<Instagram size={18} />} label="Instagram" />
