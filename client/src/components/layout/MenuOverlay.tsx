@@ -86,7 +86,7 @@ export function MenuOverlay({ isOpen, onClose }: { isOpen: boolean; onClose: () 
             <a onClick={onClose} className="text-lg font-medium text-primary">Log In</a>
           </Link>
           <Link href="/signup">
-            <a onClick={onClose} className="text-lg font-medium text-primary bg-secondary/10 px-6 py-2 rounded-full">Get Started</a>
+            <a onClick={onClose} className="text-lg font-medium bg-primary text-background px-6 py-2 rounded-full hover:bg-primary/90 transition-colors">Get Started</a>
           </Link>
         </div>
       </div>
