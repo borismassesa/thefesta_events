@@ -233,6 +233,8 @@ export function Hero() {
              scale: 1,
              top: '100px',
              yPercent: 0,
+             left: '50%',
+             xPercent: -50,
              width: '94vw',
              height: '50vh',
              borderRadius: "1.5rem",
@@ -373,19 +375,19 @@ export function Hero() {
           ))}
           
           {/* Dynamic Artist Credit */}
-          <div className="absolute bottom-6 right-6 flex items-center gap-3 bg-surface/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg hover:scale-105 transition-all cursor-pointer z-20 border border-border">
-            <span className="text-sm font-semibold text-primary transition-all duration-300">
+          <div className="absolute bottom-4 right-4 lg:bottom-6 lg:right-6 flex items-center gap-2 lg:gap-3 bg-surface/90 backdrop-blur-sm px-3 py-1.5 lg:px-4 lg:py-2 rounded-full shadow-lg hover:scale-105 transition-all cursor-pointer z-20 border border-border">
+            <span className="text-xs lg:text-sm font-semibold text-primary transition-all duration-300">
               {HERO_SLIDES[currentSlide].author}
             </span>
             <img 
               src={HERO_SLIDES[currentSlide].avatar} 
               alt="Artist" 
-              className="w-8 h-8 rounded-full border border-border" 
+              className="w-6 h-6 lg:w-8 lg:h-8 rounded-full border border-border" 
             />
           </div>
           
           {/* Slide Indicators */}
-          <div className="absolute bottom-6 left-6 flex gap-2 z-20">
+          <div className="absolute bottom-4 left-4 lg:bottom-6 lg:left-6 flex gap-2 z-20">
               {HERO_SLIDES.map((_, idx) => (
                   <div 
                       key={idx} 
