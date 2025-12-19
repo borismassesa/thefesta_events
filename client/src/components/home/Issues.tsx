@@ -84,7 +84,7 @@ export function Issues() {
                   Advice & Ideas
                 </span>
               </div>
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary leading-[1.1]">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-primary leading-[1.1]">
                 Inspiration for <br/>
                 <span className="font-serif italic font-normal text-secondary">your big day.</span>
               </h2>
@@ -105,10 +105,32 @@ export function Issues() {
           </div>
         </div>
 
-        <div className="horizontal-scroll-container w-full overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar pb-8 md:pb-0 flex-grow flex items-center">
-          <div ref={wrapperRef} className="horizontal-wrapper flex gap-4 md:gap-[4vw] px-[10vw] md:px-[5vw] w-fit items-center h-full">
+        {/* Mobile: Vertical Grid, Desktop: Horizontal Scroll */}
+        <div className="w-full md:hidden px-6 pb-12 flex flex-col gap-6">
+           {issues.map((issue) => (
+              <div key={issue.id} className="w-full aspect-[4/5] relative group cursor-pointer overflow-hidden rounded-xl border border-border">
+                  <img 
+                    src={issue.img} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                    alt={issue.title} 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 p-6 w-full text-white">
+                    <h3 className="text-2xl font-semibold tracking-tight mb-2">{issue.title}</h3>
+                    <p className="text-zinc-300 text-sm line-clamp-2 mb-4">{issue.desc}</p>
+                    <button className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider hover:text-accent transition-colors">
+                      Read More
+                      <ArrowUpRight className="w-3 h-3" />
+                    </button>
+                  </div>
+              </div>
+           ))}
+        </div>
+
+        <div className="hidden md:flex horizontal-scroll-container w-full overflow-visible no-scrollbar flex-grow items-center">
+          <div ref={wrapperRef} className="horizontal-wrapper flex gap-[4vw] px-[5vw] w-fit items-center h-full">
             {issues.map((issue) => (
-              <div key={issue.id} className="w-[80vw] md:w-[30vw] h-[40vh] md:h-[45vh] lg:h-[50vh] relative flex-shrink-0 group cursor-pointer snap-center">
+              <div key={issue.id} className="w-[30vw] h-[45vh] lg:h-[50vh] relative flex-shrink-0 group cursor-pointer">
                 <div className="absolute inset-0 bg-background rounded-xl overflow-hidden border border-border">
                   <img 
                     src={issue.img} 
