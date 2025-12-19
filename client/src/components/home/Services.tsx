@@ -63,7 +63,7 @@ const SERVICES = [
   }
 ];
 
-export function Philosophy() {
+export function Services() {
   const containerRef = useRef<HTMLDivElement>(null);
   const rightColumnRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -100,7 +100,7 @@ export function Philosophy() {
   }, []);
 
   return (
-    <section ref={containerRef} id="philosophy" className="relative w-full bg-background border-b border-border">
+    <section ref={containerRef} id="services" className="relative w-full bg-background border-b border-border">
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2">
         
         {/* Left Column - Sticky Visual */}

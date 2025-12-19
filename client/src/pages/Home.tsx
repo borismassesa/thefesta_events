@@ -6,7 +6,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { MenuOverlay } from "@/components/layout/MenuOverlay";
 import { Hero } from "@/components/home/Hero";
 import { Marquee } from "@/components/home/Marquee";
-import { Philosophy } from "@/components/home/Philosophy";
+import { Services } from "@/components/home/Services";
 import { Issues } from "@/components/home/Issues";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -70,7 +70,7 @@ export default function Home() {
       <main>
         <Hero />
         {/* <Marquee /> */}
-        <Philosophy />
+        <Services />
         <Issues />
       </main>
     </div>
