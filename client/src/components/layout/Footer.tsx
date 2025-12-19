@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Facebook, Twitter, Instagram, Linkedin, Github, MapPin, Phone, Mail } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, Github } from "lucide-react";
 
 export function Footer() {
   return (
@@ -17,7 +17,6 @@ export function Footer() {
             <p className="text-secondary text-sm leading-relaxed max-w-xs">
               The all-in-one platform for modern couples to plan, design, and celebrate their dream weddings effortlessly.
             </p>
-            
             <div className="flex items-center gap-4 mt-2">
               <SocialLink href="#" icon={<Twitter size={18} />} label="Twitter" />
               <SocialLink href="#" icon={<Instagram size={18} />} label="Instagram" />
@@ -50,23 +49,22 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Contact Column */}
+          {/* Newsletter Column */}
           <div className="flex flex-col gap-6">
-            <h4 className="font-semibold text-primary text-sm tracking-wide uppercase">Contact Us</h4>
-            <div className="flex flex-col gap-4">
-              <div className="flex items-start gap-3 text-secondary hover:text-primary transition-colors group">
-                <MapPin size={18} className="mt-0.5 group-hover:text-accent transition-colors" />
-                <span className="text-sm leading-snug">Dar es salaam,<br />Tanzania</span>
-              </div>
-              <a href="tel:+255750240699" className="flex items-center gap-3 text-secondary hover:text-primary transition-colors group">
-                <Phone size={18} className="group-hover:text-accent transition-colors" />
-                <span className="text-sm">+255 750 240 699</span>
-              </a>
-              <a href="mailto:hello@thefestaevents.com" className="flex items-center gap-3 text-secondary hover:text-primary transition-colors group">
-                <Mail size={18} className="group-hover:text-accent transition-colors" />
-                <span className="text-sm">hello@thefestaevents.com</span>
-              </a>
-            </div>
+            <h4 className="font-semibold text-primary text-sm tracking-wide uppercase">Stay Updated</h4>
+            <p className="text-secondary text-sm leading-relaxed">
+              Subscribe to our newsletter for the latest wedding trends and planning tips.
+            </p>
+            <form className="flex flex-col gap-3" onSubmit={(e) => e.preventDefault()}>
+              <input 
+                type="email" 
+                placeholder="Enter your email" 
+                className="w-full px-4 py-3 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-primary/20 transition-all placeholder:text-secondary/50"
+              />
+              <button className="w-full px-4 py-3 rounded-lg bg-primary text-background text-sm font-medium hover:bg-primary/90 transition-colors">
+                Subscribe
+              </button>
+            </form>
           </div>
 
         </div>
