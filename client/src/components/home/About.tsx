@@ -77,9 +77,9 @@ export function About() {
   const headlineParts = t('about.headline', { returnObjects: true }) as Array<{ text: string, highlight?: boolean, italic?: boolean }>;
 
   return (
-    <section ref={containerRef} className="relative w-full bg-surface py-32 lg:py-48 overflow-hidden">
+    <section ref={containerRef} className="relative w-full bg-surface pt-24 pb-16 lg:pt-48 lg:pb-36 overflow-hidden">
       
-      <div className="flex flex-col md:px-10 w-full max-w-7xl border-primary/10 border-t mx-auto pt-24 pr-6 pb-24 pl-6 relative">
+      <div className="flex flex-col md:px-10 w-full max-w-7xl border-primary/10 border-t mx-auto pt-24 pr-6 pb-12 pl-6 relative">
         
         {/* Standard Section Header */}
         <div className="flex justify-center md:justify-start mb-12 animate-on-scroll">
