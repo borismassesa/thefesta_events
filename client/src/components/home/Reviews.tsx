@@ -85,45 +85,88 @@ export function Reviews() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Column 1: Moves Up
-      gsap.to(column1Ref.current, {
-        yPercent: -20,
-        ease: "none",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1
+      // Automatic Vertical Marquee
+      
+      // Function to create vertical loop
+      const createVerticalLoop = (target: HTMLElement, direction: 'up' | 'down') => {
+        const height = target.clientHeight / 2; // Since we duplicated content, half height is one full set
+        
+        if (direction === 'up') {
+          gsap.to(target, {
+            y: -height,
+            duration: 30, // Adjust speed here
+            ease: "linear",
+            repeat: -1,
+            modifiers: {
+               y: gsap.utils.unitize(y => parseFloat(y) % height) // Seamless looping
+            }
+          });
+        } else {
+          // Downwards
+           gsap.fromTo(target, 
+            { y: -height }, 
+            {
+              y: 0,
+              duration: 30,
+              ease: "linear",
+              repeat: -1,
+              modifiers: {
+                y: gsap.utils.unitize(y => parseFloat(y) % height - height)
+              }
+            }
+          );
         }
-      });
+      };
 
-      // Column 2: Moves Down
-      gsap.fromTo(column2Ref.current, 
-        { yPercent: -20 },
-        {
-          yPercent: 10,
-          ease: "none",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1
+      if (column1Ref.current) {
+        // Simple seamless loop approach using fromTo for robustness
+        // We need to make sure the content is duplicated enough times.
+        // Assuming 3 sets of duplicates for safety.
+        
+        // Column 1 moves UP (y goes negative)
+        gsap.to(column1Ref.current, {
+           yPercent: -33.33, // Move by 1/3 since we have 3 sets
+           ease: "linear",
+           duration: 20,
+           repeat: -1
+        });
+      }
+
+      if (column2Ref.current) {
+        // Column 2 moves DOWN (y goes positive, start from negative)
+        gsap.fromTo(column2Ref.current, 
+          { yPercent: -33.33 },
+          {
+            yPercent: 0,
+            ease: "linear",
+            duration: 25, // Different speed for variation
+            repeat: -1
           }
-        }
-      );
+        );
+      }
+      
+      // Pause on hover
+      const container = containerRef.current;
+      if (container) {
+          container.addEventListener('mouseenter', () => gsap.globalTimeline.timeScale(0.2)); // Slow down instead of stop
+          container.addEventListener('mouseleave', () => gsap.globalTimeline.timeScale(1));
+      }
 
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      gsap.globalTimeline.timeScale(1); // Reset timescale
+    };
   }, []);
 
   // Split reviews into two columns
   const column1Reviews = REVIEWS.filter((_, i) => i % 2 === 0);
   const column2Reviews = REVIEWS.filter((_, i) => i % 2 !== 0);
 
-  // Duplicate for visual length if needed, or just use as is. 
-  // Since we are scrubbing with scroll, we just need enough content to cover the height.
-  // Let's just render them.
+  // Triple items for seamless loop (Original + Copy + Copy) to ensure no gaps
+  const col1Items = [...column1Reviews, ...column1Reviews, ...column1Reviews];
+  const col2Items = [...column2Reviews, ...column2Reviews, ...column2Reviews];
 
   return (
     <section ref={containerRef} className="relative w-full bg-surface border-b border-border overflow-hidden py-24 lg:py-32">
@@ -161,23 +204,27 @@ export function Reviews() {
         </div>
 
         {/* Right Column: Moving Cards */}
-        <div className="relative h-[800px] overflow-hidden mask-gradient-y grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="relative h-[600px] md:h-[800px] overflow-hidden mask-gradient-y grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Vertical Gradients for masking */}
           <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-surface to-transparent z-10 pointer-events-none"></div>
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-surface to-transparent z-10 pointer-events-none"></div>
 
           {/* Column 1 - Moving Up */}
-          <div ref={column1Ref} className="flex flex-col gap-6">
-            {[...column1Reviews, ...column1Reviews].map((review, i) => (
-               <ReviewCard key={`col1-${i}`} review={review} />
-            ))}
+          <div className="overflow-hidden h-full relative">
+              <div ref={column1Ref} className="flex flex-col gap-6">
+                {col1Items.map((review, i) => (
+                   <ReviewCard key={`col1-${i}`} review={review} />
+                ))}
+              </div>
           </div>
 
           {/* Column 2 - Moving Down */}
-          <div ref={column2Ref} className="flex flex-col gap-6 pt-12">
-            {[...column2Reviews, ...column2Reviews].map((review, i) => (
-               <ReviewCard key={`col2-${i}`} review={review} />
-            ))}
+          <div className="overflow-hidden h-full relative pt-12 md:pt-0">
+               <div ref={column2Ref} className="flex flex-col gap-6">
+                {col2Items.map((review, i) => (
+                   <ReviewCard key={`col2-${i}`} review={review} />
+                ))}
+              </div>
           </div>
         </div>
 
@@ -188,7 +235,7 @@ export function Reviews() {
 
 function ReviewCard({ review }: { review: typeof REVIEWS[0] }) {
   return (
-    <div className="bg-background border border-border p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 group">
+    <div className="bg-background border border-border p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 group w-full">
       <div className="flex items-center gap-3 mb-4">
         <div className="w-10 h-10 rounded-full overflow-hidden border border-border flex-shrink-0">
           <img src={review.avatar} alt={review.name} className="w-full h-full object-cover" />
