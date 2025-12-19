@@ -46,11 +46,13 @@ export function About() {
       
       <div className="flex flex-col md:px-10 w-full max-w-7xl border-primary/10 border-t mx-auto pt-24 pr-6 pb-24 pl-6 relative">
         
-        {/* Badge */}
+        {/* Standard Section Header */}
         <div className="flex justify-start mb-12 animate-on-scroll">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 backdrop-blur-sm text-accent text-sm font-medium tracking-wide uppercase hover:bg-primary/10 transition-colors cursor-default">
-            <Sparkles className="w-4 h-4" />
-            <span>About Us</span>
+          <div className="flex items-center justify-center md:justify-start gap-3">
+             <span className="w-12 h-[1px] bg-accent"></span>
+             <span className="font-mono text-accent text-xs tracking-widest uppercase">
+               About Us
+             </span>
           </div>
         </div>
 
