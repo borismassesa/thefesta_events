@@ -106,10 +106,10 @@ export function Hero() {
   useEffect(() => {
     // Hero Animations with GSAP
     const ctx = gsap.context(() => {
-      // Intro Animation Timeline
+      const mm = gsap.matchMedia();
+
+      // Common Text Animation (Intro)
       const tl = gsap.timeline();
-      
-      // Animate text elements stagger in (Revealing from masked overflow)
       tl.from('.hero-word span', { 
         y: '110%', 
         duration: 1, 
@@ -117,7 +117,6 @@ export function Hero() {
         ease: "power4.out" 
       }, 0.5);
 
-      // Animate other content fade in
       tl.from('.hero-fade', { 
         y: 20, 
         opacity: 0, 
@@ -126,77 +125,126 @@ export function Hero() {
         ease: "power2.out" 
       }, "-=0.5");
 
-      // Animate visual element entry
-      tl.from(visualRef.current, {
-        x: 100,
-        opacity: 0,
-        duration: 1.2,
-        ease: "power3.out"
-      }, 0);
+      // Desktop Specifics
+      mm.add("(min-width: 1024px)", () => {
+        // Intro: Visual enters
+        tl.from(visualRef.current, {
+          x: 100,
+          opacity: 0,
+          duration: 1.2,
+          ease: "power3.out"
+        }, 0);
 
-      // Calculate initial position relative to viewport/container
-      const startLeft = visualRef.current!.offsetLeft;
-      const startTop = visualRef.current!.offsetTop;
-      const startWidth = visualRef.current!.offsetWidth;
-      const startHeight = visualRef.current!.offsetHeight;
+        // Scroll: Visual expands
+        const startLeft = visualRef.current!.offsetLeft;
+        const startTop = visualRef.current!.offsetTop;
+        const startWidth = visualRef.current!.offsetWidth;
+        const startHeight = visualRef.current!.offsetHeight;
 
-      // Scroll Trigger for Visual Expansion (Cinematic Effect)
-      // Visual expands to cover the full viewport
-      const scrollTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "+=150%", // Determines how long the scroll takes
-          pin: true,
-          scrub: true
-        }
+        const scrollTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top top",
+            end: "+=150%",
+            pin: true,
+            scrub: true
+          }
+        });
+
+        scrollTl.to(contentRef.current, {
+          opacity: 0,
+          y: -50,
+          duration: 0.5,
+          ease: "power2.out"
+        }, 0);
+
+        scrollTl.fromTo(visualRef.current, 
+          {
+            position: 'absolute',
+            left: startLeft,
+            top: startTop,
+            width: startWidth,
+            height: startHeight,
+            borderRadius: "2.5rem",
+            zIndex: 40,
+            boxShadow: "0 0 0 rgba(0,0,0,0)",
+            xPercent: 0,
+            opacity: 1
+          },
+          {
+            left: "50%",
+            xPercent: -50,
+            top: "90px",
+            width: "94vw",
+            height: "calc(100vh - 110px)",
+            borderRadius: "1.5rem",
+            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+            zIndex: 40,
+            duration: 1,
+            ease: "power3.inOut"
+          }, 
+          0
+        );
+
+        scrollTl.fromTo(".hero-video", { scale: 1.1 }, { scale: 1, duration: 1, ease: "power2.inOut" }, 0);
       });
 
-      // 1. Text fades out and moves up
-      scrollTl.to(contentRef.current, {
-        opacity: 0,
-        y: -50,
-        duration: 0.5,
-        ease: "power2.out"
-      }, 0);
+      // Mobile Specifics
+      mm.add("(max-width: 1023px)", () => {
+        // No intro animation for visual (it stays hidden/opacity 0 via CSS or set here)
+        gsap.set(visualRef.current, { opacity: 0, y: 50 }); // Ensure hidden initially
 
-      // 2. Visual expands to fullscreen
-      // We start from the computed absolute position to avoid jumps
-      scrollTl.fromTo(visualRef.current, 
-        {
-          position: 'absolute',
-          left: startLeft,
-          top: startTop,
-          width: startWidth,
-          height: startHeight,
-          borderRadius: "2.5rem",
-          zIndex: 40, // Lower z-index so it doesn't cover navbar (z-50)
-          boxShadow: "0 0 0 rgba(0,0,0,0)",
-          xPercent: 0
-        },
-        {
-          left: "50%", // Robust centering
-          xPercent: -50,
-          top: "90px", // Push below navbar
-          width: "94vw", // Slightly narrower to prevent edge clutter
-          height: "calc(100vh - 110px)", // consistent bottom margin
-          borderRadius: "1.5rem",
-          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)", // Modern deep shadow
-          zIndex: 40, // Maintain lower z-index than navbar
-          duration: 1,
-          ease: "power3.inOut" // Smoother easing
-        }, 
-        0
-      );
+        // Scroll: Reveals visual
+        const scrollTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top top",
+            end: "+=150%",
+            pin: true,
+            scrub: true
+          }
+        });
 
-      // 3. Optional: Zoom effect on video inside
-      scrollTl.fromTo(".hero-video", 
-        { scale: 1.1 },
-        { scale: 1, duration: 1, ease: "power2.inOut" }, 
-        0
-      );
+        scrollTl.to(contentRef.current, {
+          opacity: 0,
+          y: -50,
+          duration: 0.5,
+          ease: "power2.out"
+        }, 0);
+
+        // Animate Visual In
+        scrollTl.fromTo(visualRef.current,
+          {
+             opacity: 0,
+             y: 100,
+             scale: 0.9,
+             position: 'absolute',
+             left: '50%',
+             xPercent: -50,
+             top: '50%', // Start somewhat centered/lower
+             yPercent: -50,
+             width: '90vw',
+             height: 'auto',
+             zIndex: 40
+          },
+          {
+             opacity: 1,
+             y: 0,
+             scale: 1,
+             top: '90px',
+             yPercent: 0,
+             width: '94vw',
+             height: 'calc(100vh - 110px)',
+             borderRadius: "1.5rem",
+             duration: 1,
+             ease: "power2.out"
+          },
+          0
+        );
+      });
 
     }, containerRef);
+
 
     // Slide Interval
     const timer = setInterval(() => {
@@ -299,7 +347,7 @@ export function Hero() {
         </div>
 
         {/* Hero Visual - Video Carousel */}
-        <div ref={visualRef} className="hero-visual hidden lg:block relative w-full aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl group bg-surface border border-border z-20">
+        <div ref={visualRef} className="hero-visual lg:block relative w-full aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl group bg-surface border border-border z-20">
           
           {HERO_SLIDES.map((slide, index) => (
             <div 
