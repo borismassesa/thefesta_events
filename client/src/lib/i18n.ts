@@ -36,6 +36,12 @@ i18n
             search: "Search",
             browse: "Browse",
             searchPlaceholder: "Search...",
+            searchPlaceholders: {
+              venues: "Search for rustic barns, beach resorts...",
+              vendors: "Search photographers, florists, planners...",
+              planning: "Search checklists, guest lists, budgets...",
+              inspiration: "Search real weddings, style guides..."
+            },
             join: "Join {{countVal}}+ couples planning today",
             typing: ["Celebrate More.", "Stress Less.", "Dream Bigger.", "Party Harder."]
           },
@@ -71,6 +77,12 @@ i18n
             search: "Tafuta",
             browse: "Vinjari",
             searchPlaceholder: "Tafuta...",
+            searchPlaceholders: {
+              venues: "Tafuta ukumbi, bustani, fukwe...",
+              vendors: "Tafuta wapiga picha, wapambaji, wapangaji...",
+              planning: "Tafuta orodha ya mambo, wageni, bajeti...",
+              inspiration: "Tafuta harusi za kweli, mitindo..."
+            },
             join: "Jiunge na wanandoa {{countVal}}+ wanaopanga leo",
             typing: ["Sherehekea Zaidi.", "Punguza Mawazo.", "Ota Ndoto Kubwa.", "Sherehekea Sana."]
           },
