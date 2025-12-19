@@ -94,8 +94,8 @@ export default function Signup() {
                  onClick={() => setUserType("couple")}
                  className={`text-sm font-medium py-2 rounded-md transition-all ${
                    userType === "couple" 
-                   ? "bg-primary text-primary-foreground shadow-sm" 
-                   : "text-zinc-500 hover:text-primary dark:hover:bg-zinc-800 hover:bg-zinc-200"
+                   ? "bg-white text-primary shadow-sm ring-1 ring-black/5 dark:bg-zinc-700 dark:text-white dark:ring-white/10" 
+                   : "text-zinc-500 hover:text-primary dark:hover:bg-zinc-800 hover:bg-zinc-200/50"
                  }`}
                >
                  I'm a Couple
@@ -105,8 +105,8 @@ export default function Signup() {
                  onClick={() => setUserType("vendor")}
                  className={`text-sm font-medium py-2 rounded-md transition-all ${
                    userType === "vendor" 
-                   ? "bg-primary text-primary-foreground shadow-sm" 
-                   : "text-zinc-500 hover:text-primary hover:bg-zinc-100"
+                   ? "bg-white text-primary shadow-sm ring-1 ring-black/5 dark:bg-zinc-700 dark:text-white dark:ring-white/10" 
+                   : "text-zinc-500 hover:text-primary dark:hover:bg-zinc-800 hover:bg-zinc-200/50"
                  }`}
                >
                  I'm a Vendor
