@@ -86,8 +86,8 @@ export function FAQ() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-start">
         
         {/* Left Column: Header */}
-        <div ref={headerRef} className="sticky top-32 opacity-0">
-          <div className="flex items-center gap-3 mb-6">
+        <div ref={headerRef} className="sticky top-32 opacity-0 text-center md:text-left">
+          <div className="flex items-center justify-center md:justify-start gap-3 mb-6">
             <span className="w-12 h-[1px] bg-accent"></span>
             <span className="font-mono text-accent text-xs tracking-widest uppercase">
               Common Questions
@@ -97,7 +97,7 @@ export function FAQ() {
             Got questions? <br/>
             <span className="font-serif italic font-normal text-secondary">We have answers.</span>
           </h2>
-          <p className="text-secondary text-lg leading-relaxed max-w-md font-light">
+          <p className="text-secondary text-lg leading-relaxed max-w-md mx-auto md:mx-0 font-light">
             Everything you need to know about planning your perfect celebration with TheFesta.
           </p>
         </div>

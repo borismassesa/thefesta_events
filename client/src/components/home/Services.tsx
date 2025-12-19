@@ -155,8 +155,8 @@ export function Services() {
       {/* Intro Header */}
       <div className="max-w-[1400px] mx-auto pt-24 pb-12 px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-end border-b border-border/50 pb-12">
-          <div>
-            <div className="flex items-center gap-3 mb-6">
+          <div className="text-center md:text-left">
+            <div className="flex items-center justify-center md:justify-start gap-3 mb-6">
               <span className="w-12 h-[1px] bg-accent"></span>
               <span className="font-mono text-accent text-xs tracking-widest uppercase">
                 Our Services
@@ -168,8 +168,8 @@ export function Services() {
             </h2>
           </div>
           
-          <div className="flex flex-col items-start md:items-end gap-6">
-            <p className="text-secondary text-base md:text-lg max-w-md md:text-right leading-relaxed font-light">
+          <div className="flex flex-col items-center md:items-end gap-6">
+            <p className="text-secondary text-base md:text-lg max-w-md text-center md:text-right leading-relaxed font-light">
               From venue hunting to day-of coordination, access the essential tools and curated connections to bring your unique vision to life effortlessly.
             </p>
           </div>

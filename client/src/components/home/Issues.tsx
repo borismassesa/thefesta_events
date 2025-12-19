@@ -115,8 +115,8 @@ export function Issues() {
         {/* Editorial Header */}
         <div className="editorial-header max-w-[1400px] mx-auto px-6 lg:px-12 mb-8 md:mb-12 w-full flex-shrink-0">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-end border-b border-border/50 pb-8 md:pb-12">
-            <div>
-              <div className="flex items-center gap-3 mb-4 md:mb-6">
+            <div className="text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start gap-3 mb-4 md:mb-6">
                 <span className="w-12 h-[1px] bg-accent"></span>
                 <span className="font-mono text-accent text-xs tracking-widest uppercase">
                   Advice & Ideas
@@ -128,8 +128,8 @@ export function Issues() {
               </h2>
             </div>
             
-            <div className="flex flex-col items-start md:items-end gap-6 md:gap-8">
-              <p className="text-secondary text-base md:text-lg max-w-md md:text-right leading-relaxed font-light">
+            <div className="flex flex-col items-center md:items-end gap-6 md:gap-8">
+              <p className="text-secondary text-base md:text-lg max-w-md text-center md:text-right leading-relaxed font-light">
                 Expert guides, trending styles, and real wedding stories to help you plan a celebration that's uniquely yours.
               </p>
               
