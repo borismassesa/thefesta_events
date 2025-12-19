@@ -110,7 +110,7 @@ export function Issues() {
   return (
     <div className="relative w-full"> 
     {/* Wrapper for pin spacer */}
-      <section ref={containerRef} id="advice-ideas" className="bg-surface text-primary min-h-screen py-6 md:py-24 overflow-hidden relative border-b border-border flex flex-col justify-center">
+      <section ref={containerRef} id="advice-ideas" className="bg-surface text-primary min-h-screen pt-20 pb-12 md:py-24 overflow-hidden relative border-b border-border flex flex-col justify-center">
         
         {/* Editorial Header */}
         <div className="editorial-header max-w-[1400px] mx-auto px-6 lg:px-12 mb-8 md:mb-12 w-full flex-shrink-0">

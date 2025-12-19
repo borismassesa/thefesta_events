@@ -212,7 +212,7 @@ export function Services() {
         </div>
 
         {/* Right Column - Scrolling Content */}
-        <div ref={rightColumnRef} className="flex flex-col py-12 lg:py-24 px-6 lg:px-16 gap-16 lg:gap-24">
+        <div ref={rightColumnRef} className="flex flex-col pt-12 pb-4 lg:py-24 px-6 lg:px-16 gap-16 lg:gap-24">
           {/* Service Items */}
           {SERVICES.map((service, index) => (
             <div 
@@ -245,7 +245,7 @@ export function Services() {
           ))}
           
           {/* Bottom Spacer to allow last item to scroll fully */}
-          <div className="h-8 md:h-[20vh]"></div>
+          <div className="h-0 md:h-[20vh]"></div>
         </div>
 
       </div>
