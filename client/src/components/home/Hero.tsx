@@ -127,81 +127,90 @@ export function Hero() {
 
       // Desktop & Tablet Specifics
       mm.add("(min-width: 768px)", () => {
-        // Intro: Visual enters
-        tl.from(visualRef.current, {
-          x: 100,
-          opacity: 0,
-          duration: 1.2,
-          ease: "power3.out"
-        }, 0);
+        // Create a placeholder to prevent layout collapse
+        // We'll insert it dynamically or just rely on existing structure?
+        // Let's rely on GSAP to handle this or just ensure the initial state is robust
+        
+        // Remove Intro animation for visual to prevent conflict and ensure visibility
+        gsap.set(visualRef.current, { opacity: 1, x: 0, y: 0, scale: 1 });
 
-        // Scroll: Visual expands using robust Viewport coordinates
-        // We calculate offsets relative to the viewport (or pinned container) to avoid grid-based calculation errors on wide screens
+        // Scroll: Visual expands
         const scrollTl = gsap.timeline({
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top top",
             end: "+=150%",
             pin: true,
-            scrub: true
+            scrub: true,
+            // Recalculate positions on window resize
+            invalidateOnRefresh: true 
           }
         });
 
-        // Get initial dimensions relative to viewport/container
-        // Since container is pinned, its viewport position is fixed at 0,0 mostly
-        const visualRect = visualRef.current!.getBoundingClientRect();
-        const containerRect = containerRef.current!.getBoundingClientRect();
+        // Function to set up the animation
+        const initAnimation = () => {
+             if (!visualRef.current || !containerRef.current) return;
+             
+             // Ensure visual is visible before calculating
+             gsap.set(visualRef.current, { opacity: 1, clearProps: "position,left,top,width,height,transform" });
 
-        // Calculate initial left/top relative to the container
-        const startLeft = visualRect.left - containerRect.left;
-        const startTop = visualRect.top - containerRect.top;
-        const startWidth = visualRect.width;
-        const startHeight = visualRect.height;
+             const visualRect = visualRef.current.getBoundingClientRect();
+             const containerRect = containerRef.current.getBoundingClientRect();
+             
+             // Calculate offsets
+             const startLeft = visualRect.left - containerRect.left;
+             const startTop = visualRect.top - containerRect.top;
+             const startWidth = visualRect.width;
+             const startHeight = visualRect.height;
+             
+             // Clear any previous animation on the timeline
+             scrollTl.clear();
 
-        // Fade out content
-        scrollTl.to(contentRef.current, {
-          opacity: 0,
-          y: -50,
-          duration: 0.5,
-          ease: "power2.out"
-        }, 0);
+             // 1. Fade out content
+             scrollTl.to(contentRef.current, {
+                opacity: 0,
+                y: -50,
+                duration: 0.5,
+                ease: "power2.out"
+             }, 0);
 
-        // Animate visual from its grid position to full screen
-        // using absolute positioning relative to the container
-        scrollTl.fromTo(visualRef.current, 
-          {
-            position: 'absolute',
-            left: startLeft,
-            top: startTop,
-            width: startWidth,
-            height: startHeight,
-            borderRadius: "2.5rem",
-            zIndex: 40,
-            boxShadow: "0 0 0 rgba(0,0,0,0)",
-            xPercent: 0,
-            yPercent: 0,
-            opacity: 1,
-            // Reset transforms that might interfere
-            x: 0,
-            y: 0
-          },
-          {
-            left: "50%",
-            top: "50%",
-            xPercent: -50,
-            yPercent: -50,
-            width: "94vw",
-            height: "90vh",
-            borderRadius: "1.5rem",
-            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
-            zIndex: 40,
-            duration: 1,
-            ease: "power3.inOut"
-          }, 
-          0
-        );
+             // 2. Animate visual
+             // We use a set first to lock it in place, then animate
+             scrollTl.fromTo(visualRef.current, 
+              {
+                position: 'absolute',
+                left: startLeft,
+                top: startTop,
+                width: startWidth,
+                height: startHeight,
+                borderRadius: "2.5rem",
+                zIndex: 40,
+                boxShadow: "0 0 0 rgba(0,0,0,0)",
+                transformOrigin: "center center"
+              },
+              {
+                left: "50%",
+                top: "50%",
+                xPercent: -50,
+                yPercent: -50,
+                width: "94vw",
+                height: "90vh",
+                borderRadius: "1.5rem",
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+                duration: 1,
+                ease: "power3.inOut"
+              }, 
+              0
+            );
+            
+            scrollTl.fromTo(".hero-video", { scale: 1.1 }, { scale: 1, duration: 1, ease: "power2.inOut" }, 0);
+        };
 
-        scrollTl.fromTo(".hero-video", { scale: 1.1 }, { scale: 1, duration: 1, ease: "power2.inOut" }, 0);
+        // Initialize immediately
+        initAnimation();
+        
+        // Also add a listener for refresh to recalculate
+        ScrollTrigger.addEventListener("refreshInit", initAnimation);
       });
 
       // Mobile Specifics
