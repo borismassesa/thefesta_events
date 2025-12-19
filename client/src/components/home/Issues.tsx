@@ -1,14 +1,14 @@
 import { useRef, useEffect } from "react";
+import { ArrowUpRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import tableImg from "@assets/stock_images/wedding_table_settin_c7e6dce8.jpg";
 import bouquetImg from "@assets/stock_images/wedding_bouquet_mode_ab76e613.jpg";
 import cakeImg from "@assets/stock_images/wedding_cake_modern__2868fc7b.jpg";
+
 import receptionImg from "@assets/stock_images/wedding_reception_li_3a8fab49.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
-
-export function Issues() {
   const containerRef = useRef<HTMLElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -102,11 +102,14 @@ export function Issues() {
                       <span className="text-3xl md:text-4xl font-semibold tracking-tighter">
                         {issue.title}
                       </span>
-                      <span className="font-mono text-xs">NO. {issue.id}</span>
                     </div>
-                    <p className="text-sm text-zinc-300 line-clamp-2">
+                    <p className="text-sm text-zinc-300 line-clamp-2 mb-6">
                       {issue.desc}
                     </p>
+                    <button className="flex items-center gap-2 text-sm font-medium uppercase tracking-wider hover:text-accent transition-colors">
+                      View Article
+                      <ArrowUpRight className="w-4 h-4" />
+                    </button>
                   </div>
                 </div>
               </div>
