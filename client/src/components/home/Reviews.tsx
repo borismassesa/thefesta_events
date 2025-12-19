@@ -80,11 +80,29 @@ const REVIEWS = [
 
 export function Reviews() {
   const containerRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
   const column1Ref = useRef<HTMLDivElement>(null);
   const column2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Header Animation - Slide Up and Fade In
+      gsap.fromTo(headerRef.current, 
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 70%",
+            end: "top 30%",
+            scrub: 1
+          }
+        }
+      );
+
       // Automatic Vertical Marquee
       
       // Function to create vertical loop
@@ -182,7 +200,7 @@ export function Reviews() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
         
         {/* Left Column: Text Content (Sticky) */}
-        <div className="lg:sticky lg:top-32 flex flex-col items-start gap-8 z-10">
+        <div ref={headerRef} className="lg:sticky lg:top-32 flex flex-col items-start gap-8 z-10 opacity-0">
           <div>
             <div className="flex items-center gap-3 mb-6">
               <span className="w-12 h-[1px] bg-accent"></span>
