@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="bg-surface border-t border-border pt-20 pb-10">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           
           {/* Brand Column */}
           <div className="flex flex-col gap-6">
@@ -67,24 +67,6 @@ export function Footer() {
                 <span className="text-sm">hello@thefestaevents.com</span>
               </a>
             </div>
-          </div>
-
-          {/* Newsletter Column */}
-          <div className="flex flex-col gap-6">
-            <h4 className="font-semibold text-primary text-sm tracking-wide uppercase">Stay Updated</h4>
-            <p className="text-secondary text-sm leading-relaxed">
-              Subscribe to our newsletter for the latest wedding trends and planning tips.
-            </p>
-            <form className="flex flex-col gap-3" onSubmit={(e) => e.preventDefault()}>
-              <input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="w-full px-4 py-3 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-primary/20 transition-all placeholder:text-secondary/50"
-              />
-              <button className="w-full px-4 py-3 rounded-lg bg-primary text-background text-sm font-medium hover:bg-primary/90 transition-colors">
-                Subscribe
-              </button>
-            </form>
           </div>
 
         </div>
