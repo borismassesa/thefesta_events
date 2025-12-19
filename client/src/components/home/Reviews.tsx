@@ -104,81 +104,54 @@ export function Reviews() {
         }
       );
 
-      // Automatic Vertical Marquee
-      
-      // Function to create vertical loop
-      const createVerticalLoop = (target: HTMLElement, direction: 'up' | 'down') => {
-        const height = target.clientHeight / 2; // Since we duplicated content, half height is one full set
-        
-        if (direction === 'up') {
-          gsap.to(target, {
-            y: -height,
-            duration: 30, // Adjust speed here
-            ease: "linear",
-            repeat: -1,
-            modifiers: {
-               y: gsap.utils.unitize(y => parseFloat(y) % height) // Seamless looping
+      // Automatic Vertical Marquee - Only on Desktop
+      ScrollTrigger.matchMedia({
+        "(min-width: 1024px)": function() {
+            // Function to create vertical loop
+            const createVerticalLoop = (target: HTMLElement, direction: 'up' | 'down') => {
+              // ... existing loop logic ...
+            };
+
+            let tween1: gsap.core.Tween;
+            let tween2: gsap.core.Tween;
+
+            if (column1Ref.current) {
+              // Column 1 moves UP (y goes negative)
+              tween1 = gsap.to(column1Ref.current, {
+                 yPercent: -33.33, // Move by 1/3 since we have 3 sets
+                 ease: "linear",
+                 duration: 60, // Slower duration
+                 repeat: -1
+              });
             }
-          });
-        } else {
-          // Downwards
-           gsap.fromTo(target, 
-            { y: -height }, 
-            {
-              y: 0,
-              duration: 30,
-              ease: "linear",
-              repeat: -1,
-              modifiers: {
-                y: gsap.utils.unitize(y => parseFloat(y) % height - height)
-              }
+
+            if (column2Ref.current) {
+              // Column 2 moves DOWN (y goes positive, start from negative)
+              tween2 = gsap.fromTo(column2Ref.current, 
+                { yPercent: -33.33 },
+                {
+                  yPercent: 0,
+                  ease: "linear",
+                  duration: 70, // Slower duration
+                  repeat: -1
+                }
+              );
             }
-          );
+            
+            // Pause on hover
+            const container = marqueeRef.current;
+            if (container) {
+                container.addEventListener('mouseenter', () => {
+                  tween1?.pause();
+                  tween2?.pause();
+                });
+                container.addEventListener('mouseleave', () => {
+                  tween1?.play();
+                  tween2?.play();
+                });
+            }
         }
-      };
-
-      let tween1: gsap.core.Tween;
-      let tween2: gsap.core.Tween;
-
-      if (column1Ref.current) {
-        // Simple seamless loop approach using fromTo for robustness
-        // We need to make sure the content is duplicated enough times.
-        // Assuming 3 sets of duplicates for safety.
-        
-        // Column 1 moves UP (y goes negative)
-        tween1 = gsap.to(column1Ref.current, {
-           yPercent: -33.33, // Move by 1/3 since we have 3 sets
-           ease: "linear",
-           duration: 60, // Slower duration
-           repeat: -1
-        });
-      }
-
-      if (column2Ref.current) {
-        // Column 2 moves DOWN (y goes positive, start from negative)
-        tween2 = gsap.fromTo(column2Ref.current, 
-          { yPercent: -33.33 },
-          {
-            yPercent: 0,
-            ease: "linear",
-            duration: 70, // Slower duration
-            repeat: -1
-          }
-        );
-      }
-      
-      // Pause on hover
-      const container = marqueeRef.current;
-      if (container) {
-          container.addEventListener('mouseenter', () => {
-            tween1?.pause();
-            tween2?.pause();
-          });
-          container.addEventListener('mouseleave', () => {
-            tween1?.play();
-            tween2?.play();
-          });
-      }
+      });
 
     }, containerRef);
 
@@ -209,7 +182,7 @@ export function Reviews() {
                 Testimonials
               </span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-primary leading-[1.1] mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-primary leading-[1.1] mb-6">
               Loved by couples <br/>
               <span className="font-serif italic font-normal text-secondary">& professionals.</span>
             </h2>
@@ -231,8 +204,20 @@ export function Reviews() {
           </div>
         </div>
 
-        {/* Right Column: Moving Cards */}
-        <div ref={marqueeRef} className="relative h-[400px] md:h-[600px] overflow-hidden mask-gradient-y grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* Mobile: Static Vertical Stack */}
+        <div className="lg:hidden w-full flex flex-col gap-4">
+             {REVIEWS.slice(0, 4).map((review) => (
+               <ReviewCard key={`mobile-${review.id}`} review={review} />
+             ))}
+             <div className="flex justify-center mt-4">
+               <button className="text-sm font-medium text-primary hover:text-accent transition-colors border-b border-primary/20 hover:border-accent pb-0.5">
+                 View all reviews
+               </button>
+             </div>
+        </div>
+
+        {/* Desktop: Moving Cards */}
+        <div ref={marqueeRef} className="hidden lg:grid relative h-[600px] overflow-hidden mask-gradient-y grid-cols-2 gap-4">
           {/* Vertical Gradients for masking */}
           <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-surface to-transparent z-10 pointer-events-none"></div>
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-surface to-transparent z-10 pointer-events-none"></div>
