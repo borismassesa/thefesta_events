@@ -161,6 +161,7 @@ export function Services() {
               <span className="font-mono text-accent text-xs tracking-widest uppercase">
                 Our Services
               </span>
+              <span className="md:hidden w-12 h-[1px] bg-accent"></span>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-primary leading-[1.1]">
               Everything you need, <br />

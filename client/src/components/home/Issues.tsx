@@ -121,6 +121,7 @@ export function Issues() {
                 <span className="font-mono text-accent text-xs tracking-widest uppercase">
                   Advice & Ideas
                 </span>
+                <span className="md:hidden w-12 h-[1px] bg-accent"></span>
               </div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-primary leading-[1.1]">
                 Inspiration for <br/>

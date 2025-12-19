@@ -200,6 +200,7 @@ export function Reviews() {
               <span className="font-mono text-accent text-xs tracking-widest uppercase">
                 Testimonials
               </span>
+              <span className="md:hidden w-12 h-[1px] bg-accent"></span>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-primary leading-[1.1] mb-6">
               Loved by couples <br/>

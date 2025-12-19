@@ -77,6 +77,7 @@ export function About() {
              <span className="font-mono text-accent text-xs tracking-widest uppercase">
                About Us
              </span>
+             <span className="md:hidden w-12 h-[1px] bg-accent"></span>
           </div>
         </div>
 

@@ -92,6 +92,7 @@ export function FAQ() {
             <span className="font-mono text-accent text-xs tracking-widest uppercase">
               Common Questions
             </span>
+            <span className="md:hidden w-12 h-[1px] bg-accent"></span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary leading-[1.1] mb-6">
             Got questions? <br/>
