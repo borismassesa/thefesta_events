@@ -112,7 +112,6 @@ export function CTA() {
           <div className="mt-8 md:mt-12 flex flex-col sm:flex-row items-center gap-4 sm:gap-8 opacity-60 cta-trust">
              {/* Simple Trust Indicators */}
              <div className="text-[10px] sm:text-xs text-white uppercase tracking-widest font-medium">Trusted by 50k+ Couples</div>
-             <div className="hidden sm:block w-1 h-1 bg-white rounded-full opacity-50"></div>
              <div className="text-[10px] sm:text-xs text-white uppercase tracking-widest font-medium">4.9/5 Rating</div>
           </div>
         </div>
