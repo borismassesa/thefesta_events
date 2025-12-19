@@ -95,15 +95,15 @@ export function CTA() {
             Sophisticated tools, curated vendors, and endless inspiration await.
           </p>
 
-          <div className="flex flex-row gap-3 sm:gap-5 items-center w-full sm:w-auto cta-button-group px-4 sm:px-0">
+          <div className="flex flex-row gap-3 sm:gap-5 items-center justify-center w-full sm:w-auto cta-button-group px-4 sm:px-0">
             <Link href="/signup">
-              <a className="flex-1 sm:flex-initial w-full sm:w-auto group inline-flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 py-3.5 md:px-8 md:py-4 rounded-full bg-white text-black font-semibold text-sm sm:text-base md:text-lg transition-all hover:bg-zinc-200 hover:scale-105 shadow-[0_0_40px_-10px_rgba(255,255,255,0.5)] whitespace-nowrap">
+              <a className="w-auto sm:w-auto group inline-flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 py-3.5 md:px-8 md:py-4 rounded-full bg-white text-black font-semibold text-sm sm:text-base md:text-lg transition-all hover:bg-zinc-200 hover:scale-105 shadow-[0_0_40px_-10px_rgba(255,255,255,0.5)] whitespace-nowrap">
                 Get Started
                 <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" />
               </a>
             </Link>
             <Link href="/demo">
-              <a className="flex-1 sm:flex-initial w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3.5 md:px-8 md:py-4 rounded-full bg-transparent border border-white/30 text-white font-medium text-sm sm:text-base md:text-lg transition-all hover:bg-white/10 backdrop-blur-sm whitespace-nowrap">
+              <a className="w-auto sm:w-auto inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3.5 md:px-8 md:py-4 rounded-full bg-transparent border border-white/30 text-white font-medium text-sm sm:text-base md:text-lg transition-all hover:bg-white/10 backdrop-blur-sm whitespace-nowrap">
                 Live Demo
               </a>
             </Link>
