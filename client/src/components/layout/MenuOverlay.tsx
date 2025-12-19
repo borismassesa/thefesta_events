@@ -1,19 +1,21 @@
 import { useEffect, useRef } from "react";
 import { Link } from "wouter";
 import gsap from "gsap";
-
-const NAV_LINKS = [
-  { name: "Planning Tools", href: "/planning" },
-  { name: "Vendors", href: "/vendors" },
-  { name: "Guests & RSVP", href: "/guests" },
-  { name: "Wedding Websites", href: "/websites" },
-  { name: "Inspiration", href: "/inspiration" },
-  { name: "Shop", href: "/shop" },
-];
+import { useTranslation } from "react-i18next";
 
 export function MenuOverlay({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  const { t } = useTranslation();
   const overlayRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
+
+  const NAV_LINKS = [
+    { name: t('nav.planning'), href: "/planning" },
+    { name: t('nav.vendors'), href: "/vendors" },
+    { name: t('nav.guests'), href: "/guests" },
+    { name: t('nav.websites'), href: "/websites" },
+    { name: t('nav.inspiration'), href: "/inspiration" },
+    { name: t('nav.shop'), href: "/shop" },
+  ];
 
   useEffect(() => {
     if (isOpen) {
@@ -69,7 +71,7 @@ export function MenuOverlay({ isOpen, onClose }: { isOpen: boolean; onClose: () 
 
       <div ref={linksRef} className="flex flex-col gap-4 text-center">
         {NAV_LINKS.map((item) => (
-          <Link key={item.name} href={item.href}>
+          <Link key={item.href} href={item.href}>
             <a 
               onClick={onClose}
               className="menu-link text-3xl md:text-5xl font-bold tracking-tight text-secondary hover:text-primary transition-colors"
@@ -83,10 +85,10 @@ export function MenuOverlay({ isOpen, onClose }: { isOpen: boolean; onClose: () 
 
         <div className="flex flex-col gap-3">
           <Link href="/login">
-            <a onClick={onClose} className="text-lg font-medium text-primary">Log In</a>
+            <a onClick={onClose} className="text-lg font-medium text-primary">{t('nav.login')}</a>
           </Link>
           <Link href="/signup">
-            <a onClick={onClose} className="text-lg font-medium bg-primary text-background px-6 py-2 rounded-full hover:bg-primary/90 transition-colors">Get Started</a>
+            <a onClick={onClose} className="text-lg font-medium bg-primary text-background px-6 py-2 rounded-full hover:bg-primary/90 transition-colors">{t('nav.getStarted')}</a>
           </Link>
         </div>
       </div>

@@ -1,22 +1,30 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { useTheme } from "next-themes";
-import { Moon, Sun } from "lucide-react";
-
-const NAV_LINKS = [
-  { name: "Planning", href: "/planning" },
-  { name: "Vendors", href: "/vendors" },
-  { name: "Guests", href: "/guests" },
-  { name: "Websites", href: "/websites" },
-  { name: "Inspiration", href: "/inspiration" },
-  { name: "Shop", href: "/shop" },
-];
+import { Moon, Sun, Globe } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function Navbar({ onMenuClick, isOpen }: { onMenuClick: () => void; isOpen?: boolean }) {
   const { theme, setTheme } = useTheme();
+  const { t, i18n } = useTranslation();
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [location] = useLocation();
+
+  const NAV_LINKS = [
+    { name: t('nav.planning'), href: "/planning" },
+    { name: t('nav.vendors'), href: "/vendors" },
+    { name: t('nav.guests'), href: "/guests" },
+    { name: t('nav.websites'), href: "/websites" },
+    { name: t('nav.inspiration'), href: "/inspiration" },
+    { name: t('nav.shop'), href: "/shop" },
+  ];
 
   useEffect(() => {
     setMounted(true);
@@ -24,6 +32,10 @@ export function Navbar({ onMenuClick, isOpen }: { onMenuClick: () => void; isOpe
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const toggleLanguage = (lang: string) => {
+    i18n.changeLanguage(lang);
+  };
 
   return (
     <nav 
@@ -47,7 +59,7 @@ export function Navbar({ onMenuClick, isOpen }: { onMenuClick: () => void; isOpe
       {/* Desktop Navigation */}
       <div className="hidden lg:flex items-center gap-8 bg-background/50 px-8 py-2.5 rounded-full border border-border/40 backdrop-blur-sm shadow-sm">
         {NAV_LINKS.map((link) => (
-          <Link key={link.name} href={link.href}>
+          <Link key={link.href} href={link.href}>
             <a className={`text-sm font-medium transition-colors hover:text-primary ${
               location === link.href ? "text-primary" : "text-secondary"
             }`}>
@@ -59,6 +71,26 @@ export function Navbar({ onMenuClick, isOpen }: { onMenuClick: () => void; isOpe
 
       {/* Right Actions */}
       <div className="flex items-center gap-4 z-50">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button 
+              className="text-secondary hover:text-primary transition-colors cursor-pointer p-2 rounded-full hover:bg-primary/5 flex items-center gap-1"
+              aria-label="Change Language"
+            >
+              <Globe size={20} />
+              <span className="text-xs font-medium uppercase hidden sm:inline-block">{i18n.language.split('-')[0]}</span>
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem onClick={() => toggleLanguage('en')}>
+              English
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => toggleLanguage('sw')}>
+              Swahili
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
         <button
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           className="text-secondary hover:text-primary transition-colors cursor-pointer p-2 rounded-full hover:bg-primary/5"
@@ -70,12 +102,12 @@ export function Navbar({ onMenuClick, isOpen }: { onMenuClick: () => void; isOpe
         <div className="hidden md:flex items-center gap-3">
             <Link href="/login">
                 <a className="text-sm font-medium text-primary hover:text-primary/80 transition-colors px-4 py-2">
-                    Log In
+                    {t('nav.login')}
                 </a>
             </Link>
             <Link href="/signup">
                 <a className="text-sm font-semibold bg-primary text-background px-5 py-2.5 rounded-full hover:bg-primary/90 transition-all hover:scale-105 shadow-lg shadow-primary/20">
-                    Get Started
+                    {t('nav.getStarted')}
                 </a>
             </Link>
         </div>

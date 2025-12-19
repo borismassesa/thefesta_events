@@ -2,22 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Search, Sparkles } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-const HERO_TABS = [
-  { id: 'venues', label: 'Venues' },
-  { id: 'vendors', label: 'Vendors' },
-  { id: 'planning', label: 'Planning' },
-  { id: 'inspiration', label: 'Inspiration' }
-];
-
-const SEARCH_PLACEHOLDERS: Record<string, string> = {
-  venues: "Search for rustic barns, beach resorts...",
-  vendors: "Search photographers, florists, planners...",
-  planning: "Search checklists, guest lists, budgets...",
-  inspiration: "Search real weddings, style guides..."
-};
-
-const POPULAR_TAGS = ['Rustic', 'Beach', 'Vintage', 'Modern', 'Boho'];
+import { useTranslation } from "react-i18next";
 
 const HERO_SLIDES = [
   {
@@ -45,8 +30,6 @@ const HERO_SLIDES = [
     color: "var(--surface)"
   },
 ];
-
-const TYPING_PHRASES = ["Celebrate More.", "Stress Less.", "Dream Bigger.", "Party Harder."];
 
 function TypingEffect({ words }: { words: string[] }) {
   const [index, setIndex] = useState(0);
@@ -86,15 +69,23 @@ function TypingEffect({ words }: { words: string[] }) {
     return () => clearTimeout(timeout);
   }, [subIndex, index, reverse, words]);
 
+  // Reset index if words change (language switch)
+  useEffect(() => {
+    setIndex(0);
+    setSubIndex(0);
+    setReverse(false);
+  }, [words]);
+
   return (
     <>
-      {words[index].substring(0, subIndex)}
+      {words[index]?.substring(0, subIndex)}
       <span className={`${blink ? "opacity-100" : "opacity-0"} transition-opacity duration-100 ml-1 font-light text-secondary`}>|</span>
     </>
   );
 }
 
 export function Hero() {
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   const visualRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -102,6 +93,15 @@ export function Hero() {
   const [activeTab, setActiveTab] = useState('venues');
   const [searchText, setSearchText] = useState('');
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  const HERO_TABS = [
+    { id: 'venues', label: t('tabs.venues') },
+    { id: 'vendors', label: t('tabs.vendors') },
+    { id: 'planning', label: t('tabs.planning') },
+    { id: 'inspiration', label: t('tabs.inspiration') }
+  ];
+
+  const TYPING_PHRASES = t('hero.headline.typing', { returnObjects: true }) as string[];
 
   useEffect(() => {
     // Hero Animations with GSAP
@@ -267,7 +267,7 @@ export function Hero() {
           {/* Headline with Masked Reveal */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.1] tracking-tight max-w-full lg:max-w-none min-h-[100px] sm:min-h-[120px] md:min-h-[140px] lg:min-h-[160px]">
             <span className="block overflow-hidden hero-word">
-              <span className="block">Plan Less,</span>
+              <span className="block">{t('hero.headline.prefix')}</span>
             </span>
             <span className="block hero-word">
               <span className="block text-secondary">
@@ -278,7 +278,7 @@ export function Hero() {
           
           {/* Subhead - Simplified */}
           <p className="hero-fade text-secondary text-sm sm:text-base md:text-lg max-w-md leading-relaxed px-1 sm:px-0">
-            The all-in-one marketplace for venues, vendors, and planning tools. Discover inspiration and manage every detail in one place.
+            {t('hero.subhead')}
           </p>
 
           {/* Input Area Wrapper - Simplified */}
@@ -287,7 +287,7 @@ export function Hero() {
             {/* Quick Actions Row - Moved ABOVE search bar */}
             <div className="w-full flex justify-center lg:justify-start">
               <div className="flex flex-nowrap overflow-x-auto pb-2 -mb-2 mask-linear-fade lg:overflow-visible lg:pb-0 lg:mb-0 lg:flex-wrap gap-2 items-center text-xs font-medium no-scrollbar max-w-[100vw] px-4 lg:px-0 -mx-4 lg:mx-0">
-                <span className="text-secondary/80 uppercase tracking-wider mr-1 hidden lg:inline-block">Browse:</span>
+                <span className="text-secondary/80 uppercase tracking-wider mr-1 hidden lg:inline-block">{t('hero.browse')}:</span>
                 {HERO_TABS.map((tab) => (
                   <button
                     key={tab.id}
@@ -313,12 +313,12 @@ export function Hero() {
                 type="text"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
-                placeholder={SEARCH_PLACEHOLDERS[activeTab] || "Search..."}
+                placeholder={t('hero.searchPlaceholder')}
                 className="w-full pl-10 lg:pl-12 pr-12 lg:pr-4 py-3 lg:py-4 bg-transparent border-none rounded-full text-primary placeholder:text-secondary/60 focus:outline-none focus:ring-0 text-[13px] sm:text-base font-normal relative z-10 truncate"
               />
               <div className="absolute right-1.5 top-1.5 bottom-1.5">
                  <button className="h-full bg-primary hover:bg-primary/90 text-background w-10 lg:w-auto lg:px-6 rounded-full text-sm font-medium transition-all shadow-sm cursor-pointer flex items-center justify-center gap-2">
-                   <span className="hidden lg:inline">Search</span>
+                   <span className="hidden lg:inline">{t('hero.search')}</span>
                    <Search className="lg:hidden w-4 h-4" />
                  </button>
               </div>
@@ -340,7 +340,7 @@ export function Hero() {
                ))}
              </div>
              <span className="text-xs sm:text-sm text-secondary font-medium whitespace-nowrap overflow-hidden text-ellipsis">
-               Join <span className="text-primary font-bold">250,000+</span> couples planning today
+               {t('hero.join', { countVal: '250,000' })}
              </span>
           </div>
 
