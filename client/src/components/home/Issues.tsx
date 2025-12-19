@@ -9,6 +9,8 @@ import cakeImg from "@assets/stock_images/wedding_cake_modern__2868fc7b.jpg";
 import receptionImg from "@assets/stock_images/wedding_reception_li_3a8fab49.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
+
+export function Issues() {
   const containerRef = useRef<HTMLElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
