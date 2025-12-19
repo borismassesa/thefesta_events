@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Twitter, Instagram, Linkedin } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // Custom Icon Components for those missing in Lucide (or specific versions)
 const XIcon = ({ size = 18 }: { size?: number }) => (
@@ -16,9 +17,9 @@ const TiktokIcon = ({ size = 18 }: { size?: number }) => (
 
 export function Footer() {
   return (
-    <footer className="bg-surface border-t border-border pt-20 pb-10">
+    <footer className="bg-surface border-t border-border pt-12 pb-10 md:pt-20">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+        <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-12 md:mb-16">
           
           {/* Brand Column */}
           <div className="flex flex-col gap-6">
@@ -38,8 +39,38 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Links Column 1 */}
-          <div className="flex flex-col gap-6">
+          {/* Mobile Accordion Links */}
+          <div className="md:hidden">
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="platform" className="border-border/50">
+                <AccordionTrigger className="text-primary font-semibold text-sm uppercase tracking-wide">Platform</AccordionTrigger>
+                <AccordionContent>
+                  <div className="flex flex-col gap-3 pt-2">
+                    <FooterLink href="/venues">Venue Marketplace</FooterLink>
+                    <FooterLink href="/vendors">Find Vendors</FooterLink>
+                    <FooterLink href="/planning">Planning Tools</FooterLink>
+                    <FooterLink href="/websites">Wedding Websites</FooterLink>
+                    <FooterLink href="/invitations">Digital Invites</FooterLink>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="company" className="border-border/50">
+                <AccordionTrigger className="text-primary font-semibold text-sm uppercase tracking-wide">Company</AccordionTrigger>
+                <AccordionContent>
+                  <div className="flex flex-col gap-3 pt-2">
+                    <FooterLink href="/about">About Us</FooterLink>
+                    <FooterLink href="/careers">Careers</FooterLink>
+                    <FooterLink href="/blog">Magazine</FooterLink>
+                    <FooterLink href="/press">Press</FooterLink>
+                    <FooterLink href="/contact">Contact Support</FooterLink>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+
+          {/* Desktop Links Column 1 */}
+          <div className="hidden md:flex flex-col gap-6">
             <h4 className="font-semibold text-primary text-sm tracking-wide uppercase">Platform</h4>
             <div className="flex flex-col gap-3">
               <FooterLink href="/venues">Venue Marketplace</FooterLink>
@@ -50,8 +81,8 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Links Column 2 */}
-          <div className="flex flex-col gap-6">
+          {/* Desktop Links Column 2 */}
+          <div className="hidden md:flex flex-col gap-6">
             <h4 className="font-semibold text-primary text-sm tracking-wide uppercase">Company</h4>
             <div className="flex flex-col gap-3">
               <FooterLink href="/about">About Us</FooterLink>
@@ -83,11 +114,11 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
           <p className="text-secondary/60 text-xs">
             © {new Date().getFullYear()} The Festa. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
             <FooterLink href="/privacy" className="text-xs">Privacy Policy</FooterLink>
             <FooterLink href="/terms" className="text-xs">Terms of Service</FooterLink>
             <FooterLink href="/cookies" className="text-xs">Cookie Settings</FooterLink>
