@@ -72,26 +72,26 @@ export function Issues() {
   return (
     <div className="relative w-full"> 
     {/* Wrapper for pin spacer */}
-      <section ref={containerRef} id="advice-ideas" className="bg-surface text-primary py-20 md:py-32 overflow-hidden relative border-b border-border">
+      <section ref={containerRef} id="advice-ideas" className="bg-surface text-primary min-h-screen py-12 md:py-24 overflow-hidden relative border-b border-border flex flex-col justify-center">
         
         {/* Editorial Header */}
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end border-b border-border/50 pb-12">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-8 md:mb-12 w-full flex-shrink-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-end border-b border-border/50 pb-8 md:pb-12">
             <div>
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex items-center gap-3 mb-4 md:mb-6">
                 <span className="w-12 h-[1px] bg-accent"></span>
                 <span className="font-mono text-accent text-xs tracking-widest uppercase">
                   Advice & Ideas
                 </span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-primary leading-[1.1]">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary leading-[1.1]">
                 Inspiration for <br/>
                 <span className="font-serif italic font-normal text-secondary">your big day.</span>
               </h2>
             </div>
             
-            <div className="flex flex-col items-start md:items-end gap-8">
-              <p className="text-secondary text-lg md:text-xl max-w-md md:text-right leading-relaxed font-light">
+            <div className="flex flex-col items-start md:items-end gap-6 md:gap-8">
+              <p className="text-secondary text-base md:text-lg max-w-md md:text-right leading-relaxed font-light">
                 Expert guides, trending styles, and real wedding stories to help you plan a celebration that's uniquely yours.
               </p>
               
@@ -105,10 +105,10 @@ export function Issues() {
           </div>
         </div>
 
-        <div className="horizontal-scroll-container w-full overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar pb-8 md:pb-0">
+        <div className="horizontal-scroll-container w-full overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar pb-8 md:pb-0 flex-grow flex items-center">
           <div ref={wrapperRef} className="horizontal-wrapper flex gap-4 md:gap-[4vw] px-[10vw] md:px-[5vw] w-fit items-center h-full">
             {issues.map((issue) => (
-              <div key={issue.id} className="w-[80vw] md:w-[30vw] h-[50vh] md:h-[60vh] relative flex-shrink-0 group cursor-pointer snap-center">
+              <div key={issue.id} className="w-[80vw] md:w-[30vw] h-[50vh] md:h-[50vh] lg:h-[60vh] relative flex-shrink-0 group cursor-pointer snap-center">
                 <div className="absolute inset-0 bg-background rounded-xl overflow-hidden border border-border">
                   <img 
                     src={issue.img} 
