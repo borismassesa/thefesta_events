@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+import { Link } from "wouter";
 import { ArrowUpRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -82,9 +83,11 @@ export function Issues() {
             </h2>
           </div>
           <div className="hidden md:flex gap-2">
-            <span className="text-xs font-mono text-secondary">
-              DRAG TO EXPLORE -&gt;
-            </span>
+            <Link href="/services/advice">
+              <a className="text-xs font-mono text-secondary hover:text-primary transition-colors cursor-pointer">
+                VIEW ALL -&gt;
+              </a>
+            </Link>
           </div>
         </div>
 
