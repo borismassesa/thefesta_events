@@ -327,7 +327,7 @@ export function Hero() {
           </div>
 
           {/* Social Proof Badge - Updated to match design */}
-          <div className="hero-fade flex items-center gap-4 mt-8 pl-2 pr-6 py-2 bg-surface rounded-full shadow-sm border border-border w-fit hover:scale-105 transition-transform duration-300 cursor-default hidden md:flex">
+          <div className="hero-fade flex items-center gap-4 mt-8 pl-2 pr-6 py-2 bg-surface rounded-full shadow-sm border border-border w-fit hover:scale-105 transition-transform duration-300 cursor-default">
              <div className="flex -space-x-3">
                {[10, 15, 20].map((i) => (
                  <div key={i} className="w-10 h-10 rounded-full border-[3px] border-surface overflow-hidden relative ring-1 ring-border">
