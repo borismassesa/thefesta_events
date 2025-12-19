@@ -9,6 +9,7 @@ import { Marquee } from "@/components/home/Marquee";
 import { Services } from "@/components/home/Services";
 import { Issues } from "@/components/home/Issues";
 import { Reviews } from "@/components/home/Reviews";
+import { FAQ } from "@/components/home/FAQ";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -74,6 +75,7 @@ export default function Home() {
         <Services />
         <Issues />
         <Reviews />
+        <FAQ />
       </main>
     </div>
   );
