@@ -37,7 +37,7 @@ export function Navbar({ onMenuClick }: { onMenuClick: () => void }) {
         <img 
           src={logo} 
           alt="The Festa" 
-          className="h-8 md:h-10 w-auto object-contain transition-transform group-hover:scale-105" 
+          className="h-12 md:h-16 w-auto object-contain transition-transform group-hover:scale-105" 
         />
       </Link>
 
