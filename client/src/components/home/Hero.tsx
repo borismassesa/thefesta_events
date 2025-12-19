@@ -6,9 +6,16 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const HERO_TABS = [
   { id: 'venues', label: 'Venues' },
   { id: 'vendors', label: 'Vendors' },
-  { id: 'photos', label: 'Photos' },
-  { id: 'ideas', label: 'Ideas' }
+  { id: 'planning', label: 'Planning' },
+  { id: 'inspiration', label: 'Inspiration' }
 ];
+
+const SEARCH_PLACEHOLDERS: Record<string, string> = {
+  venues: "Search for rustic barns, beach resorts...",
+  vendors: "Search photographers, florists, planners...",
+  planning: "Search checklists, guest lists, budgets...",
+  inspiration: "Search real weddings, style guides..."
+};
 
 const POPULAR_TAGS = ['Rustic', 'Beach', 'Vintage', 'Modern', 'Boho'];
 
@@ -206,7 +213,7 @@ export function Hero() {
                 type="text"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
-                placeholder={`Search ${activeTab === 'ideas' ? 'for' : ''} ${activeTab}...`}
+                placeholder={SEARCH_PLACEHOLDERS[activeTab] || "Search..."}
                 className="w-full pl-12 pr-4 py-4 bg-transparent border-none rounded-full text-primary placeholder:text-secondary/60 focus:outline-none focus:ring-0 text-base font-normal relative z-10"
               />
               <div className="absolute right-1.5 top-1.5 bottom-1.5">
