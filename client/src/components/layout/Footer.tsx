@@ -1,5 +1,18 @@
 import { Link } from "wouter";
-import { Facebook, Twitter, Instagram, Linkedin, Github } from "lucide-react";
+import { Twitter, Instagram, Linkedin } from "lucide-react";
+
+// Custom Icon Components for those missing in Lucide (or specific versions)
+const XIcon = ({ size = 18 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+  </svg>
+);
+
+const TiktokIcon = ({ size = 18 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
 
 export function Footer() {
   return (
@@ -18,10 +31,10 @@ export function Footer() {
               The all-in-one platform for modern couples to plan, design, and celebrate their dream weddings effortlessly.
             </p>
             <div className="flex items-center gap-4 mt-2">
-              <SocialLink href="#" icon={<Twitter size={18} />} label="Twitter" />
+              <SocialLink href="#" icon={<XIcon size={16} />} label="X (Twitter)" />
               <SocialLink href="#" icon={<Instagram size={18} />} label="Instagram" />
               <SocialLink href="#" icon={<Linkedin size={18} />} label="LinkedIn" />
-              <SocialLink href="#" icon={<Github size={18} />} label="GitHub" />
+              <SocialLink href="#" icon={<TiktokIcon size={18} />} label="TikTok" />
             </div>
           </div>
 
