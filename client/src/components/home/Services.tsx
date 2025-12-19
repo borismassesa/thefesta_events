@@ -217,7 +217,7 @@ export function Services() {
           {SERVICES.map((service, index) => (
             <div 
               key={service.id} 
-              className="service-item min-h-[40vh] md:min-h-[50vh] flex flex-col justify-center"
+              className="service-item min-h-[40vh] md:min-h-screen flex flex-col justify-center"
             >
               {/* Mobile Image */}
               <div className="service-mobile-img md:hidden w-full aspect-video rounded-xl overflow-hidden mb-6 shadow-lg">
