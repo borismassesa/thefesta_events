@@ -16,21 +16,27 @@ const FlagUK = ({ className = "w-5 h-5" }: { className?: string }) => (
     <clipPath id="t">
       <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/>
     </clipPath>
-    <path d="M0,0 v30 h60 v-30 z" fill="#00247d"/>
+    <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
     <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/>
-    <path d="M0,0 L60,30 M60,0 L0,30" clipPath="url(#t)" stroke="#cf142b" strokeWidth="4"/>
+    <path d="M0,0 L60,30 M60,0 L0,30" clipPath="url(#t)" stroke="#C8102E" strokeWidth="4"/>
     <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10"/>
-    <path d="M30,0 v30 M0,15 h60" stroke="#cf142b" strokeWidth="6"/>
+    <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6"/>
   </svg>
 );
 
 const FlagTZ = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg className={className} viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,0 h60 v40 h-60 z" fill="#1eb53a"/>
-    <path d="M0,40 h60 v-40 z" fill="#00a3dd"/>
-    <path d="M0,40 L60,0" stroke="#000" strokeWidth="12"/>
-    <path d="M0,40 L60,0" stroke="#fcd116" strokeWidth="3.5"/>
-    <path d="M0,40 L60,0" stroke="#000" strokeWidth="11"/>
+    <defs>
+      <clipPath id="tz-clip">
+        <rect width="60" height="40"/>
+      </clipPath>
+    </defs>
+    <g clipPath="url(#tz-clip)">
+      <rect width="60" height="40" fill="#1eb53a"/>
+      <path d="M0,40 L60,40 L60,0 Z" fill="#00a3dd"/>
+      <path d="M-10,50 L70,-10" stroke="#fcd116" strokeWidth="14"/>
+      <path d="M-10,50 L70,-10" stroke="#000" strokeWidth="9"/>
+    </g>
   </svg>
 );
 
