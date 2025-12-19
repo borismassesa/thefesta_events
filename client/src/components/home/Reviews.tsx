@@ -231,14 +231,14 @@ export function Reviews() {
         </div>
 
         {/* Right Column: Moving Cards */}
-        <div className="relative h-[600px] md:h-[800px] overflow-hidden mask-gradient-y grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="relative h-[400px] md:h-[600px] overflow-hidden mask-gradient-y grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Vertical Gradients for masking */}
           <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-surface to-transparent z-10 pointer-events-none"></div>
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-surface to-transparent z-10 pointer-events-none"></div>
 
           {/* Column 1 - Moving Up */}
           <div className="overflow-hidden h-full relative">
-              <div ref={column1Ref} className="flex flex-col gap-6">
+              <div ref={column1Ref} className="flex flex-col gap-4">
                 {col1Items.map((review, i) => (
                    <ReviewCard key={`col1-${i}`} review={review} />
                 ))}
@@ -247,7 +247,7 @@ export function Reviews() {
 
           {/* Column 2 - Moving Down */}
           <div className="overflow-hidden h-full relative pt-12 md:pt-0">
-               <div ref={column2Ref} className="flex flex-col gap-6">
+               <div ref={column2Ref} className="flex flex-col gap-4">
                 {col2Items.map((review, i) => (
                    <ReviewCard key={`col2-${i}`} review={review} />
                 ))}
@@ -272,7 +272,7 @@ function ReviewCard({ review }: { review: typeof REVIEWS[0] }) {
   }
 
   return (
-    <div className="bg-background border border-border/60 p-6 rounded-2xl shadow-[0_2px_10px_-2px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_20px_-4px_rgba(0,0,0,0.1)] transition-all duration-300 group w-full relative overflow-hidden flex flex-col h-full">
+    <div className="bg-background border border-border/60 p-5 rounded-2xl shadow-[0_2px_10px_-2px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_20px_-4px_rgba(0,0,0,0.1)] transition-all duration-300 group w-full relative overflow-hidden flex flex-col h-full">
        {/* Decorative Quote Mark - Smaller and more subtle */}
       <div className="absolute top-4 right-6 text-6xl font-serif text-primary/5 select-none pointer-events-none leading-none">
         "
