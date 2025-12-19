@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Facebook, Twitter, Instagram, Linkedin, Github } from "lucide-react";
-import logo from "@assets/logo.png";
+import logo from "@assets/logo_color.png";
 
 export function Footer() {
   return (
@@ -14,7 +14,7 @@ export function Footer() {
               <img 
                 src={logo} 
                 alt="The Festa" 
-                className="h-8 md:h-9 w-auto object-contain dark:invert opacity-90 hover:opacity-100 transition-opacity" 
+                className="h-8 md:h-9 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" 
               />
             </Link>
             <p className="text-secondary text-sm leading-relaxed max-w-xs">
