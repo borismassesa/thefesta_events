@@ -37,28 +37,28 @@ export default function Signup() {
             </Link>
           </div>
           
-          <div className="backdrop-blur-xl bg-black/20 border border-white/10 p-8 rounded-3xl shadow-2xl max-w-xl self-end">
-            <h2 className="text-3xl font-serif mb-6 leading-snug drop-shadow-md">
+          <div className="backdrop-blur-xl bg-black/40 border border-white/10 p-10 rounded-3xl shadow-2xl max-w-xl self-end">
+            <h2 className="text-5xl mb-8 leading-snug drop-shadow-md text-white" style={{ fontFamily: 'Sacramento, cursive' }}>
               Start planning the celebration of a lifetime.
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-6">
               <div className="flex items-center gap-4 group">
-                 <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-lg group-hover:bg-white/30 transition-colors">
-                    <Check className="w-5 h-5 text-white" />
+                 <div className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center group-hover:border-white/80 transition-colors">
+                    <Check className="w-4 h-4 text-white" />
                  </div>
-                 <span className="text-base font-medium tracking-wide text-white/90">Manage guests & RSVPs easily</span>
+                 <span className="text-lg font-light tracking-wide text-white/90">Manage guests & RSVPs easily</span>
               </div>
               <div className="flex items-center gap-4 group">
-                 <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-lg group-hover:bg-white/30 transition-colors">
-                    <Check className="w-5 h-5 text-white" />
+                 <div className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center group-hover:border-white/80 transition-colors">
+                    <Check className="w-4 h-4 text-white" />
                  </div>
-                 <span className="text-base font-medium tracking-wide text-white/90">Find top-rated local vendors</span>
+                 <span className="text-lg font-light tracking-wide text-white/90">Find top-rated local vendors</span>
               </div>
               <div className="flex items-center gap-4 group">
-                 <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-lg group-hover:bg-white/30 transition-colors">
-                    <Check className="w-5 h-5 text-white" />
+                 <div className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center group-hover:border-white/80 transition-colors">
+                    <Check className="w-4 h-4 text-white" />
                  </div>
-                 <span className="text-base font-medium tracking-wide text-white/90">Stay on budget with smart tools</span>
+                 <span className="text-lg font-light tracking-wide text-white/90">Stay on budget with smart tools</span>
               </div>
             </div>
           </div>
