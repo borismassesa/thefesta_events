@@ -29,54 +29,50 @@ import existing5 from "@assets/stock_images/portrait_of_a_happy__f02f3ebf.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const AVATARS = [
-  { img: img1, name: "Alice M.", role: "Bride", quote: "Found my dream venue in minutes!" },
-  { img: img2, name: "David K.", role: "Groom", quote: "Budget tools are a lifesaver." },
-  { img: img3, name: "Sophie L.", role: "Planner", quote: "My clients love the collaboration features." },
-  { img: img4, name: "James R.", role: "Photographer", quote: "Great way to connect with couples." },
-  { img: img5, name: "Emma T.", role: "Bride", quote: "So much inspiration in one place." },
-  { img: img6, name: "Lucas P.", role: "Groom", quote: "Made the guest list easy to manage." },
-  { img: img7, name: "Olivia S.", role: "Maid of Honor", quote: "Helped me plan the perfect shower." },
-  { img: img8, name: "Noah B.", role: "Venue Owner", quote: "Increased our bookings significantly." },
-  { img: img9, name: "Ava C.", role: "Bride", quote: "I love the checklist feature!" },
-  { img: img10, name: "Ethan H.", role: "Groom", quote: "Stress-free planning journey." },
-  { img: existing1, name: "Sarah J.", role: "Bride", quote: "Highly recommend to everyone." },
-  { img: existing2, name: "Michael W.", role: "Planner", quote: "Best platform for event pros." },
-  { img: existing3, name: "Jessica L.", role: "Vendor", quote: "Simple and effective tools." },
-  { img: existing4, name: "Daniel M.", role: "Groom", quote: "Saved us so much time." },
-  { img: existing5, name: "Emily R.", role: "Bride", quote: "A must-have for weddings." },
-  // Duplicates to create density
-  { img: img1, name: "Chloe D.", role: "Bride", quote: "Found my dream venue in minutes!" },
-  { img: img3, name: "Ryan G.", role: "Groom", quote: "Budget tools are a lifesaver." },
-  { img: img5, name: "Zoe K.", role: "Planner", quote: "My clients love the collaboration features." },
-  { img: img7, name: "Justin F.", role: "Photographer", quote: "Great way to connect with couples." },
-  { img: img9, name: "Grace H.", role: "Bride", quote: "So much inspiration in one place." },
-  { img: existing1, name: "Kevin T.", role: "Groom", quote: "Made the guest list easy to manage." },
-  { img: existing3, name: "Lily P.", role: "Maid of Honor", quote: "Helped me plan the perfect shower." },
-  { img: img2, name: "Brandon S.", role: "Venue Owner", quote: "Increased our bookings significantly." },
-  { img: img4, name: "Mia V.", role: "Bride", quote: "I love the checklist feature!" },
-  { img: img6, name: "Caleb N.", role: "Groom", quote: "Stress-free planning journey." },
-  { img: img8, name: "Hannah B.", role: "Bride", quote: "Highly recommend to everyone." },
-  { img: img10, name: "Isaac L.", role: "Planner", quote: "Best platform for event pros." },
-  { img: existing2, name: "Victoria M.", role: "Vendor", quote: "Simple and effective tools." },
-  { img: existing4, name: "Jack O.", role: "Groom", quote: "Saved us so much time." },
-  { img: existing5, name: "Samantha K.", role: "Bride", quote: "A must-have for weddings." },
-   { img: img1, name: "Alice M.", role: "Bride", quote: "Found my dream venue in minutes!" },
-  { img: img2, name: "David K.", role: "Groom", quote: "Budget tools are a lifesaver." },
-  { img: img3, name: "Sophie L.", role: "Planner", quote: "My clients love the collaboration features." },
-  { img: img4, name: "James R.", role: "Photographer", quote: "Great way to connect with couples." },
-  { img: img5, name: "Emma T.", role: "Bride", quote: "So much inspiration in one place." },
-  { img: img6, name: "Lucas P.", role: "Groom", quote: "Made the guest list easy to manage." },
-  { img: img7, name: "Olivia S.", role: "Maid of Honor", quote: "Helped me plan the perfect shower." },
-  { img: img8, name: "Noah B.", role: "Venue Owner", quote: "Increased our bookings significantly." },
-  { img: img9, name: "Ava C.", role: "Bride", quote: "I love the checklist feature!" },
-  { img: img10, name: "Ethan H.", role: "Groom", quote: "Stress-free planning journey." },
-  { img: existing1, name: "Sarah J.", role: "Bride", quote: "Highly recommend to everyone." },
-  { img: existing2, name: "Michael W.", role: "Planner", quote: "Best platform for event pros." },
-  { img: existing3, name: "Jessica L.", role: "Vendor", quote: "Simple and effective tools." },
-  { img: existing4, name: "Daniel M.", role: "Groom", quote: "Saved us so much time." },
-  { img: existing5, name: "Emily R.", role: "Bride", quote: "A must-have for weddings." },
+// Data generators for simulating ~100 diverse vendors
+const firstNames = ["James", "Sarah", "Michael", "Jessica", "David", "Emily", "Robert", "Emma", "William", "Olivia", "Joseph", "Ava", "Charles", "Isabella", "Thomas", "Sophia", "Christopher", "Mia", "Daniel", "Charlotte", "Matthew", "Amelia", "Anthony", "Harper", "Donald", "Evelyn", "Mark", "Abigail", "Paul", "Emily", "Steven", "Elizabeth", "Andrew", "Mila", "Kenneth", "Ella", "Joshua", "Avery", "Kevin", "Sofia", "Brian", "Camila", "George", "Aria", "Edward", "Scarlett", "Ronald", "Victoria", "Timothy", "Madison"];
+const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin", "Lee", "Perez", "Thompson", "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson", "Walker", "Young", "Allen", "King", "Wright", "Scott", "Torres", "Nguyen", "Hill", "Flores", "Green", "Adams", "Nelson", "Baker", "Hall", "Rivera", "Campbell", "Mitchell", "Carter", "Roberts"];
+const roles = ["Photographer", "Wedding Planner", "Florist", "Venue Manager", "Caterer", "DJ / Entertainment", "Makeup Artist", "Hair Stylist", "Videographer", "Event Designer", "Bakery / Cake Artist", "Stationery Designer", "Officiant", "Transportation", "Lighting Specialist"];
+const quotes = [
+  "Capturing moments that last a lifetime.",
+  "Turning your dream wedding into reality.",
+  "Floral designs that take your breath away.",
+  "The perfect backdrop for your special day.",
+  "Delicious menus tailored to your taste.",
+  "Keeping the dance floor packed all night.",
+  "Enhancing your natural beauty.",
+  "Cinematic storytelling of your love.",
+  "Creating unforgettable atmospheres.",
+  "Sweet treats for sweet moments.",
+  "Beautiful invitations that set the tone.",
+  "Seamless coordination for a stress-free day.",
+  "Arrive in style and comfort.",
+  "Setting the mood with perfect lighting.",
+  "Award-winning service since 2018.",
+  "Featured in Vogue and Brides.",
+  "Passionate about perfection.",
+  "Detail-oriented and dedicated.",
+  "Your vision, our expertise.",
+  "Making memories magical."
 ];
+
+const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, existing1, existing2, existing3, existing4, existing5];
+
+// Generate 100 vendors
+const VENDORS = Array.from({ length: 100 }, (_, i) => {
+  const img = images[i % images.length];
+  const firstName = firstNames[i % firstNames.length];
+  const lastName = lastNames[(i * 3) % lastNames.length]; // varying index to mix names
+  const role = roles[i % roles.length];
+  const quote = quotes[i % quotes.length];
+  
+  return {
+    img,
+    name: `${firstName} ${lastName.charAt(0)}.`,
+    role,
+    quote
+  };
+});
 
 export function Community() {
   const containerRef = useRef<HTMLElement>(null);
@@ -84,16 +80,16 @@ export function Community() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Simple fade in for the container
-       gsap.fromTo(".community-avatar", 
+       gsap.fromTo(".vendor-avatar", 
         { scale: 0, opacity: 0 },
         {
           scale: 1,
           opacity: 1,
           duration: 0.5,
           stagger: {
-            amount: 1.5,
+            amount: 2, // slightly longer stagger for more items
             grid: "auto",
-            from: "center"
+            from: "random" // random appearance for organic feel
           },
           ease: "back.out(1.7)",
           scrollTrigger: {
@@ -127,33 +123,37 @@ export function Community() {
     <section ref={containerRef} className="py-24 bg-background overflow-hidden relative">
       <div className="max-w-[1400px] mx-auto px-4 md:px-6 flex flex-col items-center">
         
-        {/* Avatar Grid - Dense and centered */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-3 max-w-5xl mx-auto mb-16 mask-linear-fade">
-          {AVATARS.map((avatar, i) => (
+        {/* Vendor Grid - Dense and centered */}
+        <div className="flex flex-wrap justify-center gap-1.5 md:gap-2 max-w-6xl mx-auto mb-16 mask-linear-fade">
+          {VENDORS.map((vendor, i) => (
              <HoverCard key={i} openDelay={0} closeDelay={100}>
               <HoverCardTrigger asChild>
-                <div className="community-avatar cursor-pointer transition-transform hover:scale-110 hover:z-10 relative">
-                  <Avatar className="w-10 h-10 md:w-12 md:h-12 border-2 border-background shadow-sm">
-                    <AvatarImage src={avatar.img} alt={avatar.name} className="object-cover" />
-                    <AvatarFallback className="text-[10px]">{avatar.name.substring(0, 2)}</AvatarFallback>
+                <div className="vendor-avatar cursor-pointer transition-transform hover:scale-125 hover:z-20 relative">
+                  <Avatar className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 border border-background/50 shadow-sm">
+                    <AvatarImage src={vendor.img} alt={vendor.name} className="object-cover" />
+                    <AvatarFallback className="text-[8px] sm:text-[10px]">{vendor.name.substring(0, 2)}</AvatarFallback>
                   </Avatar>
                 </div>
               </HoverCardTrigger>
-              <HoverCardContent className="w-64 p-4 shadow-xl border-border/60 bg-surface/95 backdrop-blur-sm" sideOffset={5}>
+              <HoverCardContent className="w-64 p-4 shadow-xl border-border/60 bg-surface/95 backdrop-blur-sm z-50" sideOffset={5}>
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-3">
-                    <Avatar className="w-8 h-8">
-                      <AvatarImage src={avatar.img} />
-                      <AvatarFallback>{avatar.name.substring(0, 2)}</AvatarFallback>
+                    <Avatar className="w-10 h-10 border border-border">
+                      <AvatarImage src={vendor.img} className="object-cover"/>
+                      <AvatarFallback>{vendor.name.substring(0, 2)}</AvatarFallback>
                     </Avatar>
                     <div className="flex flex-col">
-                      <span className="text-sm font-semibold text-primary">{avatar.name}</span>
-                      <span className="text-xs text-secondary">{avatar.role}</span>
+                      <span className="text-sm font-semibold text-primary">{vendor.name}</span>
+                      <span className="text-xs font-medium text-accent uppercase tracking-wide">{vendor.role}</span>
                     </div>
                   </div>
                   <p className="text-sm text-primary/80 italic leading-relaxed">
-                    "{avatar.quote}"
+                    "{vendor.quote}"
                   </p>
+                  <div className="mt-1 flex items-center gap-1 text-xs text-secondary">
+                    <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                    Verified Vendor
+                  </div>
                 </div>
               </HoverCardContent>
             </HoverCard>
@@ -163,16 +163,20 @@ export function Community() {
         {/* Text Content */}
         <div className="text-center community-text max-w-3xl px-4">
            <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary leading-[1.1] mb-6">
-            The platform behind <br/>
-            <span className="font-serif italic font-normal text-secondary">thousands of weddings.</span>
+            Connecting you with <br/>
+            <span className="font-serif italic font-normal text-secondary">top-tier professionals.</span>
            </h2>
+           
+           <p className="text-lg text-secondary max-w-2xl mx-auto mb-8 font-light">
+             From award-winning photographers to master florists, browse our curated network of 15,000+ vetted vendors ready to bring your vision to life.
+           </p>
             
-           <div className="flex gap-4 justify-center mt-8">
-             <button className="px-6 py-2.5 rounded-full bg-primary text-background text-sm font-medium hover:bg-primary/90 transition-colors">
-               Join Community
+           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+             <button className="px-8 py-3 rounded-full bg-primary text-background text-sm font-medium hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+               Find Vendors
              </button>
-             <button className="px-6 py-2.5 rounded-full border border-border text-primary text-sm font-medium hover:bg-surface transition-colors">
-               Read Success Stories
+             <button className="px-8 py-3 rounded-full border border-border text-primary text-sm font-medium hover:bg-surface transition-colors">
+               Join as a Pro
              </button>
            </div>
         </div>
