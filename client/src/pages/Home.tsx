@@ -11,6 +11,7 @@ import { Issues } from "@/components/home/Issues";
 import { Reviews } from "@/components/home/Reviews";
 import { FAQ } from "@/components/home/FAQ";
 import { CTA } from "@/components/home/CTA";
+import { Footer } from "@/components/layout/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -79,6 +80,8 @@ export default function Home() {
         <FAQ />
         <CTA />
       </main>
+      
+      <Footer />
     </div>
   );
 }
