@@ -105,10 +105,10 @@ export function Issues() {
           </div>
         </div>
 
-        <div className="horizontal-scroll-container w-full">
+        <div className="horizontal-scroll-container w-full overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar">
           <div ref={wrapperRef} className="horizontal-wrapper flex gap-[4vw] px-[5vw] w-fit items-center h-full">
             {issues.map((issue) => (
-              <div key={issue.id} className="w-[85vw] md:w-[30vw] h-[50vh] md:h-[60vh] relative flex-shrink-0 group cursor-pointer">
+              <div key={issue.id} className="w-[85vw] md:w-[30vw] h-[50vh] md:h-[60vh] relative flex-shrink-0 group cursor-pointer snap-center">
                 <div className="absolute inset-0 bg-background rounded-xl overflow-hidden border border-border">
                   <img 
                     src={issue.img} 

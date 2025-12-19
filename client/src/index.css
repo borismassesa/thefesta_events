@@ -94,8 +94,15 @@
     box-shadow: 0 0 20px rgba(255,255,255,0.05);
   }
   
-  /* Light mode version of btn-glow if needed, or keep it dark/high contrast */
-  /* For now I'll keep the glow effect as is because it's usually on dark backgrounds or specific buttons */
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
 }
 
 .hero-glow {
