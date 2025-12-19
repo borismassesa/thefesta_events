@@ -231,6 +231,15 @@ export default function Signup() {
              </button>
           </div>
 
+          <div className="text-center text-sm text-muted-foreground">
+            Already have an account?{" "}
+            <Link href="/login">
+              <a className="font-semibold text-primary hover:underline underline-offset-4">
+                Sign in
+              </a>
+            </Link>
+          </div>
+
           <p className="px-8 text-center text-xs text-muted-foreground">
             By continuing, you agree to TheFesta's{" "}
             <a href="#" className="underline underline-offset-4 hover:text-primary">
@@ -242,15 +251,6 @@ export default function Signup() {
             </a>
             , and to receive periodic emails with updates.
           </p>
-
-          <div className="text-center text-sm text-muted-foreground">
-            Already have an account?{" "}
-            <Link href="/login">
-              <a className="font-semibold text-primary hover:underline underline-offset-4">
-                Sign in
-              </a>
-            </Link>
-          </div>
           
           <div className="absolute top-8 left-8 lg:top-12 lg:left-12">
             <Link href="/">
