@@ -15,9 +15,9 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen w-full flex bg-background">
+    <div className="h-screen overflow-hidden w-full flex bg-background">
       {/* Left Side - Image */}
-      <div className="hidden lg:flex w-1/2 relative overflow-hidden bg-black">
+      <div className="hidden lg:flex w-1/2 relative overflow-hidden bg-black h-full">
         <div className="absolute inset-0 z-0">
           <img 
             src={loginImg} 
@@ -49,7 +49,7 @@ export default function Login() {
       </div>
 
       {/* Right Side - Form */}
-      <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-8 sm:p-12 lg:p-24 relative bg-background">
+      <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-8 sm:p-12 lg:p-24 relative bg-background h-full overflow-y-auto">
         <div className="w-full max-w-sm space-y-10">
           
           {/* Mobile Logo */}

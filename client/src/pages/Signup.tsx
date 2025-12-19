@@ -16,9 +16,9 @@ export default function Signup() {
   };
 
   return (
-    <div className="min-h-screen w-full flex bg-background">
+    <div className="h-screen overflow-hidden w-full flex bg-background">
       {/* Left Side - Image */}
-      <div className="hidden lg:flex w-1/2 relative overflow-hidden bg-black">
+      <div className="hidden lg:flex w-1/2 relative overflow-hidden bg-black h-full">
         <div className="absolute inset-0 z-0">
           <img 
             src={signupImg} 
