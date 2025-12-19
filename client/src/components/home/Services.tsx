@@ -162,7 +162,7 @@ export function Services() {
                 Our Services
               </span>
             </div>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary leading-[1.1]">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-primary leading-[1.1]">
               Everything you need, <br />
               <span className="font-serif italic font-normal text-secondary">all in one place.</span>
             </h2>
