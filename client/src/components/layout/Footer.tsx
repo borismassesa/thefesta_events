@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Facebook, Twitter, Instagram, Linkedin, Github } from "lucide-react";
+import logo from "@assets/Asset_1@1x_1766113204017.png";
 
 export function Footer() {
   return (
@@ -9,14 +10,15 @@ export function Footer() {
           
           {/* Brand Column */}
           <div className="flex flex-col gap-6">
-            <div className="flex items-center gap-2">
-              <div className="w-5 h-5 bg-primary rounded-full flex items-center justify-center">
-                <div className="w-2 h-2 bg-background rounded-full"></div>
-              </div>
-              <span className="font-semibold text-sm tracking-tight text-primary">
-                THE FESTA
-              </span>
-            </div>
+            <Link href="/">
+              <a className="inline-block">
+                <img 
+                  src={logo} 
+                  alt="The Festa" 
+                  className="h-8 md:h-9 w-auto object-contain dark:invert opacity-90 hover:opacity-100 transition-opacity" 
+                />
+              </a>
+            </Link>
             <p className="text-secondary text-sm leading-relaxed max-w-xs">
               The all-in-one platform for modern couples to plan, design, and celebrate their dream weddings effortlessly.
             </p>
