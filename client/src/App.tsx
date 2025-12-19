@@ -8,6 +8,7 @@ import Home from "@/pages/Home";
 import ServiceDetail from "@/pages/ServiceDetail";
 import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
+import ForgotPassword from "@/pages/ForgotPassword";
 
 function Router() {
   return (
@@ -15,6 +16,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
+      <Route path="/forgot-password" component={ForgotPassword} />
       <Route path="/services/:id" component={ServiceDetail} />
       <Route component={NotFound} />
     </Switch>
