@@ -292,7 +292,7 @@ export function Hero() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`px-3 py-1.5 rounded-lg border transition-all duration-200 whitespace-nowrap flex-shrink-0 ${
+                    className={`px-3 py-1.5 rounded-lg border transition-all duration-200 whitespace-nowrap flex-shrink-0 text-xs sm:text-sm ${
                       activeTab === tab.id
                         ? 'bg-primary text-background border-primary'
                         : 'bg-transparent border-border text-secondary hover:border-primary/50 hover:text-primary hover:bg-surface'
@@ -314,7 +314,7 @@ export function Hero() {
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
                 placeholder={SEARCH_PLACEHOLDERS[activeTab] || "Search..."}
-                className="w-full pl-10 lg:pl-12 pr-12 lg:pr-4 py-3 lg:py-4 bg-transparent border-none rounded-full text-primary placeholder:text-secondary/60 focus:outline-none focus:ring-0 text-sm lg:text-base font-normal relative z-10 truncate"
+                className="w-full pl-10 lg:pl-12 pr-12 lg:pr-4 py-3 lg:py-4 bg-transparent border-none rounded-full text-primary placeholder:text-secondary/60 focus:outline-none focus:ring-0 text-[13px] sm:text-base font-normal relative z-10 truncate"
               />
               <div className="absolute right-1.5 top-1.5 bottom-1.5">
                  <button className="h-full bg-primary hover:bg-primary/90 text-background w-10 lg:w-auto lg:px-6 rounded-full text-sm font-medium transition-all shadow-sm cursor-pointer flex items-center justify-center gap-2">
