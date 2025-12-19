@@ -17,6 +17,44 @@ export function Issues() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Header Animation
+      const headerContent = containerRef.current?.querySelectorAll(".editorial-header > div, .editorial-header p, .editorial-header a");
+      if (headerContent) {
+        gsap.fromTo(headerContent,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            stagger: 0.1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ".editorial-header",
+              start: "top 80%",
+            }
+          }
+        );
+      }
+
+      // Mobile Grid Animation
+      const mobileCards = containerRef.current?.querySelectorAll(".mobile-issue-card");
+      if (mobileCards) {
+        gsap.fromTo(mobileCards,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ".mobile-issues-grid",
+              start: "top 80%",
+            }
+          }
+        );
+      }
+
       ScrollTrigger.matchMedia({
         "(min-width: 768px)": function() {
           const wrapper = wrapperRef.current;
@@ -75,7 +113,7 @@ export function Issues() {
       <section ref={containerRef} id="advice-ideas" className="bg-surface text-primary min-h-screen py-12 md:py-24 overflow-hidden relative border-b border-border flex flex-col justify-center">
         
         {/* Editorial Header */}
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-8 md:mb-12 w-full flex-shrink-0">
+        <div className="editorial-header max-w-[1400px] mx-auto px-6 lg:px-12 mb-8 md:mb-12 w-full flex-shrink-0">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-end border-b border-border/50 pb-8 md:pb-12">
             <div>
               <div className="flex items-center gap-3 mb-4 md:mb-6">
@@ -106,9 +144,9 @@ export function Issues() {
         </div>
 
         {/* Mobile: Vertical Grid, Desktop: Horizontal Scroll */}
-        <div className="w-full md:hidden px-6 pb-12 flex flex-col gap-6">
+        <div className="mobile-issues-grid w-full md:hidden px-6 pb-12 flex flex-col gap-6">
            {issues.map((issue) => (
-              <div key={issue.id} className="w-full aspect-[4/5] relative group cursor-pointer overflow-hidden rounded-xl border border-border">
+              <div key={issue.id} className="mobile-issue-card w-full aspect-[4/5] relative group cursor-pointer overflow-hidden rounded-xl border border-border">
                   <img 
                     src={issue.img} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 

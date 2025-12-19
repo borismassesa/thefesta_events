@@ -153,6 +153,25 @@ export function Reviews() {
         }
       });
 
+      // Mobile Reviews Animation
+      const mobileReviews = containerRef.current?.querySelectorAll(".mobile-review-card");
+      if (mobileReviews) {
+        gsap.fromTo(mobileReviews,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ".mobile-reviews-stack",
+              start: "top 80%",
+            }
+          }
+        );
+      }
+
     }, containerRef);
 
     return () => {
@@ -205,9 +224,11 @@ export function Reviews() {
         </div>
 
         {/* Mobile: Static Vertical Stack */}
-        <div className="lg:hidden w-full flex flex-col gap-4">
+        <div className="mobile-reviews-stack lg:hidden w-full flex flex-col gap-4">
              {REVIEWS.slice(0, 4).map((review) => (
-               <ReviewCard key={`mobile-${review.id}`} review={review} />
+               <div key={`mobile-${review.id}`} className="mobile-review-card">
+                 <ReviewCard review={review} />
+               </div>
              ))}
              <div className="flex justify-center mt-4">
                <button className="text-sm font-medium text-primary hover:text-accent transition-colors border-b border-primary/20 hover:border-accent pb-0.5">
