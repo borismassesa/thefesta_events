@@ -171,7 +171,7 @@ export function Hero() {
             zIndex: 40,
             boxShadow: "0 0 0 rgba(0,0,0,0)",
             xPercent: 0,
-            opacity: 1
+            // opacity: 1 - Removed to avoid conflict with intro animation
           },
           {
             left: "50%",
@@ -349,7 +349,7 @@ export function Hero() {
         </div>
 
         {/* Hero Visual - Video Carousel */}
-        <div ref={wrapperRef} className="hero-visual lg:block relative w-full aspect-[4/3] z-20">
+        <div ref={wrapperRef} className="hero-visual lg:block w-full aspect-[4/3]">
           <div ref={visualRef} className="w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl group bg-surface border border-border">
           
           {HERO_SLIDES.map((slide, index) => (
