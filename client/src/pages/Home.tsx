@@ -59,12 +59,15 @@ export default function Home() {
   return (
     <div className="bg-background text-primary min-h-screen selection:bg-accent/20 selection:text-primary overflow-hidden">
       {/* Loader */}
-      <div ref={loaderRef} className="loader fixed top-0 left-0 w-full h-screen bg-black z-[9999] flex flex-col justify-center items-center">
-        <div className="uppercase text-xs text-zinc-500 tracking-[0.2em] font-mono mb-5">
-          Initializing Core
+      <div ref={loaderRef} className="loader fixed top-0 left-0 w-full h-screen bg-background z-[9999] flex flex-col justify-center items-center">
+        <div className="font-serif text-4xl md:text-5xl text-primary mb-4 relative">
+            TheFesta
         </div>
-        <div className="loader-bar-bg w-[200px] h-[2px] bg-white/10 relative overflow-hidden">
-          <div className="loader-bar absolute left-0 top-0 h-full bg-white w-0"></div>
+        <div className="uppercase text-[10px] text-secondary tracking-[0.3em] font-medium mb-8 opacity-70">
+          Gathering Inspiration
+        </div>
+        <div className="loader-bar-bg w-[200px] h-[1px] bg-primary/10 relative overflow-hidden">
+          <div className="loader-bar absolute left-0 top-0 h-full bg-primary w-0"></div>
         </div>
       </div>
 
