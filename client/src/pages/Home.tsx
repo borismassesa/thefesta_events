@@ -11,6 +11,7 @@ import { Services } from "@/components/home/Services";
 import { Issues } from "@/components/home/Issues";
 import { Reviews } from "@/components/home/Reviews";
 import { FAQ } from "@/components/home/FAQ";
+import { Community } from "@/components/home/Community";
 import { CTA } from "@/components/home/CTA";
 import { Footer } from "@/components/layout/Footer";
 
@@ -83,6 +84,7 @@ export default function Home() {
         <Issues />
         <Reviews />
         <FAQ />
+        <Community />
         <CTA />
       </main>
       
