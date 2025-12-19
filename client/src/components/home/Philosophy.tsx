@@ -16,49 +16,49 @@ const SERVICES = [
   {
     id: "planning",
     title: "Planning Tools",
-    description: "Stay organized with our comprehensive checklist, budget tracker, and timeline manager. We make the complex simple.",
+    description: "Your master plan, simplified. From an interactive checklist that adapts to your timeline to a budget tracker that keeps finances transparent, our suite of tools ensures nothing falls through the cracks. Collaborate with your partner and planner in real-time.",
     image: planningImg
   },
   {
     id: "marketplace",
     title: "Venue Marketplace",
-    description: "Discover exclusive venues tailored to your style. From rustic barns to modern lofts, find the perfect backdrop for your story.",
+    description: "Discover the backdrop of your dreams. Our curated marketplace features exclusive venues tailored to your aesthetic—from sun-drenched vineyards and rustic barns to industrial lofts and grand ballrooms. Filter by capacity, style, and availability instantly.",
     image: marketplaceImg
   },
   {
     id: "vendors",
     title: "Curated Vendors",
-    description: "Connect with top-tier photographers, florists, and caterers. We vet every professional to ensure your day is in safe hands.",
+    description: "Assemble your dream team with confidence. We vet every photographer, florist, caterer, and entertainer to ensure they meet The Festa Standard. Browse portfolios, read verified reviews, and connect directly with professionals who understand your vision.",
     image: vendorsImg
   },
   {
     id: "rsvp",
     title: "RSVP & Guest List",
-    description: "Effortlessly manage your guest list and RSVPs. detailed dietary requirements and plus-ones, all in one dashboard.",
+    description: "Guest management, mastered. Collect RSVPs, track dietary restrictions, and manage plus-ones effortlessly. Group guests into households, assign tables with a drag-and-drop floor planner, and send digital updates in seconds.",
     image: rsvpImg
   },
   {
     id: "website",
     title: "Wedding Website",
-    description: "Create a stunning, personalized wedding website in minutes. Share your story and details with beautiful digital invites.",
+    description: "Tell your love story with a stunning, custom website. Choose from modern, mobile-responsive templates that match your invitation suite. Share your schedule, travel details, and registry links with guests in a beautiful, centralized hub.",
     image: websiteImg
   },
   {
     id: "advice",
     title: "Ideas & Advice",
-    description: "Get inspired with expert articles, style guides, and real wedding features. Expert advice for every step of the journey.",
+    description: "Inspiration without the overwhelm. Explore expert-written articles, trend reports, and real wedding features to spark your creativity. Whether you're navigating etiquette dilemmas or seeking style advice, our library is your go-to resource.",
     image: adviceImg
   },
   {
     id: "attire",
     title: "Attire & Rings",
-    description: "Find the perfect fit. Browse collections of dresses, suits, and rings from designers you'll love.",
+    description: "Find the look that feels like you. Browse extensive collections of bridal gowns, suits, and accessories from top designers and boutique ateliers. Filter by silhouette, fabric, and price to discover the perfect fit for your big day.",
     image: attireImg
   },
   {
     id: "couples",
     title: "Find Couples",
-    description: "Join a community of couples planning their big day. Share tips, ask questions, and find support from people just like you.",
+    description: "You're not in this alone. Join a vibrant community of couples planning their weddings simultaneously. Share tips, vent about stressors, exchange vendor recommendations, and find support from people who truly get it.",
     image: couplesImg
   }
 ];
@@ -156,9 +156,6 @@ export function Philosophy() {
               className="service-item min-h-[30vh] flex flex-col justify-center transition-opacity duration-500"
               style={{ opacity: index === activeIndex ? 1 : 0.3 }}
             >
-              <span className="text-6xl md:text-8xl font-bold text-surface-foreground/5 mb-4 select-none">
-                0{index + 1}
-              </span>
               <h3 className="text-2xl md:text-3xl font-semibold text-primary mb-4">
                 {service.title}
               </h3>
