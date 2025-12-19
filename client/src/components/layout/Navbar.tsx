@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
-import logo from "@assets/logo_final.png";
 
 const NAV_LINKS = [
   { name: "Planning", href: "/planning" },
@@ -33,12 +32,10 @@ export function Navbar({ onMenuClick }: { onMenuClick: () => void }) {
       }`}
     >
       {/* Logo */}
-      <Link href="/" className="flex items-center gap-2 z-50 group">
-        <img 
-          src={logo} 
-          alt="The Festa" 
-          className="h-10 md:h-14 w-auto object-contain transition-transform group-hover:scale-105" 
-        />
+      <Link href="/">
+        <a className="font-serif text-2xl md:text-3xl text-primary hover:text-primary/80 transition-colors select-none z-50">
+          TheFesta
+        </a>
       </Link>
 
       {/* Desktop Navigation */}
