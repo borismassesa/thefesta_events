@@ -148,7 +148,7 @@ export function Services() {
     <section id="services" className="relative w-full bg-background border-b border-border">
       
       {/* Intro Header */}
-      <div className="max-w-[1400px] mx-auto pt-24 pb-12 px-6 lg:px-16">
+      <div className="max-w-[1400px] mx-auto pt-24 pb-4 px-6 lg:px-16">
         <div className="max-w-3xl">
           <span className="font-mono text-accent text-xs tracking-widest uppercase mb-6 block">
             Our Services
@@ -196,7 +196,7 @@ export function Services() {
         </div>
 
         {/* Right Column - Scrolling Content */}
-        <div ref={rightColumnRef} className="flex flex-col py-12 lg:py-24 px-6 lg:px-16 gap-24">
+        <div ref={rightColumnRef} className="flex flex-col pt-0 pb-12 lg:pt-0 lg:pb-24 px-6 lg:px-16 gap-24">
           {/* Service Items */}
           {SERVICES.map((service, index) => (
             <div 
