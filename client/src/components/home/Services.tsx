@@ -245,7 +245,7 @@ export function Services() {
           ))}
           
           {/* Bottom Spacer to allow last item to scroll fully */}
-          <div className="h-[20vh]"></div>
+          <div className="h-8 md:h-[20vh]"></div>
         </div>
 
       </div>
