@@ -28,8 +28,8 @@ export function Navbar({ onMenuClick }: { onMenuClick: () => void }) {
 
   return (
     <nav 
-      className={`fixed top-0 w-full z-50 px-6 md:px-12 py-4 flex justify-between items-center transition-all duration-300 ${
-        scrolled ? "bg-background/80 backdrop-blur-md border-b border-border/50 py-3" : "bg-transparent py-5"
+      className={`fixed top-0 w-full z-50 px-6 md:px-12 py-3 flex justify-between items-center transition-all duration-300 ${
+        scrolled ? "bg-background/80 backdrop-blur-md border-b border-border/50 py-2" : "bg-transparent py-4"
       }`}
     >
       {/* Logo */}
@@ -37,7 +37,7 @@ export function Navbar({ onMenuClick }: { onMenuClick: () => void }) {
         <img 
           src={logo} 
           alt="The Festa" 
-          className="h-16 md:h-24 w-auto object-contain transition-transform group-hover:scale-105" 
+          className="h-10 md:h-14 w-auto object-contain transition-transform group-hover:scale-105" 
         />
       </Link>
 
