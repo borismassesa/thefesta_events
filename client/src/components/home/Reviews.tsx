@@ -254,34 +254,42 @@ function ReviewCard({ review }: { review: typeof REVIEWS[0] }) {
   }
 
   return (
-    <div className="bg-background border border-border p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 group w-full">
-      <div className="flex justify-between items-start mb-4">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full overflow-hidden border border-border flex-shrink-0">
-            <img src={review.avatar} alt={review.name} className="w-full h-full object-cover" />
-          </div>
-          <div className="flex flex-col items-start gap-1">
-            <h4 className="font-semibold text-primary text-sm">{review.name}</h4>
-            <span className={`text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-full border ${badgeColor}`}>
-              {review.role}
-            </span>
-          </div>
-        </div>
+    <div className="bg-background border border-border p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-500 group w-full relative overflow-hidden">
+      {/* Decorative Quote Mark */}
+      <div className="absolute top-6 right-8 text-9xl font-serif text-primary/5 select-none pointer-events-none leading-none">
+        "
+      </div>
 
-        <div className="flex gap-0.5 pt-1">
+      <div className="relative z-10 flex flex-col h-full">
+        {/* Top: Stars */}
+        <div className="flex gap-1 mb-6">
           {[...Array(5)].map((_, i) => (
             <Star 
               key={i} 
-              size={14} 
+              size={16} 
               className={`${i < review.rating ? "fill-amber-400 text-amber-400" : "fill-border text-border/40"}`} 
             />
           ))}
         </div>
-      </div>
 
-      <p className="text-secondary leading-relaxed text-sm italic">
-        "{review.content}"
-      </p>
+        {/* Middle: Content */}
+        <p className="text-primary text-lg font-medium leading-relaxed mb-8 relative">
+          "{review.content}"
+        </p>
+
+        {/* Bottom: User Info */}
+        <div className="mt-auto pt-6 border-t border-border/50 flex items-center gap-4">
+          <div className="w-12 h-12 rounded-full overflow-hidden border border-border flex-shrink-0 bg-surface">
+            <img src={review.avatar} alt={review.name} className="w-full h-full object-cover" />
+          </div>
+          <div className="flex flex-col items-start gap-1.5">
+            <h4 className="font-bold text-primary text-sm tracking-tight">{review.name}</h4>
+            <span className={`text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${badgeColor}`}>
+              {review.role}
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
