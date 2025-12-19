@@ -193,9 +193,9 @@ export function Reviews() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-start">
         
         {/* Left Column: Text Content (Sticky) */}
-        <div ref={headerRef} className="md:sticky md:top-32 flex flex-col items-start gap-8 z-10 opacity-0">
+        <div ref={headerRef} className="md:sticky md:top-32 flex flex-col items-center md:items-start gap-8 z-10 opacity-0 text-center md:text-left">
           <div>
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center justify-center md:justify-start gap-3 mb-6">
               <span className="w-12 h-[1px] bg-accent"></span>
               <span className="font-mono text-accent text-xs tracking-widest uppercase">
                 Testimonials
@@ -210,13 +210,13 @@ export function Reviews() {
             </p>
           </div>
 
-          <div className="flex gap-16 mt-8">
-             <div className="flex flex-col gap-2">
+          <div className="flex justify-center md:justify-start gap-16 mt-8">
+             <div className="flex flex-col items-center md:items-start gap-2">
                <span className="text-4xl font-bold text-primary">4.9/5</span>
                <span className="text-xs text-secondary uppercase tracking-wider font-medium">Average Rating</span>
              </div>
              
-             <div className="flex flex-col gap-2">
+             <div className="flex flex-col items-center md:items-start gap-2">
                <span className="text-4xl font-bold text-primary">2k+</span>
                <span className="text-xs text-secondary uppercase tracking-wider font-medium">Verified Reviews</span>
              </div>
