@@ -243,6 +243,16 @@ export function Reviews() {
 }
 
 function ReviewCard({ review }: { review: typeof REVIEWS[0] }) {
+  // Determine badge color based on role content
+  let badgeColor = "bg-primary/5 text-primary border-primary/10";
+  if (review.role.includes("Married") || review.role.includes("Groom")) {
+    badgeColor = "bg-blue-500/10 text-blue-600 border-blue-200 dark:text-blue-400 dark:border-blue-800";
+  } else if (review.role.includes("Planner") || review.role.includes("Photographer") || review.role.includes("Owner")) {
+    badgeColor = "bg-purple-500/10 text-purple-600 border-purple-200 dark:text-purple-400 dark:border-purple-800";
+  } else if (review.role.includes("Maid")) {
+    badgeColor = "bg-pink-500/10 text-pink-600 border-pink-200 dark:text-pink-400 dark:border-pink-800";
+  }
+
   return (
     <div className="bg-background border border-border p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 group w-full">
       <div className="flex justify-between items-start mb-4">
@@ -250,13 +260,15 @@ function ReviewCard({ review }: { review: typeof REVIEWS[0] }) {
           <div className="w-10 h-10 rounded-full overflow-hidden border border-border flex-shrink-0">
             <img src={review.avatar} alt={review.name} className="w-full h-full object-cover" />
           </div>
-          <div>
+          <div className="flex flex-col items-start gap-1">
             <h4 className="font-semibold text-primary text-sm">{review.name}</h4>
-            <p className="text-[10px] text-secondary uppercase tracking-wide">{review.role}</p>
+            <span className={`text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-full border ${badgeColor}`}>
+              {review.role}
+            </span>
           </div>
         </div>
 
-        <div className="flex gap-0.5">
+        <div className="flex gap-0.5 pt-1">
           {[...Array(5)].map((_, i) => (
             <Star 
               key={i} 
