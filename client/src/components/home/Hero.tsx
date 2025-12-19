@@ -125,8 +125,8 @@ export function Hero() {
         ease: "power2.out" 
       }, "-=0.5");
 
-      // Desktop Specifics
-      mm.add("(min-width: 1024px)", () => {
+      // Desktop & Tablet Specifics
+      mm.add("(min-width: 768px)", () => {
         // Intro: Visual enters
         tl.from(visualRef.current, {
           x: 100,
@@ -190,7 +190,7 @@ export function Hero() {
       });
 
       // Mobile Specifics
-      mm.add("(max-width: 1023px)", () => {
+      mm.add("(max-width: 767px)", () => {
         // No intro animation for visual (it stays hidden/opacity 0 via CSS or set here)
         gsap.set(visualRef.current, { opacity: 0, y: 50 }); // Ensure hidden initially
 
@@ -259,10 +259,10 @@ export function Hero() {
 
   return (
     <div ref={containerRef} className="relative min-h-[100dvh] w-full overflow-hidden border-b border-border bg-background flex flex-col justify-center">
-      <section id="hero" className="w-full max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center py-20 lg:py-0">
+      <section id="hero" className="w-full max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-center py-20 md:py-0">
         
         {/* Text Content */}
-        <div ref={contentRef} className="hero-content relative flex flex-col items-center lg:items-start text-center lg:text-left space-y-2 z-10 w-full max-w-xl mx-auto lg:mx-0">
+        <div ref={contentRef} className="hero-content relative flex flex-col items-center md:items-start text-center md:text-left space-y-2 z-10 w-full max-w-xl mx-auto lg:mx-0">
           
           {/* Headline with Masked Reveal */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.1] tracking-tight max-w-full lg:max-w-none min-h-[100px] sm:min-h-[120px] md:min-h-[140px] lg:min-h-[160px]">
@@ -285,9 +285,9 @@ export function Hero() {
           <div className="hero-fade w-full max-w-lg flex flex-col gap-4 mt-6">
             
             {/* Quick Actions Row - Moved ABOVE search bar */}
-            <div className="w-full flex justify-center lg:justify-start">
+            <div className="w-full flex justify-center md:justify-start">
               <div className="flex flex-nowrap overflow-x-auto pb-2 -mb-2 mask-linear-fade lg:overflow-visible lg:pb-0 lg:mb-0 lg:flex-wrap gap-2 items-center text-xs font-medium no-scrollbar max-w-[100vw] px-4 lg:px-0 -mx-4 lg:mx-0">
-                <span className="text-secondary/80 uppercase tracking-wider mr-1 hidden lg:inline-block">{t('hero.browse')}:</span>
+                <span className="text-secondary/80 uppercase tracking-wider mr-1 hidden md:inline-block">{t('hero.browse')}:</span>
                 {HERO_TABS.map((tab) => (
                   <button
                     key={tab.id}
@@ -347,7 +347,7 @@ export function Hero() {
         </div>
 
         {/* Hero Visual - Video Carousel */}
-        <div ref={visualRef} className="hero-visual lg:block relative w-full aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl group bg-surface border border-border z-20">
+        <div ref={visualRef} className="hero-visual hidden md:block relative w-full aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl group bg-surface border border-border z-20">
           
           {HERO_SLIDES.map((slide, index) => (
             <div 

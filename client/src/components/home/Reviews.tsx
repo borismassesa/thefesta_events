@@ -104,9 +104,9 @@ export function Reviews() {
         }
       );
 
-      // Automatic Vertical Marquee - Only on Desktop
+      // Automatic Vertical Marquee - On Desktop & Tablet
       ScrollTrigger.matchMedia({
-        "(min-width: 1024px)": function() {
+        "(min-width: 768px)": function() {
             // Function to create vertical loop
             const createVerticalLoop = (target: HTMLElement, direction: 'up' | 'down') => {
               // ... existing loop logic ...
@@ -190,10 +190,10 @@ export function Reviews() {
 
   return (
     <section ref={containerRef} className="relative w-full bg-surface border-b border-border overflow-hidden py-24 lg:py-32">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-start">
         
         {/* Left Column: Text Content (Sticky) */}
-        <div ref={headerRef} className="lg:sticky lg:top-32 flex flex-col items-start gap-8 z-10 opacity-0">
+        <div ref={headerRef} className="md:sticky md:top-32 flex flex-col items-start gap-8 z-10 opacity-0">
           <div>
             <div className="flex items-center gap-3 mb-6">
               <span className="w-12 h-[1px] bg-accent"></span>
@@ -224,7 +224,7 @@ export function Reviews() {
         </div>
 
         {/* Mobile: Static Vertical Stack */}
-        <div className="mobile-reviews-stack lg:hidden w-full flex flex-col gap-4">
+        <div className="mobile-reviews-stack md:hidden w-full flex flex-col gap-4">
              {REVIEWS.slice(0, 4).map((review) => (
                <div key={`mobile-${review.id}`} className="mobile-review-card">
                  <ReviewCard review={review} />
@@ -238,7 +238,7 @@ export function Reviews() {
         </div>
 
         {/* Desktop: Moving Cards */}
-        <div ref={marqueeRef} className="hidden lg:grid relative h-[600px] overflow-hidden mask-gradient-y grid-cols-2 gap-4">
+        <div ref={marqueeRef} className="hidden md:grid relative h-[600px] overflow-hidden mask-gradient-y grid-cols-2 gap-4">
           {/* Vertical Gradients for masking */}
           <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-surface to-transparent z-10 pointer-events-none"></div>
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-surface to-transparent z-10 pointer-events-none"></div>

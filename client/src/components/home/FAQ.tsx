@@ -83,7 +83,7 @@ export function FAQ() {
 
   return (
     <section ref={containerRef} className="py-24 lg:py-32 bg-background border-b border-border">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-start">
         
         {/* Left Column: Header */}
         <div ref={headerRef} className="sticky top-32 opacity-0">

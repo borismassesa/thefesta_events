@@ -90,8 +90,8 @@ export function Services() {
     const ctx = gsap.context(() => {
       // Pin the left side content
       ScrollTrigger.matchMedia({
-        // Desktop
-        "(min-width: 1024px)": function() {
+        // Desktop & Tablet
+        "(min-width: 768px)": function() {
           ScrollTrigger.create({
             trigger: containerRef.current,
             start: "top top",
@@ -176,10 +176,10 @@ export function Services() {
         </div>
       </div>
 
-      <div ref={containerRef} className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 relative">
+      <div ref={containerRef} className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 relative">
         
         {/* Left Column - Sticky Visual (Desktop Only) */}
-        <div className="service-visual hidden lg:flex h-screen sticky top-0 flex-col justify-center items-center p-12 overflow-hidden bg-background">
+        <div className="service-visual hidden md:flex h-screen sticky top-0 flex-col justify-center items-center p-6 lg:p-12 overflow-hidden bg-background">
           <div className="relative w-full aspect-[4/3] lg:aspect-square max-w-xl rounded-2xl overflow-hidden shadow-2xl border border-border">
             {SERVICES.map((service, index) => (
               <div
@@ -217,10 +217,10 @@ export function Services() {
           {SERVICES.map((service, index) => (
             <div 
               key={service.id} 
-              className="service-item min-h-[40vh] lg:min-h-[50vh] flex flex-col justify-center"
+              className="service-item min-h-[40vh] md:min-h-[50vh] flex flex-col justify-center"
             >
               {/* Mobile Image */}
-              <div className="service-mobile-img lg:hidden w-full aspect-video rounded-xl overflow-hidden mb-6 shadow-lg">
+              <div className="service-mobile-img md:hidden w-full aspect-video rounded-xl overflow-hidden mb-6 shadow-lg">
                 <img 
                   src={service.image} 
                   alt={service.title}
