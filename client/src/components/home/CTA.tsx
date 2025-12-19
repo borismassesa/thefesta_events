@@ -67,8 +67,8 @@ export function CTA() {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-24 px-4 md:px-6 lg:px-12 bg-background flex justify-center">
-      <div ref={cardRef} className="relative w-full max-w-[1400px] rounded-[2rem] overflow-hidden min-h-[600px] flex flex-col items-center justify-center text-center p-8 md:p-20 shadow-2xl">
+    <section ref={containerRef} className="py-12 md:py-24 px-4 md:px-6 lg:px-12 bg-background flex justify-center">
+      <div ref={cardRef} className="relative w-full max-w-[1400px] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden min-h-[450px] md:min-h-[600px] flex flex-col items-center justify-center text-center p-6 md:p-12 lg:p-20 shadow-2xl">
 
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0 bg-zinc-900">
@@ -85,34 +85,35 @@ export function CTA() {
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center max-w-4xl mx-auto">
 
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-8 leading-[0.9]">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-6 md:mb-8 leading-[1.0] md:leading-[0.9]">
             Plan the wedding <br />
             <span className="font-serif font-normal italic text-white/90">of the century.</span>
           </h2>
 
-          <p className="text-lg md:text-xl text-zinc-200 max-w-2xl leading-relaxed mb-12 font-light">
+          <p className="text-base sm:text-lg md:text-xl text-zinc-200 max-w-2xl leading-relaxed mb-8 md:mb-12 font-light px-4">
             Join a community of modern couples who have elevated their planning experience.
             Sophisticated tools, curated vendors, and endless inspiration await.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-5 items-center w-full sm:w-auto cta-button-group">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 items-center w-full sm:w-auto cta-button-group px-4 sm:px-0">
             <Link href="/signup">
-              <a className="w-full sm:w-auto group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white text-black font-semibold text-lg transition-all hover:bg-zinc-200 hover:scale-105 shadow-[0_0_40px_-10px_rgba(255,255,255,0.5)]">
+              <a className="w-full sm:w-auto group inline-flex items-center justify-center gap-3 px-6 py-3.5 md:px-8 md:py-4 rounded-full bg-white text-black font-semibold text-base md:text-lg transition-all hover:bg-zinc-200 hover:scale-105 shadow-[0_0_40px_-10px_rgba(255,255,255,0.5)]">
                 Get Started Free
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" />
               </a>
             </Link>
             <Link href="/demo">
-              <a className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-transparent border border-white/30 text-white font-medium text-lg transition-all hover:bg-white/10 backdrop-blur-sm">
+              <a className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 md:px-8 md:py-4 rounded-full bg-transparent border border-white/30 text-white font-medium text-base md:text-lg transition-all hover:bg-white/10 backdrop-blur-sm">
                 View Live Demo
               </a>
             </Link>
           </div>
           
-          <div className="mt-12 flex items-center gap-8 opacity-60 cta-trust">
+          <div className="mt-8 md:mt-12 flex flex-col sm:flex-row items-center gap-4 sm:gap-8 opacity-60 cta-trust">
              {/* Simple Trust Indicators */}
-             <div className="text-xs text-white uppercase tracking-widest font-medium">Trusted by 50k+ Couples</div>
-             <div className="text-xs text-white uppercase tracking-widest font-medium">4.9/5 Rating</div>
+             <div className="text-[10px] sm:text-xs text-white uppercase tracking-widest font-medium">Trusted by 50k+ Couples</div>
+             <div className="hidden sm:block w-1 h-1 bg-white rounded-full opacity-50"></div>
+             <div className="text-[10px] sm:text-xs text-white uppercase tracking-widest font-medium">4.9/5 Rating</div>
           </div>
         </div>
       </div>
