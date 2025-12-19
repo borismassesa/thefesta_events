@@ -158,6 +158,15 @@ export function Hero() {
                 ease: "power2.out"
              }, 0);
 
+             const visualRect = visualRef.current.getBoundingClientRect();
+             const containerRect = containerRef.current.getBoundingClientRect();
+             
+             // Calculate offsets
+             const startLeft = visualRect.left - containerRect.left;
+             const startTop = visualRect.top - containerRect.top;
+             const startWidth = visualRect.width;
+             const startHeight = visualRect.height;
+
              // 2. Animate visual using Layout properties (width/height/top/left)
              // We switch to layout animation to ensure object-fit: cover works correctly
              // and avoids stretching/distortion or shrinking of content.
