@@ -190,7 +190,7 @@ export function Reviews() {
                 Testimonials
               </span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-primary leading-[1.1] mb-6">
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-primary leading-[1.1] mb-6">
               Loved by couples <br/>
               <span className="font-serif italic font-normal text-secondary">& professionals.</span>
             </h2>
@@ -199,15 +199,15 @@ export function Reviews() {
             </p>
           </div>
 
-          <div className="flex gap-8 mt-4">
+          <div className="flex gap-16 mt-8">
              <div className="flex flex-col gap-2">
-               <span className="text-3xl font-bold text-primary">4.9/5</span>
-               <span className="text-sm text-secondary uppercase tracking-wider">Average Rating</span>
+               <span className="text-4xl font-bold text-primary">4.9/5</span>
+               <span className="text-xs text-secondary uppercase tracking-wider font-medium">Average Rating</span>
              </div>
-             <div className="w-[1px] h-full bg-border"></div>
+             
              <div className="flex flex-col gap-2">
-               <span className="text-3xl font-bold text-primary">2k+</span>
-               <span className="text-sm text-secondary uppercase tracking-wider">Verified Reviews</span>
+               <span className="text-4xl font-bold text-primary">2k+</span>
+               <span className="text-xs text-secondary uppercase tracking-wider font-medium">Verified Reviews</span>
              </div>
           </div>
         </div>
