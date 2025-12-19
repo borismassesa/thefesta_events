@@ -101,7 +101,7 @@ export function Hero() {
     { id: 'inspiration', label: t('tabs.inspiration') }
   ];
 
-  const TYPING_PHRASES = t('hero.headline.typing', { returnObjects: true }) as string[];
+  const TYPING_PHRASES = t('hero.typing', { returnObjects: true }) as string[];
 
   useEffect(() => {
     // Hero Animations with GSAP
