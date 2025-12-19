@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Navbar } from "@/components/layout/Navbar";
 import { MenuOverlay } from "@/components/layout/MenuOverlay";
 import { Hero } from "@/components/home/Hero";
+import { About } from "@/components/home/About";
 import { Marquee } from "@/components/home/Marquee";
 import { Services } from "@/components/home/Services";
 import { Issues } from "@/components/home/Issues";
@@ -76,6 +77,7 @@ export default function Home() {
       
       <main>
         <Hero />
+        <About />
         {/* <Marquee /> */}
         <Services />
         <Issues />
