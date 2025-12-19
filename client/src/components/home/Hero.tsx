@@ -127,25 +127,22 @@ export function Hero() {
 
       // Desktop & Tablet Specifics
       mm.add("(min-width: 768px)", () => {
-        // Intro: Visual enters
+        // Intro: Visual enters - Simplified to just fade/scale to avoid transform conflicts
         tl.from(visualRef.current, {
-          x: 100,
+          scale: 0.95,
           opacity: 0,
           duration: 1.2,
           ease: "power3.out"
         }, 0);
 
         // Scroll: Visual expands
-        const startLeft = visualRef.current!.offsetLeft;
-        const startTop = visualRef.current!.offsetTop;
-        const startWidth = visualRef.current!.offsetWidth;
-        const startHeight = visualRef.current!.offsetHeight;
-
+        // We use a simpler approach that doesn't rely on absolute positioning calculations which can be flaky
+        // Instead we just animate the container contents
         const scrollTl = gsap.timeline({
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top top",
-            end: "+=150%",
+            end: "+=100%", // Reduced scroll distance
             pin: true,
             scrub: true
           }
@@ -158,35 +155,15 @@ export function Hero() {
           ease: "power2.out"
         }, 0);
 
-        scrollTl.fromTo(visualRef.current, 
-          {
-            position: 'absolute',
-            left: startLeft,
-            top: startTop,
-            width: startWidth,
-            height: startHeight,
-            borderRadius: "2.5rem",
-            zIndex: 40,
-            boxShadow: "0 0 0 rgba(0,0,0,0)",
-            xPercent: 0,
-            opacity: 1
-          },
-          {
-            left: "50%",
-            xPercent: -50,
-            top: "90px",
-            width: "94vw",
-            height: "calc(100vh - 110px)",
-            borderRadius: "1.5rem",
-            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
-            zIndex: 40,
+        // Instead of moving the visual to center (which breaks on wide screens due to offset calcs),
+        // we'll just scale it up slightly and keep it in place, or maybe just fade it out/parallax it.
+        // Let's try a subtle scale and parallax effect which is safer.
+        scrollTl.to(visualRef.current, {
+            scale: 1.1,
+            y: 50, // Move down slightly
             duration: 1,
-            ease: "power3.inOut"
-          }, 
-          0
-        );
-
-        scrollTl.fromTo(".hero-video", { scale: 1.1 }, { scale: 1, duration: 1, ease: "power2.inOut" }, 0);
+            ease: "none"
+        }, 0);
       });
 
       // Mobile Specifics
