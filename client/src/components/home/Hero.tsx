@@ -46,6 +46,49 @@ const HERO_SLIDES = [
   },
 ];
 
+function TypingEffect({ words }: { words: string[] }) {
+  const [index, setIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [reverse, setReverse] = useState(false);
+  const [blink, setBlink] = useState(true);
+
+  // Blinking cursor
+  useEffect(() => {
+    const timeout2 = setTimeout(() => {
+      setBlink((prev) => !prev);
+    }, 500);
+    return () => clearTimeout(timeout2);
+  }, [blink]);
+
+  useEffect(() => {
+    if (index === words.length) return;
+
+    if (subIndex === words[index].length + 1 && !reverse) {
+      setTimeout(() => setReverse(true), 2000); // Wait longer before deleting
+      return;
+    }
+
+    if (subIndex === 0 && reverse) {
+      setReverse(false);
+      setIndex((prev) => (prev + 1) % words.length);
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      setSubIndex((prev) => prev + (reverse ? -1 : 1));
+    }, reverse ? 50 : 100); // Typing speed
+
+    return () => clearTimeout(timeout);
+  }, [subIndex, index, reverse, words]);
+
+  return (
+    <>
+      {words[index].substring(0, subIndex)}
+      <span className={`${blink ? "opacity-100" : "opacity-0"} transition-opacity duration-100 ml-1 font-light text-primary`}>|</span>
+    </>
+  );
+}
+
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const visualRef = useRef<HTMLDivElement>(null);
@@ -169,12 +212,14 @@ export function Hero() {
         <div ref={contentRef} className="hero-content relative flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 z-10 w-full max-w-xl mx-auto lg:mx-0">
           
           {/* Headline with Masked Reveal */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.05] tracking-tight max-w-[90%] lg:max-w-none">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.05] tracking-tight max-w-[90%] lg:max-w-none h-[120px] md:h-[140px] lg:h-[160px]">
             <span className="block overflow-hidden hero-word">
-              <span className="block">Plan Your</span>
+              <span className="block">Plan Less,</span>
             </span>
             <span className="block overflow-hidden hero-word">
-              <span className="block text-secondary">Perfect Festa.</span>
+              <span className="block text-secondary">
+                <TypingEffect words={["Celebrate More.", "Stress Less.", "Dream Bigger.", "Party Harder."]} />
+              </span>
             </span>
           </h1>
           
