@@ -99,13 +99,13 @@ export function Navbar({ onMenuClick, isOpen }: { onMenuClick: () => void; isOpe
       <div className="flex items-center gap-4 z-50">
         <button
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="text-secondary hover:text-primary transition-colors cursor-pointer p-2 rounded-full hover:bg-primary/5"
+          className="text-secondary hover:text-primary transition-colors cursor-pointer p-2 rounded-full hover:bg-primary/5 order-1"
           aria-label="Toggle theme"
         >
           {mounted && theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
         </button>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-3 order-3">
             <Link href="/login">
                 <a className="text-sm font-medium text-primary hover:text-primary/80 transition-colors px-4 py-2">
                     {t('nav.login')}
@@ -118,10 +118,32 @@ export function Navbar({ onMenuClick, isOpen }: { onMenuClick: () => void; isOpe
             </Link>
         </div>
 
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button 
+              className="text-secondary hover:text-primary transition-colors cursor-pointer p-2 rounded-full hover:bg-primary/5 flex items-center gap-2 order-2"
+              aria-label="Change Language"
+            >
+              <CurrentFlag className="w-5 h-5 rounded-sm shadow-sm object-cover" />
+              <span className="text-xs font-medium uppercase hidden sm:inline-block">{i18n.language.split('-')[0]}</span>
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="min-w-[150px]">
+            <DropdownMenuItem onClick={() => toggleLanguage('en')} className="gap-2 cursor-pointer">
+              <FlagUK className="w-4 h-4 rounded-sm" />
+              <span>English</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => toggleLanguage('sw')} className="gap-2 cursor-pointer">
+              <FlagTZ className="w-4 h-4 rounded-sm" />
+              <span>Swahili</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+        
         {/* Mobile Menu Button */}
         <button 
           onClick={onMenuClick}
-          className={`lg:hidden group relative z-50 w-11 h-11 flex items-center justify-center rounded-full border transition-all duration-500 ${
+          className={`lg:hidden group relative z-50 w-11 h-11 flex items-center justify-center rounded-full border transition-all duration-500 order-4 ${
             isOpen 
               ? "bg-primary border-primary rotate-90" 
               : "bg-background/50 backdrop-blur-md border-border/60 hover:bg-primary/5"
@@ -148,28 +170,6 @@ export function Navbar({ onMenuClick, isOpen }: { onMenuClick: () => void; isOpe
              />
           </div>
         </button>
-
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button 
-              className="text-secondary hover:text-primary transition-colors cursor-pointer p-2 rounded-full hover:bg-primary/5 flex items-center gap-2"
-              aria-label="Change Language"
-            >
-              <CurrentFlag className="w-5 h-5 rounded-sm shadow-sm object-cover" />
-              <span className="text-xs font-medium uppercase hidden sm:inline-block">{i18n.language.split('-')[0]}</span>
-            </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="min-w-[150px]">
-            <DropdownMenuItem onClick={() => toggleLanguage('en')} className="gap-2 cursor-pointer">
-              <FlagUK className="w-4 h-4 rounded-sm" />
-              <span>English</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => toggleLanguage('sw')} className="gap-2 cursor-pointer">
-              <FlagTZ className="w-4 h-4 rounded-sm" />
-              <span>Swahili</span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
       </div>
     </nav>
   );
