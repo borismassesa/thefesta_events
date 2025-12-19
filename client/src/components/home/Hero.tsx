@@ -164,16 +164,16 @@ export function Hero() {
           {/* Headline with Masked Reveal */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.05] tracking-tight max-w-[90%] lg:max-w-none">
             <span className="block overflow-hidden hero-word">
-              <span className="block">Plan Less.</span>
+              <span className="block">Plan Your</span>
             </span>
             <span className="block overflow-hidden hero-word">
-              <span className="block text-secondary">Celebrate More.</span>
+              <span className="block text-secondary">Perfect Festa.</span>
             </span>
           </h1>
           
           {/* Subhead - Simplified */}
           <p className="hero-fade text-secondary text-base md:text-lg max-w-md leading-relaxed">
-            Your all-in-one platform for weddings. Find venues, vendors, and inspiration instantly.
+            The all-in-one marketplace for venues, vendors, and planning tools. Discover inspiration and manage every detail in one place.
           </p>
 
           {/* Input Area Wrapper - Simplified */}

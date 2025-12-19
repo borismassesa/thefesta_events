@@ -15,7 +15,7 @@ export function Navbar({ onMenuClick }: { onMenuClick: () => void }) {
           <div className="w-2 h-2 bg-background rounded-full"></div>
         </div>
         <span className="font-semibold text-sm tracking-tight text-primary">
-          CHRONICLE
+          THE FESTA
         </span>
       </div>
 
