@@ -118,28 +118,31 @@ export function Reviews() {
         }
       };
 
+      let tween1: gsap.core.Tween;
+      let tween2: gsap.core.Tween;
+
       if (column1Ref.current) {
         // Simple seamless loop approach using fromTo for robustness
         // We need to make sure the content is duplicated enough times.
         // Assuming 3 sets of duplicates for safety.
         
         // Column 1 moves UP (y goes negative)
-        gsap.to(column1Ref.current, {
+        tween1 = gsap.to(column1Ref.current, {
            yPercent: -33.33, // Move by 1/3 since we have 3 sets
            ease: "linear",
-           duration: 20,
+           duration: 60, // Slower duration
            repeat: -1
         });
       }
 
       if (column2Ref.current) {
         // Column 2 moves DOWN (y goes positive, start from negative)
-        gsap.fromTo(column2Ref.current, 
+        tween2 = gsap.fromTo(column2Ref.current, 
           { yPercent: -33.33 },
           {
             yPercent: 0,
             ease: "linear",
-            duration: 25, // Different speed for variation
+            duration: 70, // Slower duration
             repeat: -1
           }
         );
@@ -148,8 +151,14 @@ export function Reviews() {
       // Pause on hover
       const container = containerRef.current;
       if (container) {
-          container.addEventListener('mouseenter', () => gsap.globalTimeline.timeScale(0.2)); // Slow down instead of stop
-          container.addEventListener('mouseleave', () => gsap.globalTimeline.timeScale(1));
+          container.addEventListener('mouseenter', () => {
+            tween1?.pause();
+            tween2?.pause();
+          });
+          container.addEventListener('mouseleave', () => {
+            tween1?.play();
+            tween2?.play();
+          });
       }
 
     }, containerRef);
