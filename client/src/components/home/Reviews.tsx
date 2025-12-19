@@ -271,11 +271,11 @@ function ReviewCard({ review }: { review: typeof REVIEWS[0] }) {
   // Determine badge color based on role content
   let badgeColor = "bg-primary/5 text-primary border-primary/10";
   if (review.role.includes("Married") || review.role.includes("Groom")) {
-    badgeColor = "bg-blue-500/10 text-blue-600 border-blue-200 dark:text-blue-400 dark:border-blue-800";
+    badgeColor = "bg-blue-500/10 text-blue-600 border-blue-500/20 dark:text-blue-400 dark:border-blue-800";
   } else if (review.role.includes("Planner") || review.role.includes("Photographer") || review.role.includes("Owner")) {
-    badgeColor = "bg-purple-500/10 text-purple-600 border-purple-200 dark:text-purple-400 dark:border-purple-800";
+    badgeColor = "bg-purple-500/10 text-purple-600 border-purple-500/20 dark:text-purple-400 dark:border-purple-800";
   } else if (review.role.includes("Maid")) {
-    badgeColor = "bg-pink-500/10 text-pink-600 border-pink-200 dark:text-pink-400 dark:border-pink-800";
+    badgeColor = "bg-pink-500/10 text-pink-600 border-pink-500/20 dark:text-pink-400 dark:border-pink-800";
   }
 
   return (
