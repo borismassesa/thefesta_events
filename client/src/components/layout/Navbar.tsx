@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
-import logo from "@assets/logo_color.png";
+import logo from "@assets/logo_final.png";
 
 const NAV_LINKS = [
   { name: "Planning", href: "/planning" },
