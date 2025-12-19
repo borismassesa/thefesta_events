@@ -121,11 +121,11 @@ export function Community() {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-24 bg-background overflow-hidden relative">
+    <section ref={containerRef} className="py-12 md:py-24 bg-background overflow-hidden relative">
       <div className="max-w-[1400px] mx-auto px-4 md:px-6 flex flex-col items-center">
         
         {/* Vendor Grid - Dense and centered */}
-        <div className="flex flex-wrap justify-center gap-1.5 md:gap-2 max-w-[90rem] mx-auto mb-16 mask-linear-fade">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-1.5 md:gap-2 max-w-[90rem] mx-auto mb-12 md:mb-16 mask-linear-fade">
           {VENDORS.map((vendor, i) => (
              <HoverCard key={i} openDelay={0} closeDelay={100}>
               <HoverCardTrigger asChild>
