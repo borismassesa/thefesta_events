@@ -88,14 +88,14 @@ export default function Signup() {
           <form onSubmit={handleSubmit} className="space-y-5">
             
             {/* User Type Toggle */}
-            <div className="grid grid-cols-2 gap-1 p-1 bg-zinc-100 dark:bg-zinc-800 rounded-lg border border-border/50">
+            <div className="grid grid-cols-2 gap-1 p-1 bg-white dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700">
                <button
                  type="button"
                  onClick={() => setUserType("couple")}
                  className={`text-sm font-medium py-2 rounded-md transition-all ${
                    userType === "couple" 
-                   ? "bg-white text-primary shadow-sm ring-1 ring-black/5 dark:bg-zinc-700 dark:text-white dark:ring-white/10" 
-                   : "text-zinc-500 hover:text-primary dark:hover:bg-zinc-800 hover:bg-zinc-200/50"
+                   ? "bg-primary text-primary-foreground shadow-sm" 
+                   : "text-zinc-500 hover:text-primary dark:hover:bg-zinc-700 hover:bg-zinc-100"
                  }`}
                >
                  I'm a Couple
@@ -105,8 +105,8 @@ export default function Signup() {
                  onClick={() => setUserType("vendor")}
                  className={`text-sm font-medium py-2 rounded-md transition-all ${
                    userType === "vendor" 
-                   ? "bg-white text-primary shadow-sm ring-1 ring-black/5 dark:bg-zinc-700 dark:text-white dark:ring-white/10" 
-                   : "text-zinc-500 hover:text-primary dark:hover:bg-zinc-800 hover:bg-zinc-200/50"
+                   ? "bg-primary text-primary-foreground shadow-sm" 
+                   : "text-zinc-500 hover:text-primary dark:hover:bg-zinc-700 hover:bg-zinc-100"
                  }`}
                >
                  I'm a Vendor
