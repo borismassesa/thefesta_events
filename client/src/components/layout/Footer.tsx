@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="bg-surface border-t border-border pt-20 pb-10">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
           
           {/* Brand Column */}
           <div className="flex flex-col gap-6">
@@ -50,24 +50,28 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Newsletter Column */}
+          {/* Contact Column */}
           <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-3 text-secondary hover:text-primary transition-colors">
-                <MapPin size={16} />
-                <span className="text-sm">Dar es salaam, Tanzania</span>
+            <h4 className="font-semibold text-primary text-sm tracking-wide uppercase">Contact Us</h4>
+            <div className="flex flex-col gap-4">
+              <div className="flex items-start gap-3 text-secondary hover:text-primary transition-colors group">
+                <MapPin size={18} className="mt-0.5 group-hover:text-accent transition-colors" />
+                <span className="text-sm leading-snug">Dar es salaam,<br />Tanzania</span>
               </div>
-              <a href="tel:+255750240699" className="flex items-center gap-3 text-secondary hover:text-primary transition-colors">
-                <Phone size={16} />
+              <a href="tel:+255750240699" className="flex items-center gap-3 text-secondary hover:text-primary transition-colors group">
+                <Phone size={18} className="group-hover:text-accent transition-colors" />
                 <span className="text-sm">+255 750 240 699</span>
               </a>
-              <a href="mailto:hello@thefestaevents.com" className="flex items-center gap-3 text-secondary hover:text-primary transition-colors">
-                <Mail size={16} />
+              <a href="mailto:hello@thefestaevents.com" className="flex items-center gap-3 text-secondary hover:text-primary transition-colors group">
+                <Mail size={18} className="group-hover:text-accent transition-colors" />
                 <span className="text-sm">hello@thefestaevents.com</span>
               </a>
             </div>
-            
-            <h4 className="font-semibold text-primary text-sm tracking-wide uppercase mt-2">Stay Updated</h4>
+          </div>
+
+          {/* Newsletter Column */}
+          <div className="flex flex-col gap-6">
+            <h4 className="font-semibold text-primary text-sm tracking-wide uppercase">Stay Updated</h4>
             <p className="text-secondary text-sm leading-relaxed">
               Subscribe to our newsletter for the latest wedding trends and planning tips.
             </p>
