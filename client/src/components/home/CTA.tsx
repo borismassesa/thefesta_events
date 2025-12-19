@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { ArrowRight, Sparkles } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ctaBg from "@assets/stock_images/soft_abstract_light__b44c3d1e.jpg";
+import ctaBg from "@assets/stock_images/luxury_dark_elegant__ca7749ec.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -64,10 +64,6 @@ export function CTA() {
 
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-8 shadow-lg transition-transform hover:scale-105 cursor-default">
-            <Sparkles className="w-4 h-4 text-amber-200" />
-            <span className="text-xs font-semibold tracking-widest uppercase text-white/90">Premium Experience</span>
-          </div>
 
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-8 leading-[0.9]">
             Plan the wedding <br />
@@ -96,7 +92,6 @@ export function CTA() {
           <div className="mt-12 flex items-center gap-8 opacity-60">
              {/* Simple Trust Indicators */}
              <div className="text-xs text-white uppercase tracking-widest font-medium">Trusted by 50k+ Couples</div>
-             <div className="w-1 h-1 bg-white rounded-full"></div>
              <div className="text-xs text-white uppercase tracking-widest font-medium">4.9/5 Rating</div>
           </div>
         </div>
