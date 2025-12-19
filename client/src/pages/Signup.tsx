@@ -88,7 +88,7 @@ export default function Signup() {
           <form onSubmit={handleSubmit} className="space-y-5">
             
             {/* User Type Toggle */}
-            <div className="grid grid-cols-2 gap-1 p-1 bg-transparent rounded-lg border border-zinc-200 dark:border-zinc-700">
+            <div className="grid grid-cols-2 gap-1 p-1 bg-transparent rounded-lg">
                <button
                  type="button"
                  onClick={() => setUserType("couple")}
