@@ -265,7 +265,7 @@ export function Hero() {
         <div ref={contentRef} className="hero-content relative flex flex-col items-center lg:items-start text-center lg:text-left space-y-2 z-10 w-full max-w-xl mx-auto lg:mx-0">
           
           {/* Headline with Masked Reveal */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.05] tracking-tight max-w-[90%] lg:max-w-none min-h-[120px] md:min-h-[140px] lg:min-h-[160px]">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.1] tracking-tight max-w-full lg:max-w-none min-h-[100px] sm:min-h-[120px] md:min-h-[140px] lg:min-h-[160px]">
             <span className="block overflow-hidden hero-word">
               <span className="block">Plan Less,</span>
             </span>
@@ -277,7 +277,7 @@ export function Hero() {
           </h1>
           
           {/* Subhead - Simplified */}
-          <p className="hero-fade text-secondary text-base md:text-lg max-w-md leading-relaxed">
+          <p className="hero-fade text-secondary text-sm sm:text-base md:text-lg max-w-md leading-relaxed px-1 sm:px-0">
             The all-in-one marketplace for venues, vendors, and planning tools. Discover inspiration and manage every detail in one place.
           </p>
 
