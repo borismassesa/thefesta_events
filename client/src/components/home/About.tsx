@@ -1,53 +1,39 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Quote } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function About() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Split text into lines/spans for animation
-      // We'll manually structure the text for better control
-      const lines = gsap.utils.toArray<HTMLElement>(".about-line");
-
-      gsap.fromTo(lines, 
-        { 
-          opacity: 0.1, 
-          y: 20,
-          filter: "blur(8px)"
-        },
-        {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-          stagger: 0.1,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 70%",
-            end: "bottom 70%",
-            scrub: 1,
-            toggleActions: "play none none reverse"
+      // Animate elements as they scroll into view
+      const animElements = gsap.utils.toArray<HTMLElement>(".animate-on-scroll");
+      
+      animElements.forEach((el, index) => {
+        gsap.fromTo(el, 
+          { 
+            y: 50, 
+            opacity: 0,
+            filter: "blur(10px)"
+          },
+          {
+            y: 0,
+            opacity: 1,
+            filter: "blur(0px)",
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              toggleActions: "play none none reverse"
+            },
+            delay: index * 0.1 // Stagger effect based on order
           }
-        }
-      );
-
-      // Parallax effect for the quote icon
-      gsap.to(".quote-icon", {
-        y: 50,
-        rotation: 15,
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1
-        }
+        );
       });
 
     }, containerRef);
@@ -58,41 +44,93 @@ export function About() {
   return (
     <section ref={containerRef} className="relative w-full bg-surface py-32 lg:py-48 overflow-hidden">
       
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-background to-transparent z-10"></div>
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent z-10"></div>
-      
-      <div className="max-w-5xl mx-auto px-6 lg:px-12 relative z-20">
+      <div className="flex flex-col md:px-10 w-full max-w-7xl border-primary/10 border-t mx-auto pt-24 pr-6 pb-24 pl-6 relative">
         
-        <div className="quote-icon absolute -top-12 -left-4 md:-left-12 opacity-10 text-primary">
-          <Quote size={120} />
+        {/* Badge */}
+        <div className="flex justify-start mb-12 animate-on-scroll">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 backdrop-blur-sm text-accent text-sm font-medium tracking-wide uppercase hover:bg-primary/10 transition-colors cursor-default">
+            <Sparkles className="w-4 h-4" />
+            <span>About Us</span>
+          </div>
         </div>
 
-        <div ref={textRef} className="flex flex-col gap-6 md:gap-8 text-center md:text-left">
-          <h2 className="about-line text-lg font-mono text-accent tracking-widest uppercase mb-4">
-            Our Philosophy
-          </h2>
-          
-          <p className="about-line text-3xl md:text-5xl lg:text-6xl font-medium text-primary leading-[1.2] tracking-tight">
-            We believe planning your celebration 
-          </p>
-          <p className="about-line text-3xl md:text-5xl lg:text-6xl font-medium text-primary leading-[1.2] tracking-tight">
-            should be as <span className="font-serif italic font-normal text-accent">joyful</span> as the event itself.
-          </p>
-          
-          <div className="h-4 md:h-8"></div>
-          
-          <p className="about-line text-xl md:text-2xl lg:text-3xl text-secondary font-light max-w-3xl leading-relaxed">
-            TheFesta isn't just a platform; it's your partner in the art of gathering.
-            We curate the exceptional, simplify the complex, and give you the space to dream.
-          </p>
-          
-          <p className="about-line text-xl md:text-2xl lg:text-3xl text-secondary font-light max-w-3xl leading-relaxed">
-            Because when the details are handled with care, you're free to focus on what truly matters: 
-            <span className="text-primary font-normal"> The love, the laughter, and the memories that last a lifetime.</span>
-          </p>
+        {/* Main Headline / Text Block */}
+        <div className="relative animate-on-scroll">
+          {/* Subtle background glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[80%] bg-accent/10 blur-[120px] -z-10 rounded-full pointer-events-none"></div>
+
+          <h3 className="leading-[1.1] md:text-6xl lg:text-7xl text-5xl font-medium text-primary/40 tracking-tight max-w-6xl">
+            <span className="text-primary">We are a planning intelligence engine</span> dedicated to transforming how couples <span className="text-primary">visualize their big day.</span> With a team of planners, engineers, and artists, we build tools that empower <span className="text-primary">ambitious couples</span> to design, organize, and celebrate at the speed of <span className="text-primary italic font-serif text-accent">love.</span>
+          </h3>
         </div>
 
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-8 mt-24 pt-12 border-t border-primary/10 animate-on-scroll">
+          {/* Stat 1 */}
+          <div className="flex flex-col gap-2">
+            <div className="md:text-7xl lg:text-8xl leading-none text-6xl font-light text-primary tracking-tighter">
+              15k+
+            </div>
+            <div className="text-xl font-medium pl-1 text-secondary">
+              Weddings Planned
+            </div>
+          </div>
+
+          {/* Stat 2 */}
+          <div className="flex flex-col gap-2">
+            <div className="md:text-7xl lg:text-8xl leading-none text-6xl font-light text-primary tracking-tighter">
+              99%
+            </div>
+            <div className="text-xl font-medium pl-1 text-secondary">
+              Couple Satisfaction
+            </div>
+          </div>
+
+          {/* Stat 3 */}
+          <div className="flex flex-col gap-2">
+            <div className="md:text-7xl lg:text-8xl leading-none text-6xl font-light text-primary tracking-tighter">
+              2M+
+            </div>
+            <div className="text-xl font-medium pl-1 text-secondary">
+              Guests Managed
+            </div>
+          </div>
+
+          {/* Stat 4 */}
+          <div className="flex flex-col gap-2">
+            <div className="md:text-7xl lg:text-8xl leading-none text-6xl font-light text-primary tracking-tighter">
+              4.9
+            </div>
+            <div className="text-xl font-medium pl-1 text-secondary">
+              Average Rating
+            </div>
+          </div>
+        </div>
+
+        {/* Company Logos */}
+        <div className="mt-24 animate-on-scroll">
+          <p className="text-lg font-medium mb-8 uppercase tracking-widest text-center md:text-left text-secondary">
+            Featured in & Trusted By
+          </p>
+          <div className="flex flex-wrap gap-8 md:gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500 gap-x-8 gap-y-8 items-center justify-between">
+            
+            {/* Vogue */}
+            <svg viewBox="0 0 24 24" className="h-8 w-auto fill-primary" xmlns="http://www.w3.org/2000/svg"><path d="M9.82 5.09h1.93V2.5H6.28v2.59h1.83c.96 0 .96.06.96 1.15v10.15l-4.5-12.2h-2.3L.02 18.91l-.02-13.8c0-1.12.02-1.15 1.15-1.15h1.94V2.5H.5v1.46h.88c.7 0 .86.23.86.8v15.93h2.6L10.38 6.6l5.72 14.09h2.51V4.76c0-.57.16-.8.86-.8h.88V2.5h-4.32v1.46h1.94c1.13 0 1.15.03 1.15 1.15l.02 13.06L14.6 4.21h-2.3l-3.3 11.2V6.24c0-1.09 0-1.15.82-1.15z"/></svg>
+
+            {/* Brides */}
+            <svg viewBox="0 0 100 30" className="h-8 w-auto fill-primary" xmlns="http://www.w3.org/2000/svg"><text x="0" y="20" fontFamily="serif" fontSize="24" fontWeight="bold">BRIDES</text></svg>
+
+            {/* The Knot (Mock) */}
+            <svg viewBox="0 0 120 30" className="h-8 w-auto fill-primary" xmlns="http://www.w3.org/2000/svg"><text x="0" y="20" fontFamily="sans-serif" fontSize="20" fontWeight="bold">The Knot</text></svg>
+
+            {/* Martha Stewart Weddings (Mock) */}
+            <svg viewBox="0 0 250 30" className="h-8 w-auto fill-primary" xmlns="http://www.w3.org/2000/svg"><text x="0" y="20" fontFamily="serif" fontSize="20">Martha Stewart Weddings</text></svg>
+            
+             {/* Bazaar (Mock) */}
+             <svg viewBox="0 0 100 30" className="h-8 w-auto fill-primary" xmlns="http://www.w3.org/2000/svg"><text x="0" y="20" fontFamily="serif" fontSize="22" fontWeight="bold">BAZAAR</text></svg>
+
+          </div>
+        </div>
       </div>
     </section>
   );
