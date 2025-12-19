@@ -100,11 +100,25 @@ export function Services() {
   }, []);
 
   return (
-    <section ref={containerRef} id="services" className="relative w-full bg-background border-b border-border">
-      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2">
+    <section id="services" className="relative w-full bg-background border-b border-border">
+      
+      {/* Intro Header */}
+      <div className="max-w-[1400px] mx-auto pt-24 pb-12 px-6 lg:px-16">
+        <div className="max-w-3xl">
+          <span className="font-mono text-accent text-xs tracking-widest uppercase mb-6 block">
+            Our Services
+          </span>
+          <h2 className="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.1] text-primary">
+            Everything you need,<br />
+            <span className="text-secondary/70">all in one place.</span>
+          </h2>
+        </div>
+      </div>
+
+      <div ref={containerRef} className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 relative">
         
         {/* Left Column - Sticky Visual */}
-        <div className="service-visual h-[50vh] lg:h-screen sticky top-0 flex flex-col justify-center items-center p-6 lg:p-12 overflow-hidden bg-surface/30">
+        <div className="service-visual h-[50vh] lg:h-screen sticky top-0 flex flex-col justify-center items-center p-6 lg:p-12 overflow-hidden bg-background">
           <div className="relative w-full aspect-[4/3] lg:aspect-square max-w-xl rounded-2xl overflow-hidden shadow-2xl border border-border">
             {SERVICES.map((service, index) => (
               <div
@@ -138,17 +152,6 @@ export function Services() {
 
         {/* Right Column - Scrolling Content */}
         <div ref={rightColumnRef} className="flex flex-col py-12 lg:py-24 px-6 lg:px-16 gap-[50vh]">
-          {/* Header */}
-          <div className="mb-12">
-             <span className="font-mono text-accent text-xs tracking-widest uppercase mb-4 block">
-              Our Services
-            </span>
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-tight text-primary">
-              Everything you need,<br />
-              <span className="text-secondary">all in one place.</span>
-            </h2>
-          </div>
-
           {/* Service Items */}
           {SERVICES.map((service, index) => (
             <div 
