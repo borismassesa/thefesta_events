@@ -118,28 +118,6 @@ export function Navbar({ onMenuClick, isOpen }: { onMenuClick: () => void; isOpe
             </Link>
         </div>
 
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button 
-              className="text-secondary hover:text-primary transition-colors cursor-pointer p-2 rounded-full hover:bg-primary/5 flex items-center gap-2"
-              aria-label="Change Language"
-            >
-              <CurrentFlag className="w-5 h-5 rounded-sm shadow-sm object-cover" />
-              <span className="text-xs font-medium uppercase hidden sm:inline-block">{i18n.language.split('-')[0]}</span>
-            </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="min-w-[150px]">
-            <DropdownMenuItem onClick={() => toggleLanguage('en')} className="gap-2 cursor-pointer">
-              <FlagUK className="w-4 h-4 rounded-sm" />
-              <span>English</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => toggleLanguage('sw')} className="gap-2 cursor-pointer">
-              <FlagTZ className="w-4 h-4 rounded-sm" />
-              <span>Swahili</span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-        
         {/* Mobile Menu Button */}
         <button 
           onClick={onMenuClick}
@@ -170,6 +148,28 @@ export function Navbar({ onMenuClick, isOpen }: { onMenuClick: () => void; isOpe
              />
           </div>
         </button>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button 
+              className="text-secondary hover:text-primary transition-colors cursor-pointer p-2 rounded-full hover:bg-primary/5 flex items-center gap-2"
+              aria-label="Change Language"
+            >
+              <CurrentFlag className="w-5 h-5 rounded-sm shadow-sm object-cover" />
+              <span className="text-xs font-medium uppercase hidden sm:inline-block">{i18n.language.split('-')[0]}</span>
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="min-w-[150px]">
+            <DropdownMenuItem onClick={() => toggleLanguage('en')} className="gap-2 cursor-pointer">
+              <FlagUK className="w-4 h-4 rounded-sm" />
+              <span>English</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => toggleLanguage('sw')} className="gap-2 cursor-pointer">
+              <FlagTZ className="w-4 h-4 rounded-sm" />
+              <span>Swahili</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </nav>
   );
