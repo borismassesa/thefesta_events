@@ -50,6 +50,34 @@ i18n
             vendors: "Vendors",
             planning: "Planning",
             inspiration: "Inspiration"
+          },
+          about: {
+            title: "About Us",
+            headline: [
+              { text: "We are a planning", highlight: true },
+              { text: "intelligence engine" },
+              { text: "dedicated to" },
+              { text: "transforming how" },
+              { text: "couples" },
+              { text: "visualize", highlight: true },
+              { text: "their big day.", highlight: true },
+              { text: "With a team of" },
+              { text: "planners, engineers," },
+              { text: "and artists, we build" },
+              { text: "tools that empower" },
+              { text: "ambitious couples", highlight: true },
+              { text: "to design, organize," },
+              { text: "and celebrate at the" },
+              { text: "speed of" },
+              { text: "love.", highlight: true, italic: true }
+            ],
+            stats: {
+              weddings: "Weddings Planned",
+              satisfaction: "Couple Satisfaction",
+              guests: "Guests Managed",
+              rating: "Average Rating"
+            },
+            featured: "Featured in & Trusted By"
           }
         }
       },
@@ -91,6 +119,34 @@ i18n
             vendors: "Wauzaji",
             planning: "Mipango",
             inspiration: "Hamasa"
+          },
+          about: {
+            title: "Kuhusu Sisi",
+            headline: [
+              { text: "Sisi ni injini", highlight: true },
+              { text: "ya kupanga mipango" },
+              { text: "iliyojitolea" },
+              { text: "kubadilisha jinsi" },
+              { text: "wanandoa" },
+              { text: "wanavyoona", highlight: true },
+              { text: "siku yao kuu.", highlight: true },
+              { text: "Pamoja na timu ya" },
+              { text: "wapangaji, wahandisi," },
+              { text: "na wasanii, tunajenga" },
+              { text: "zana zinazowawezesha" },
+              { text: "wanandoa wenye malengo", highlight: true },
+              { text: "kubuni, kupanga," },
+              { text: "na kusherehekea kwa" },
+              { text: "kasi ya" },
+              { text: "upendo.", highlight: true, italic: true }
+            ],
+            stats: {
+              weddings: "Harusi Zilizopangwa",
+              satisfaction: "Kuridhika kwa Wanandoa",
+              guests: "Wageni Waliosimamiwa",
+              rating: "Wastani wa Ukadiriaji"
+            },
+            featured: "Inaangaziwa na Kuaminiwa Na"
           }
         }
       }

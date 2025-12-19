@@ -2,11 +2,13 @@ import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function About() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -63,7 +65,16 @@ export function About() {
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, []); // Depend on t to re-run animations on language change if needed, but might be jarring. 
+  // Ideally, we just re-render. Animations might need reset if text length changes drastically.
+  
+  // To handle animation refresh on language change:
+  useEffect(() => {
+      ScrollTrigger.refresh();
+  }, [t]);
+
+
+  const headlineParts = t('about.headline', { returnObjects: true }) as Array<{ text: string, highlight?: boolean, italic?: boolean }>;
 
   return (
     <section ref={containerRef} className="relative w-full bg-surface py-32 lg:py-48 overflow-hidden">
@@ -75,7 +86,7 @@ export function About() {
           <div className="flex items-center justify-center md:justify-start gap-3">
              <span className="w-12 h-[1px] bg-accent"></span>
              <span className="font-mono text-accent text-xs tracking-widest uppercase">
-               About Us
+               {t('about.title')}
              </span>
              <span className="md:hidden w-12 h-[1px] bg-accent"></span>
           </div>
@@ -87,24 +98,7 @@ export function About() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[80%] bg-accent/10 blur-[120px] -z-10 rounded-full pointer-events-none"></div>
 
           <h3 className="leading-[1.1] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-primary/40 tracking-tight max-w-6xl">
-            {[
-              { text: "We are a planning", highlight: true },
-              { text: "intelligence engine" },
-              { text: "dedicated to" },
-              { text: "transforming how" },
-              { text: "couples" },
-              { text: "visualize", highlight: true },
-              { text: "their big day.", highlight: true },
-              { text: "With a team of" },
-              { text: "planners, engineers," },
-              { text: "and artists, we build" },
-              { text: "tools that empower" },
-              { text: "ambitious couples", highlight: true },
-              { text: "to design, organize," },
-              { text: "and celebrate at the" },
-              { text: "speed of" },
-              { text: "love.", highlight: true, italic: true }
-            ].map((phrase, i) => (
+            {headlineParts.map((phrase, i) => (
               <span key={i} className="inline mr-2 sm:mr-3">
                 {phrase.text.split(" ").map((word, j) => (
                   <span key={j} className={`reveal-text inline-block mr-2 sm:mr-3 ${phrase.italic ? 'font-serif italic font-normal text-accent' : ''} ${phrase.highlight && !phrase.italic ? 'text-primary' : ''}`}>
@@ -124,7 +118,7 @@ export function About() {
               15k+
             </div>
             <div className="text-sm sm:text-base md:text-xl font-medium pl-1 text-secondary">
-              Weddings Planned
+              {t('about.stats.weddings')}
             </div>
           </div>
 
@@ -134,7 +128,7 @@ export function About() {
               99%
             </div>
             <div className="text-sm sm:text-base md:text-xl font-medium pl-1 text-secondary">
-              Couple Satisfaction
+              {t('about.stats.satisfaction')}
             </div>
           </div>
 
@@ -144,7 +138,7 @@ export function About() {
               2M+
             </div>
             <div className="text-sm sm:text-base md:text-xl font-medium pl-1 text-secondary">
-              Guests Managed
+              {t('about.stats.guests')}
             </div>
           </div>
 
@@ -154,7 +148,7 @@ export function About() {
               4.9
             </div>
             <div className="text-sm sm:text-base md:text-xl font-medium pl-1 text-secondary">
-              Average Rating
+              {t('about.stats.rating')}
             </div>
           </div>
         </div>
@@ -162,7 +156,7 @@ export function About() {
         {/* Company Logos */}
         <div className="mt-16 md:mt-24 animate-on-scroll">
           <p className="text-sm md:text-lg font-medium mb-8 uppercase tracking-widest text-center md:text-left text-secondary">
-            Featured in & Trusted By
+            {t('about.featured')}
           </p>
           <div className="flex flex-wrap gap-6 md:gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500 gap-x-8 gap-y-8 items-center justify-between">
             
