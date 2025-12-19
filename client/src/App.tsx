@@ -5,11 +5,13 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "next-themes";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import ServiceDetail from "@/pages/ServiceDetail";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/services/:id" component={ServiceDetail} />
       <Route component={NotFound} />
     </Switch>
   );
