@@ -97,7 +97,6 @@ function TypingEffect({ words }: { words: string[] }) {
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const visualRef = useRef<HTMLDivElement>(null);
-  const wrapperRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
   const [activeTab, setActiveTab] = useState('venues');
@@ -137,10 +136,10 @@ export function Hero() {
         }, 0);
 
         // Scroll: Visual expands
-        const startLeft = wrapperRef.current!.offsetLeft;
-        const startTop = wrapperRef.current!.offsetTop;
-        const startWidth = wrapperRef.current!.offsetWidth;
-        const startHeight = wrapperRef.current!.offsetHeight;
+        const startLeft = visualRef.current!.offsetLeft;
+        const startTop = visualRef.current!.offsetTop;
+        const startWidth = visualRef.current!.offsetWidth;
+        const startHeight = visualRef.current!.offsetHeight;
 
         const scrollTl = gsap.timeline({
           scrollTrigger: {
@@ -148,8 +147,7 @@ export function Hero() {
             start: "top top",
             end: "+=150%",
             pin: true,
-            scrub: true,
-            invalidateOnRefresh: true
+            scrub: true
           }
         });
 
@@ -163,15 +161,15 @@ export function Hero() {
         scrollTl.fromTo(visualRef.current, 
           {
             position: 'absolute',
-            left: () => wrapperRef.current!.offsetLeft,
-            top: () => wrapperRef.current!.offsetTop,
-            width: () => wrapperRef.current!.offsetWidth,
-            height: () => wrapperRef.current!.offsetHeight,
+            left: startLeft,
+            top: startTop,
+            width: startWidth,
+            height: startHeight,
             borderRadius: "2.5rem",
             zIndex: 40,
             boxShadow: "0 0 0 rgba(0,0,0,0)",
             xPercent: 0,
-            // opacity: 1 - Removed to avoid conflict with intro animation
+            opacity: 1
           },
           {
             left: "50%",
@@ -349,8 +347,7 @@ export function Hero() {
         </div>
 
         {/* Hero Visual - Video Carousel */}
-        <div ref={wrapperRef} className="hero-visual lg:block w-full aspect-[4/3]">
-          <div ref={visualRef} className="w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl group bg-surface border border-border">
+        <div ref={visualRef} className="hero-visual lg:block relative w-full aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl group bg-surface border border-border z-20">
           
           {HERO_SLIDES.map((slide, index) => (
             <div 
@@ -399,7 +396,6 @@ export function Hero() {
               ))}
           </div>
 
-          </div>
         </div>
       </section>
     </div>
