@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { useTheme } from "next-themes";
-import { Moon, Sun, Globe } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import {
   DropdownMenu,
@@ -9,6 +9,30 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
+// Simple Flag Components
+const FlagUK = ({ className = "w-5 h-5" }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+    <clipPath id="t">
+      <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/>
+    </clipPath>
+    <path d="M0,0 v30 h60 v-30 z" fill="#00247d"/>
+    <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/>
+    <path d="M0,0 L60,30 M60,0 L0,30" clipPath="url(#t)" stroke="#cf142b" strokeWidth="4"/>
+    <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10"/>
+    <path d="M30,0 v30 M0,15 h60" stroke="#cf142b" strokeWidth="6"/>
+  </svg>
+);
+
+const FlagTZ = ({ className = "w-5 h-5" }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,0 h60 v40 h-60 z" fill="#1eb53a"/>
+    <path d="M0,40 h60 v-40 z" fill="#00a3dd"/>
+    <path d="M0,40 L60,0" stroke="#000" strokeWidth="12"/>
+    <path d="M0,40 L60,0" stroke="#fcd116" strokeWidth="3.5"/>
+    <path d="M0,40 L60,0" stroke="#000" strokeWidth="11"/>
+  </svg>
+);
 
 export function Navbar({ onMenuClick, isOpen }: { onMenuClick: () => void; isOpen?: boolean }) {
   const { theme, setTheme } = useTheme();
@@ -36,6 +60,8 @@ export function Navbar({ onMenuClick, isOpen }: { onMenuClick: () => void; isOpe
   const toggleLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
   };
+
+  const CurrentFlag = i18n.language.startsWith('sw') ? FlagTZ : FlagUK;
 
   return (
     <nav 
@@ -74,19 +100,21 @@ export function Navbar({ onMenuClick, isOpen }: { onMenuClick: () => void; isOpe
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button 
-              className="text-secondary hover:text-primary transition-colors cursor-pointer p-2 rounded-full hover:bg-primary/5 flex items-center gap-1"
+              className="text-secondary hover:text-primary transition-colors cursor-pointer p-2 rounded-full hover:bg-primary/5 flex items-center gap-2"
               aria-label="Change Language"
             >
-              <Globe size={20} />
+              <CurrentFlag className="w-5 h-5 rounded-sm shadow-sm object-cover" />
               <span className="text-xs font-medium uppercase hidden sm:inline-block">{i18n.language.split('-')[0]}</span>
             </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem onClick={() => toggleLanguage('en')}>
-              English
+          <DropdownMenuContent align="end" className="min-w-[150px]">
+            <DropdownMenuItem onClick={() => toggleLanguage('en')} className="gap-2 cursor-pointer">
+              <FlagUK className="w-4 h-4 rounded-sm" />
+              <span>English</span>
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => toggleLanguage('sw')}>
-              Swahili
+            <DropdownMenuItem onClick={() => toggleLanguage('sw')} className="gap-2 cursor-pointer">
+              <FlagTZ className="w-4 h-4 rounded-sm" />
+              <span>Swahili</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
