@@ -114,8 +114,8 @@ export default function Signup() {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-primary">
+              <div className="relative group">
+                <label className="absolute -top-2 left-2 bg-background px-1 text-xs font-medium text-primary/80 group-focus-within:text-primary transition-colors z-10">
                   First Name
                 </label>
                 <input
@@ -125,8 +125,8 @@ export default function Signup() {
                   required
                 />
               </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-primary">
+              <div className="relative group">
+                <label className="absolute -top-2 left-2 bg-background px-1 text-xs font-medium text-primary/80 group-focus-within:text-primary transition-colors z-10">
                   Last Name
                 </label>
                 <input
@@ -138,8 +138,8 @@ export default function Signup() {
               </div>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-primary">
+            <div className="relative group">
+              <label className="absolute -top-2 left-2 bg-background px-1 text-xs font-medium text-primary/80 group-focus-within:text-primary transition-colors z-10">
                 Email
               </label>
               <input
@@ -151,10 +151,10 @@ export default function Signup() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-primary">
-                Password
-              </label>
-              <div className="relative">
+               <div className="relative group">
+                <label className="absolute -top-2 left-2 bg-background px-1 text-xs font-medium text-primary/80 group-focus-within:text-primary transition-colors z-10">
+                  Password
+                </label>
                 <input
                   type={showPassword ? "text" : "password"}
                   className="flex h-12 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 pr-10"

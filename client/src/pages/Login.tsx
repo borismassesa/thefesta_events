@@ -69,8 +69,8 @@ export default function Login() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-2">
-              <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-primary">
+            <div className="relative group">
+              <label className="absolute -top-2 left-2 bg-background px-1 text-xs font-medium text-primary/80 group-focus-within:text-primary transition-colors z-10">
                 Email
               </label>
               <input
@@ -83,16 +83,17 @@ export default function Login() {
 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-primary">
-                  Password
-                </label>
+                <div className="h-2"></div> {/* Spacer for alignment if label was here */}
                 <Link href="/forgot-password">
-                  <a className="text-xs text-primary/60 hover:text-primary transition-colors">
+                  <a className="text-xs text-primary/60 hover:text-primary transition-colors absolute right-0 -top-6">
                     Forgot password?
                   </a>
                 </Link>
               </div>
-              <div className="relative">
+              <div className="relative group mt-0">
+                 <label className="absolute -top-2 left-2 bg-background px-1 text-xs font-medium text-primary/80 group-focus-within:text-primary transition-colors z-10">
+                  Password
+                </label>
                 <input
                   type={showPassword ? "text" : "password"}
                   className="flex h-12 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 pr-10"
