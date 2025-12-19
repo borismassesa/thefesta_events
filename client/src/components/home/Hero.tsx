@@ -158,51 +158,42 @@ export function Hero() {
                 ease: "power2.out"
              }, 0);
 
-             // 2. Animate visual using transforms only (performant & safe)
-             // Instead of changing layout properties, we just scale and translate
-             // to make it look like it fills the screen.
-             
-             // Calculate scaling needed
-             const viewportWidth = window.innerWidth;
-             const viewportHeight = window.innerHeight;
-             const targetWidth = viewportWidth * 0.94; // 94vw
-             const targetHeight = viewportHeight * 0.90; // 90vh
-             
-             const currentRect = visualRef.current.getBoundingClientRect();
-             const currentWidth = currentRect.width;
-             const currentHeight = currentRect.height;
-             
-             const scaleX = targetWidth / currentWidth;
-             const scaleY = targetHeight / currentHeight;
-             
-             // Calculate translation needed to center it
-             // Current center relative to viewport
-             const currentCenterX = currentRect.left + currentWidth / 2;
-             const currentCenterY = currentRect.top + currentHeight / 2;
-             
-             // Target center (viewport center)
-             const targetCenterX = viewportWidth / 2;
-             const targetCenterY = viewportHeight / 2;
-             
-             const x = targetCenterX - currentCenterX;
-             const y = targetCenterY - currentCenterY;
+             // 2. Animate visual using Layout properties (width/height/top/left)
+             // We switch to layout animation to ensure object-fit: cover works correctly
+             // and avoids stretching/distortion or shrinking of content.
+             // Modern browsers handle this well enough for a hero scroll effect.
 
-             scrollTl.to(visualRef.current, {
-                x: x,
-                y: y,
-                scaleX: scaleX,
-                scaleY: scaleY,
+             scrollTl.fromTo(visualRef.current, 
+              {
+                position: 'absolute',
+                left: startLeft,
+                top: startTop,
+                width: startWidth,
+                height: startHeight,
+                borderRadius: "2.5rem",
+                zIndex: 40,
+                boxShadow: "0 0 0 rgba(0,0,0,0)",
+                transform: "none" // Ensure no transforms are interfering
+              },
+              {
+                left: "50%",
+                top: "50%",
+                xPercent: -50,
+                yPercent: -50,
+                width: "94vw",
+                height: "90vh",
                 borderRadius: "1.5rem",
                 boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
                 duration: 1,
-                ease: "power3.inOut",
-                zIndex: 50 // Ensure it's on top
-             }, 0);
-             
-             // Counter-scale the video so it doesn't look stretched
-             scrollTl.fromTo(".hero-video", 
+                ease: "power3.inOut"
+              }, 
+              0
+            );
+            
+            // Just ensure video scale is normal
+            scrollTl.fromTo(".hero-video", 
                 { scale: 1.1 }, 
-                { scaleX: 1/scaleX * 1.1, scaleY: 1/scaleY * 1.1, duration: 1, ease: "power3.inOut" }, 
+                { scale: 1, duration: 1, ease: "power3.inOut" }, 
                 0
              );
         };
