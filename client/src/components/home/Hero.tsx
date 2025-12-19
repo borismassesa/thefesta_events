@@ -3,8 +3,6 @@ import { Search, Sparkles } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
-import { useTheme } from "next-themes";
-import LightRays from "@/components/ui/LightRays";
 
 const HERO_SLIDES = [
   {
@@ -88,7 +86,6 @@ function TypingEffect({ words }: { words: string[] }) {
 
 export function Hero() {
   const { t } = useTranslation();
-  const { resolvedTheme } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
   const visualRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -262,27 +259,6 @@ export function Hero() {
 
   return (
     <div ref={containerRef} className="relative min-h-[100dvh] w-full overflow-hidden border-b border-border bg-background flex flex-col justify-center">
-      
-      {/* Light Rays - Mobile Dark Mode Only */}
-      {resolvedTheme === 'dark' && (
-        <div className="absolute inset-0 pointer-events-none md:hidden z-[0]">
-          <div style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}>
-            <LightRays
-              raysOrigin="top-center"
-              raysColor="#ffffff"
-              raysSpeed={1.5}
-              lightSpread={0.8}
-              rayLength={1.2}
-              followMouse={true}
-              mouseInfluence={0.1}
-              noiseAmount={0.1}
-              distortion={0.05}
-              className="custom-rays opacity-80"
-            />
-          </div>
-        </div>
-      )}
-
       <section id="hero" className="w-full max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-center py-20 md:py-0">
         
         {/* Text Content */}
