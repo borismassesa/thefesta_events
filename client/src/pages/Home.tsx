@@ -10,6 +10,7 @@ import { Services } from "@/components/home/Services";
 import { Issues } from "@/components/home/Issues";
 import { Reviews } from "@/components/home/Reviews";
 import { FAQ } from "@/components/home/FAQ";
+import { CTA } from "@/components/home/CTA";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,6 +77,7 @@ export default function Home() {
         <Issues />
         <Reviews />
         <FAQ />
+        <CTA />
       </main>
     </div>
   );
