@@ -108,10 +108,12 @@ export function Issues() {
                     <p className="text-sm text-zinc-300 line-clamp-2 mb-6">
                       {issue.desc}
                     </p>
-                    <button className="flex items-center gap-2 text-sm font-medium uppercase tracking-wider hover:text-accent transition-colors">
-                      View Article
-                      <ArrowUpRight className="w-4 h-4" />
-                    </button>
+                    <div className="flex justify-between items-end w-full">
+                      <button className="ml-auto flex items-center gap-2 text-sm font-medium uppercase tracking-wider hover:text-accent transition-colors">
+                        View Article
+                        <ArrowUpRight className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
