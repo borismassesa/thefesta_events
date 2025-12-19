@@ -16,25 +16,49 @@ export function About() {
       animElements.forEach((el, index) => {
         gsap.fromTo(el, 
           { 
-            y: 50, 
+            y: 30, 
             opacity: 0,
-            filter: "blur(10px)"
           },
           {
             y: 0,
             opacity: 1,
-            filter: "blur(0px)",
             duration: 1,
             ease: "power3.out",
             scrollTrigger: {
               trigger: el,
-              start: "top 85%",
+              start: "top 90%",
               toggleActions: "play none none reverse"
             },
-            delay: index * 0.1 // Stagger effect based on order
+            delay: index * 0.1
           }
         );
       });
+
+      // Line-by-line reveal for the main text
+      const textLines = gsap.utils.toArray<HTMLElement>(".reveal-text");
+      
+      gsap.fromTo(textLines, 
+        { 
+          y: 50, 
+          opacity: 0,
+          filter: "blur(10px)",
+          transformOrigin: "left top"
+        },
+        {
+          y: 0,
+          opacity: 1,
+          filter: "blur(0px)",
+          duration: 1,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".main-headline",
+            start: "top 80%",
+            end: "bottom 60%",
+            scrub: 1
+          }
+        }
+      );
 
     }, containerRef);
 
@@ -57,12 +81,25 @@ export function About() {
         </div>
 
         {/* Main Headline / Text Block */}
-        <div className="relative animate-on-scroll">
+        <div className="relative main-headline">
           {/* Subtle background glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[80%] bg-accent/10 blur-[120px] -z-10 rounded-full pointer-events-none"></div>
 
           <h3 className="leading-[1.1] md:text-6xl lg:text-7xl text-5xl font-medium text-primary/40 tracking-tight max-w-6xl">
-            <span className="text-primary">We are a planning intelligence engine</span> dedicated to transforming how couples <span className="text-primary">visualize their big day.</span> With a team of planners, engineers, and artists, we build tools that empower <span className="text-primary">ambitious couples</span> to design, organize, and celebrate at the speed of <span className="text-primary italic font-serif text-accent">love.</span>
+            <span className="reveal-text inline-block mr-3"><span className="text-primary">We are a planning</span></span>
+            <span className="reveal-text inline-block mr-3"><span className="text-primary">intelligence engine</span></span>
+            <span className="reveal-text inline-block mr-3">dedicated to</span>
+            <span className="reveal-text inline-block mr-3">transforming how</span>
+            <span className="reveal-text inline-block mr-3">couples <span className="text-primary">visualize</span></span>
+            <span className="reveal-text inline-block mr-3"><span className="text-primary">their big day.</span></span>
+            <span className="reveal-text inline-block mr-3">With a team of</span>
+            <span className="reveal-text inline-block mr-3">planners, engineers,</span>
+            <span className="reveal-text inline-block mr-3">and artists, we build</span>
+            <span className="reveal-text inline-block mr-3">tools that empower</span>
+            <span className="reveal-text inline-block mr-3"><span className="text-primary">ambitious couples</span></span>
+            <span className="reveal-text inline-block mr-3">to design, organize,</span>
+            <span className="reveal-text inline-block mr-3">and celebrate at the</span>
+            <span className="reveal-text inline-block mr-3">speed of <span className="text-primary italic font-serif text-accent">love.</span></span>
           </h3>
         </div>
 
