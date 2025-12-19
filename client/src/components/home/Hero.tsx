@@ -214,7 +214,7 @@ export function Hero() {
       <section id="hero" className="w-full h-full max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         
         {/* Text Content */}
-        <div ref={contentRef} className="hero-content relative flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 z-10 w-full max-w-xl mx-auto lg:mx-0">
+        <div ref={contentRef} className="hero-content relative flex flex-col items-center lg:items-start text-center lg:text-left space-y-2 z-10 w-full max-w-xl mx-auto lg:mx-0">
           
           {/* Headline with Masked Reveal */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.05] tracking-tight max-w-[90%] lg:max-w-none min-h-[120px] md:min-h-[140px] lg:min-h-[160px]">
