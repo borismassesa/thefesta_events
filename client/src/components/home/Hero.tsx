@@ -48,7 +48,7 @@ const HERO_SLIDES = [
 
 function TypingEffect({ words }: { words: string[] }) {
   const [index, setIndex] = useState(0);
-  const [subIndex, setSubIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(words[0].length);
   const [reverse, setReverse] = useState(false);
   const [blink, setBlink] = useState(true);
 
