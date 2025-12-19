@@ -254,37 +254,37 @@ function ReviewCard({ review }: { review: typeof REVIEWS[0] }) {
   }
 
   return (
-    <div className="bg-background border border-border p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-500 group w-full relative overflow-hidden">
-      {/* Decorative Quote Mark */}
-      <div className="absolute top-6 right-8 text-9xl font-serif text-primary/5 select-none pointer-events-none leading-none">
+    <div className="bg-background border border-border/60 p-6 rounded-2xl shadow-[0_2px_10px_-2px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_20px_-4px_rgba(0,0,0,0.1)] transition-all duration-300 group w-full relative overflow-hidden flex flex-col h-full">
+       {/* Decorative Quote Mark - Smaller and more subtle */}
+      <div className="absolute top-4 right-6 text-6xl font-serif text-primary/5 select-none pointer-events-none leading-none">
         "
       </div>
 
       <div className="relative z-10 flex flex-col h-full">
         {/* Top: Stars */}
-        <div className="flex gap-1 mb-6">
+        <div className="flex gap-0.5 mb-4">
           {[...Array(5)].map((_, i) => (
             <Star 
               key={i} 
-              size={16} 
-              className={`${i < review.rating ? "fill-amber-400 text-amber-400" : "fill-border text-border/40"}`} 
+              size={14} 
+              className={`${i < review.rating ? "fill-amber-400 text-amber-400" : "fill-border text-border/30"}`} 
             />
           ))}
         </div>
 
-        {/* Middle: Content */}
-        <p className="text-primary text-lg font-medium leading-relaxed mb-8 relative">
+        {/* Middle: Content - Smaller text, tighter leading */}
+        <p className="text-primary/90 text-[15px] font-medium leading-relaxed mb-6 relative">
           "{review.content}"
         </p>
 
-        {/* Bottom: User Info */}
-        <div className="mt-auto pt-6 border-t border-border/50 flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full overflow-hidden border border-border flex-shrink-0 bg-surface">
+        {/* Bottom: User Info - Compact */}
+        <div className="mt-auto pt-4 border-t border-border/50 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full overflow-hidden border border-border flex-shrink-0 bg-surface">
             <img src={review.avatar} alt={review.name} className="w-full h-full object-cover" />
           </div>
-          <div className="flex flex-col items-start gap-1.5">
-            <h4 className="font-bold text-primary text-sm tracking-tight">{review.name}</h4>
-            <span className={`text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${badgeColor}`}>
+          <div className="flex flex-col items-start gap-1">
+            <h4 className="font-bold text-primary text-xs tracking-tight">{review.name}</h4>
+            <span className={`text-[9px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border ${badgeColor}`}>
               {review.role}
             </span>
           </div>
