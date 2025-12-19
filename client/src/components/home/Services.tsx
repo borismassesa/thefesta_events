@@ -153,15 +153,26 @@ export function Services() {
     <section id="services" className="relative w-full bg-background border-b border-border">
       
       {/* Intro Header */}
-      <div className="max-w-[1400px] mx-auto pt-24 pb-12 px-6 lg:px-16">
-        <div className="max-w-3xl">
-          <span className="font-mono text-accent text-xs tracking-widest uppercase mb-6 block">
-            Our Services
-          </span>
-          <h2 className="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.1] text-primary">
-            Everything you need,<br />
-            <span className="text-secondary/70">all in one place.</span>
-          </h2>
+      <div className="max-w-[1400px] mx-auto pt-24 pb-12 px-6 lg:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-end border-b border-border/50 pb-12">
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="w-12 h-[1px] bg-accent"></span>
+              <span className="font-mono text-accent text-xs tracking-widest uppercase">
+                Our Services
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary leading-[1.1]">
+              Everything you need, <br />
+              <span className="font-serif italic font-normal text-secondary">all in one place.</span>
+            </h2>
+          </div>
+          
+          <div className="flex flex-col items-start md:items-end gap-6">
+            <p className="text-secondary text-base md:text-lg max-w-md md:text-right leading-relaxed font-light">
+              From venue hunting to day-of coordination, access the essential tools and curated connections to bring your unique vision to life effortlessly.
+            </p>
+          </div>
         </div>
       </div>
 
