@@ -210,8 +210,8 @@ export function Hero() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative h-screen w-full overflow-hidden border-b border-border bg-background">
-      <section id="hero" className="w-full h-full max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+    <div ref={containerRef} className="relative min-h-[100dvh] w-full overflow-hidden border-b border-border bg-background flex flex-col justify-center">
+      <section id="hero" className="w-full max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center py-20 lg:py-0">
         
         {/* Text Content */}
         <div ref={contentRef} className="hero-content relative flex flex-col items-center lg:items-start text-center lg:text-left space-y-2 z-10 w-full max-w-xl mx-auto lg:mx-0">
@@ -276,7 +276,7 @@ export function Hero() {
           </div>
 
           {/* Social Proof Badge - Updated to match design */}
-          <div className="hero-fade flex items-center gap-4 mt-8 pl-2 pr-6 py-2 bg-surface rounded-full shadow-sm border border-border w-fit hover:scale-105 transition-transform duration-300 cursor-default">
+          <div className="hero-fade flex items-center gap-4 mt-8 pl-2 pr-6 py-2 bg-surface rounded-full shadow-sm border border-border w-fit hover:scale-105 transition-transform duration-300 cursor-default hidden md:flex">
              <div className="flex -space-x-3">
                {[10, 15, 20].map((i) => (
                  <div key={i} className="w-10 h-10 rounded-full border-[3px] border-surface overflow-hidden relative ring-1 ring-border">
@@ -296,7 +296,7 @@ export function Hero() {
         </div>
 
         {/* Hero Visual - Video Carousel */}
-        <div ref={visualRef} className="hero-visual hidden lg:block relative w-full aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl group bg-surface border border-border z-20">
+        <div ref={visualRef} className="hero-visual relative w-full aspect-video lg:aspect-[4/3] rounded-[1.5rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl group bg-surface border border-border z-20 mt-8 lg:mt-0">
           
           {HERO_SLIDES.map((slide, index) => (
             <div 
