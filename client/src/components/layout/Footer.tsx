@@ -24,7 +24,10 @@ export function Footer() {
           {/* Brand Column */}
           <div className="flex flex-col gap-6">
             <Link href="/">
-              <a className="font-serif text-2xl md:text-3xl text-primary hover:text-primary/80 transition-colors select-none inline-block">
+              <a 
+                className="font-serif text-2xl md:text-3xl text-primary hover:text-primary/80 transition-colors select-none inline-block"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
                 TheFesta
               </a>
             </Link>
