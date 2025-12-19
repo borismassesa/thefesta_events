@@ -89,49 +89,54 @@ export function Services() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Pin the left side content
-      ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: "top top",
-        end: "bottom bottom",
-        pin: ".service-visual",
-        scrub: true,
+      ScrollTrigger.matchMedia({
+        // Desktop
+        "(min-width: 1024px)": function() {
+          ScrollTrigger.create({
+            trigger: containerRef.current,
+            start: "top top",
+            end: "bottom bottom",
+            pin: ".service-visual",
+            scrub: true,
+          });
+          
+          // Detect active section for image swapping
+          const sections = gsap.utils.toArray<HTMLElement>(".service-item");
+          sections.forEach((section, i) => {
+            ScrollTrigger.create({
+              trigger: section,
+              start: "top center",
+              end: "bottom center",
+              onToggle: (self) => {
+                if (self.isActive) {
+                  setActiveIndex(i);
+                }
+              }
+            });
+          });
+        }
       });
 
-      // Detect active section and animate text
+      // Text reveal animation (works on all screens)
       const sections = gsap.utils.toArray<HTMLElement>(".service-item");
-      sections.forEach((section, i) => {
-        // Active state for images
-        ScrollTrigger.create({
-          trigger: section,
-          start: "top center",
-          end: "bottom center",
-          onToggle: (self) => {
-            if (self.isActive) {
-              setActiveIndex(i);
-            }
-          }
-        });
-
-        // Text reveal animation
-        const content = section.querySelectorAll("h3, p, a");
+      sections.forEach((section) => {
+        const content = section.querySelectorAll("h3, p, a, .service-mobile-img");
         
         gsap.fromTo(content, 
           { 
-            y: 100, 
-            opacity: 0, 
-            scale: 0.95
+            y: 50, 
+            opacity: 0
           },
           {
             y: 0,
             opacity: 1,
-            scale: 1,
-            duration: 1,
+            duration: 0.8,
             stagger: 0.1,
             ease: "power3.out",
             scrollTrigger: {
               trigger: section,
-              start: "top 80%",
-              end: "top 40%",
+              start: "top 85%",
+              end: "top 50%",
               scrub: 1,
               toggleActions: "play none none reverse"
             }
@@ -162,8 +167,8 @@ export function Services() {
 
       <div ref={containerRef} className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 relative">
         
-        {/* Left Column - Sticky Visual */}
-        <div className="service-visual h-[50vh] lg:h-screen sticky top-0 flex flex-col justify-center items-center p-6 lg:p-12 overflow-hidden bg-background">
+        {/* Left Column - Sticky Visual (Desktop Only) */}
+        <div className="service-visual hidden lg:flex h-screen sticky top-0 flex-col justify-center items-center p-12 overflow-hidden bg-background">
           <div className="relative w-full aspect-[4/3] lg:aspect-square max-w-xl rounded-2xl overflow-hidden shadow-2xl border border-border">
             {SERVICES.map((service, index) => (
               <div
@@ -196,13 +201,22 @@ export function Services() {
         </div>
 
         {/* Right Column - Scrolling Content */}
-        <div ref={rightColumnRef} className="flex flex-col py-12 lg:py-24 px-6 lg:px-16 gap-24">
+        <div ref={rightColumnRef} className="flex flex-col py-12 lg:py-24 px-6 lg:px-16 gap-16 lg:gap-24">
           {/* Service Items */}
           {SERVICES.map((service, index) => (
             <div 
               key={service.id} 
-              className="service-item min-h-[50vh] flex flex-col justify-center"
+              className="service-item min-h-[40vh] lg:min-h-[50vh] flex flex-col justify-center"
             >
+              {/* Mobile Image */}
+              <div className="service-mobile-img lg:hidden w-full aspect-video rounded-xl overflow-hidden mb-6 shadow-lg">
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
               <h3 className="text-2xl md:text-3xl font-semibold text-primary mb-4">
                 {service.title}
               </h3>
