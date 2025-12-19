@@ -327,10 +327,10 @@ export function Hero() {
           </div>
 
           {/* Social Proof Badge - Updated to match design */}
-          <div className="hero-fade flex items-center gap-4 mt-8 pl-2 pr-6 py-2 bg-surface rounded-full shadow-sm border border-border w-fit hover:scale-105 transition-transform duration-300 cursor-default">
-             <div className="flex -space-x-3">
+          <div className="hero-fade flex items-center gap-3 sm:gap-4 mt-8 pl-2 pr-4 sm:pr-6 py-2 bg-surface rounded-full shadow-sm border border-border w-full sm:w-fit hover:scale-105 transition-transform duration-300 cursor-default max-w-full">
+             <div className="flex -space-x-3 flex-shrink-0">
                {[10, 15, 20].map((i) => (
-                 <div key={i} className="w-10 h-10 rounded-full border-[3px] border-surface overflow-hidden relative ring-1 ring-border">
+                 <div key={i} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-[3px] border-surface overflow-hidden relative ring-1 ring-border">
                     <img 
                       src={`https://picsum.photos/seed/${i}/100/100`} 
                       alt="User" 
@@ -339,7 +339,7 @@ export function Hero() {
                  </div>
                ))}
              </div>
-             <span className="text-sm text-secondary font-medium">
+             <span className="text-xs sm:text-sm text-secondary font-medium whitespace-nowrap overflow-hidden text-ellipsis">
                Join <span className="text-primary font-bold">250,000+</span> couples planning today
              </span>
           </div>
