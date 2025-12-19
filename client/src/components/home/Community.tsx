@@ -1,6 +1,7 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { BadgeCheck } from "lucide-react";
 import {
   HoverCard,
   HoverCardContent,
@@ -151,8 +152,8 @@ export function Community() {
                     "{vendor.quote}"
                   </p>
                   <div className="mt-1 flex items-center gap-1 text-xs text-secondary">
-                    <span className="w-2 h-2 rounded-full bg-green-500"></span>
-                    Verified Vendor
+                    <BadgeCheck className="w-3 h-3 text-primary fill-accent/20" />
+                    Verified Pro
                   </div>
                 </div>
               </HoverCardContent>
