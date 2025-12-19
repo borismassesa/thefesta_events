@@ -52,8 +52,8 @@ export default function ForgotPassword() {
       </div>
 
       {/* Right Side - Form */}
-      <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-8 sm:p-12 lg:p-24 pt-24 lg:pt-32 relative bg-background h-full overflow-y-auto">
-        <div className="w-full max-w-sm space-y-10">
+      <div className="w-full lg:w-1/2 flex flex-col justify-start items-center p-8 sm:p-12 lg:p-24 pt-24 lg:pt-32 relative bg-background h-full overflow-y-auto">
+        <div className="w-full max-w-sm space-y-10 pb-8">
           
           {/* Mobile Logo */}
           <div className="lg:hidden text-center mb-8">
