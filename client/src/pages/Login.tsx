@@ -175,7 +175,7 @@ export default function Login() {
             </Link>
           </div>
           
-          <div className="absolute top-8 right-8 lg:top-12 lg:right-12">
+          <div className="absolute top-8 left-8 lg:top-12 lg:left-12">
             <Link href="/">
               <a className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
                 <ArrowLeft className="mr-2 h-4 w-4" />

@@ -120,9 +120,9 @@ export default function ForgotPassword() {
             </div>
           )}
 
-          <div className="text-center">
+          <div className="absolute top-8 left-8 lg:top-12 lg:left-12">
             <Link href="/login">
-              <a className="flex items-center justify-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+              <a className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to login
               </a>
