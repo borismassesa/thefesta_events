@@ -71,7 +71,7 @@ export function About() {
       <div className="flex flex-col md:px-10 w-full max-w-7xl border-primary/10 border-t mx-auto pt-24 pr-6 pb-24 pl-6 relative">
         
         {/* Standard Section Header */}
-        <div className="flex justify-start mb-12 animate-on-scroll">
+        <div className="flex justify-center md:justify-start mb-12 animate-on-scroll">
           <div className="flex items-center justify-center md:justify-start gap-3">
              <span className="w-12 h-[1px] bg-accent"></span>
              <span className="font-mono text-accent text-xs tracking-widest uppercase">
