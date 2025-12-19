@@ -1,9 +1,14 @@
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const FAQS = [
   {
@@ -29,12 +34,59 @@ const FAQS = [
 ];
 
 export function FAQ() {
+  const containerRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const accordionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      
+      // Header Animation - Slide Up and Fade In
+      gsap.fromTo(headerRef.current,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 70%",
+          }
+        }
+      );
+
+      // Accordion Items Animation - Staggered Slide In
+      if (accordionRef.current) {
+        const items = accordionRef.current.querySelectorAll('.accordion-item-reveal');
+        
+        gsap.fromTo(items,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: accordionRef.current,
+              start: "top 75%",
+            }
+          }
+        );
+      }
+
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="py-24 lg:py-32 bg-background border-b border-border">
+    <section ref={containerRef} className="py-24 lg:py-32 bg-background border-b border-border">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
         
         {/* Left Column: Header */}
-        <div className="sticky top-32">
+        <div ref={headerRef} className="sticky top-32 opacity-0">
           <div className="flex items-center gap-3 mb-6">
             <span className="w-12 h-[1px] bg-accent"></span>
             <span className="font-mono text-accent text-xs tracking-widest uppercase">
@@ -51,10 +103,10 @@ export function FAQ() {
         </div>
 
         {/* Right Column: Accordion */}
-        <div className="w-full">
+        <div ref={accordionRef} className="w-full">
           <Accordion type="single" collapsible className="w-full">
             {FAQS.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border-border/60">
+              <AccordionItem key={index} value={`item-${index}`} className="border-border/60 accordion-item-reveal opacity-0">
                 <AccordionTrigger className="text-lg md:text-xl py-6 font-medium text-primary hover:text-accent transition-colors hover:no-underline">
                   {faq.question}
                 </AccordionTrigger>

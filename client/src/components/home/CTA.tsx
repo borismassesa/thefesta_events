@@ -27,19 +27,39 @@ export function CTA() {
 
       // Reveal animation
       gsap.fromTo(cardRef.current,
-        { y: 100, opacity: 0, scale: 0.95 },
+        { y: 150, opacity: 0, scale: 0.9 },
         {
           y: 0,
           opacity: 1,
           scale: 1,
-          duration: 1,
-          ease: "power3.out",
+          duration: 1.2,
+          ease: "power4.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 80%"
+            start: "top 85%"
           }
         }
       );
+
+      // Staggered Text Reveal
+      const elements = cardRef.current?.querySelectorAll("h2, p, .cta-button-group, .cta-trust");
+      if (elements) {
+        gsap.fromTo(elements,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "power2.out",
+            delay: 0.4, 
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 85%"
+            }
+          }
+        );
+      }
 
     }, containerRef);
 
@@ -75,7 +95,7 @@ export function CTA() {
             Sophisticated tools, curated vendors, and endless inspiration await.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-5 items-center w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row gap-5 items-center w-full sm:w-auto cta-button-group">
             <Link href="/signup">
               <a className="w-full sm:w-auto group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white text-black font-semibold text-lg transition-all hover:bg-zinc-200 hover:scale-105 shadow-[0_0_40px_-10px_rgba(255,255,255,0.5)]">
                 Get Started Free
@@ -89,7 +109,7 @@ export function CTA() {
             </Link>
           </div>
           
-          <div className="mt-12 flex items-center gap-8 opacity-60">
+          <div className="mt-12 flex items-center gap-8 opacity-60 cta-trust">
              {/* Simple Trust Indicators */}
              <div className="text-xs text-white uppercase tracking-widest font-medium">Trusted by 50k+ Couples</div>
              <div className="text-xs text-white uppercase tracking-widest font-medium">4.9/5 Rating</div>
