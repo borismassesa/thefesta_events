@@ -124,7 +124,7 @@ export function Community() {
       <div className="max-w-[1400px] mx-auto px-4 md:px-6 flex flex-col items-center">
         
         {/* Vendor Grid - Dense and centered */}
-        <div className="flex flex-wrap justify-center gap-1.5 md:gap-2 max-w-6xl mx-auto mb-16 mask-linear-fade">
+        <div className="flex flex-wrap justify-center gap-1.5 md:gap-2 max-w-[90rem] mx-auto mb-16 mask-linear-fade">
           {VENDORS.map((vendor, i) => (
              <HoverCard key={i} openDelay={0} closeDelay={100}>
               <HoverCardTrigger asChild>
