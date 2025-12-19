@@ -282,7 +282,7 @@ export function Hero() {
           </p>
 
           {/* Input Area Wrapper - Simplified */}
-          <div className="hero-fade w-full max-w-lg flex flex-col gap-4 mt-2">
+          <div className="hero-fade w-full max-w-lg flex flex-col gap-4 mt-6">
             
             {/* Quick Actions Row - Moved ABOVE search bar */}
             <div className="w-full flex justify-center lg:justify-start">
