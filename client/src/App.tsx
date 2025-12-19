@@ -6,11 +6,15 @@ import { ThemeProvider } from "next-themes";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import ServiceDetail from "@/pages/ServiceDetail";
+import Login from "@/pages/Login";
+import Signup from "@/pages/Signup";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/login" component={Login} />
+      <Route path="/signup" component={Signup} />
       <Route path="/services/:id" component={ServiceDetail} />
       <Route component={NotFound} />
     </Switch>
