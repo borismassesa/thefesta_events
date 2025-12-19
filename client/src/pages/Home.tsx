@@ -81,10 +81,10 @@ export default function Home() {
         <About />
         {/* <Marquee /> */}
         <Services />
+        <Community />
         <Issues />
         <Reviews />
         <FAQ />
-        <Community />
         <CTA />
       </main>
       
