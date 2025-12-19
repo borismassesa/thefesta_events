@@ -127,27 +127,38 @@ export function Hero() {
 
       // Desktop & Tablet Specifics
       mm.add("(min-width: 768px)", () => {
-        // Intro: Visual enters - Simplified to just fade/scale to avoid transform conflicts
+        // Intro: Visual enters
         tl.from(visualRef.current, {
-          scale: 0.95,
+          x: 100,
           opacity: 0,
           duration: 1.2,
           ease: "power3.out"
         }, 0);
 
-        // Scroll: Visual expands
-        // We use a simpler approach that doesn't rely on absolute positioning calculations which can be flaky
-        // Instead we just animate the container contents
+        // Scroll: Visual expands using robust Viewport coordinates
+        // We calculate offsets relative to the viewport (or pinned container) to avoid grid-based calculation errors on wide screens
         const scrollTl = gsap.timeline({
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top top",
-            end: "+=100%", // Reduced scroll distance
+            end: "+=150%",
             pin: true,
             scrub: true
           }
         });
 
+        // Get initial dimensions relative to viewport/container
+        // Since container is pinned, its viewport position is fixed at 0,0 mostly
+        const visualRect = visualRef.current!.getBoundingClientRect();
+        const containerRect = containerRef.current!.getBoundingClientRect();
+
+        // Calculate initial left/top relative to the container
+        const startLeft = visualRect.left - containerRect.left;
+        const startTop = visualRect.top - containerRect.top;
+        const startWidth = visualRect.width;
+        const startHeight = visualRect.height;
+
+        // Fade out content
         scrollTl.to(contentRef.current, {
           opacity: 0,
           y: -50,
@@ -155,15 +166,42 @@ export function Hero() {
           ease: "power2.out"
         }, 0);
 
-        // Instead of moving the visual to center (which breaks on wide screens due to offset calcs),
-        // we'll just scale it up slightly and keep it in place, or maybe just fade it out/parallax it.
-        // Let's try a subtle scale and parallax effect which is safer.
-        scrollTl.to(visualRef.current, {
-            scale: 1.1,
-            y: 50, // Move down slightly
+        // Animate visual from its grid position to full screen
+        // using absolute positioning relative to the container
+        scrollTl.fromTo(visualRef.current, 
+          {
+            position: 'absolute',
+            left: startLeft,
+            top: startTop,
+            width: startWidth,
+            height: startHeight,
+            borderRadius: "2.5rem",
+            zIndex: 40,
+            boxShadow: "0 0 0 rgba(0,0,0,0)",
+            xPercent: 0,
+            yPercent: 0,
+            opacity: 1,
+            // Reset transforms that might interfere
+            x: 0,
+            y: 0
+          },
+          {
+            left: "50%",
+            top: "50%",
+            xPercent: -50,
+            yPercent: -50,
+            width: "94vw",
+            height: "90vh",
+            borderRadius: "1.5rem",
+            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+            zIndex: 40,
             duration: 1,
-            ease: "none"
-        }, 0);
+            ease: "power3.inOut"
+          }, 
+          0
+        );
+
+        scrollTl.fromTo(".hero-video", { scale: 1.1 }, { scale: 1, duration: 1, ease: "power2.inOut" }, 0);
       });
 
       // Mobile Specifics
