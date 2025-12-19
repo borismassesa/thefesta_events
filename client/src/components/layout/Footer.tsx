@@ -14,7 +14,7 @@ export function Footer() {
               <img 
                 src={logo} 
                 alt="The Festa" 
-                className="h-10 md:h-14 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" 
+                className="h-14 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" 
               />
             </Link>
             <p className="text-secondary text-sm leading-relaxed max-w-xs">
