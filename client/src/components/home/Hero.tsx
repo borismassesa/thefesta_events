@@ -265,7 +265,7 @@ export function Hero() {
       
       {/* Light Rays - Mobile Dark Mode Only */}
       {resolvedTheme === 'dark' && (
-        <div className="absolute inset-0 pointer-events-none md:hidden z-[1] overflow-hidden mix-blend-screen">
+        <div className="absolute inset-0 pointer-events-none md:hidden z-[0]">
           <div style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}>
             <LightRays
               raysOrigin="top-center"
@@ -277,7 +277,7 @@ export function Hero() {
               mouseInfluence={0.1}
               noiseAmount={0.1}
               distortion={0.05}
-              className="custom-rays opacity-60"
+              className="custom-rays opacity-80"
             />
           </div>
         </div>
