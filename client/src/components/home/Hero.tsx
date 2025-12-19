@@ -46,6 +46,8 @@ const HERO_SLIDES = [
   },
 ];
 
+const TYPING_PHRASES = ["Celebrate More.", "Stress Less.", "Dream Bigger.", "Party Harder."];
+
 function TypingEffect({ words }: { words: string[] }) {
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(words[0].length);
@@ -63,20 +65,23 @@ function TypingEffect({ words }: { words: string[] }) {
   useEffect(() => {
     if (index === words.length) return;
 
+    // Pause before deleting
     if (subIndex === words[index].length + 1 && !reverse) {
-      setTimeout(() => setReverse(true), 2000); // Wait longer before deleting
-      return;
+      const timeout = setTimeout(() => setReverse(true), 2000); 
+      return () => clearTimeout(timeout);
     }
 
+    // Move to next word
     if (subIndex === 0 && reverse) {
       setReverse(false);
       setIndex((prev) => (prev + 1) % words.length);
       return;
     }
 
+    // Typing/Deleting
     const timeout = setTimeout(() => {
       setSubIndex((prev) => prev + (reverse ? -1 : 1));
-    }, reverse ? 50 : 100); // Typing speed
+    }, reverse ? 50 : 100);
 
     return () => clearTimeout(timeout);
   }, [subIndex, index, reverse, words]);
@@ -212,13 +217,13 @@ export function Hero() {
         <div ref={contentRef} className="hero-content relative flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 z-10 w-full max-w-xl mx-auto lg:mx-0">
           
           {/* Headline with Masked Reveal */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.05] tracking-tight max-w-[90%] lg:max-w-none h-[120px] md:h-[140px] lg:h-[160px]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.05] tracking-tight max-w-[90%] lg:max-w-none min-h-[120px] md:min-h-[140px] lg:min-h-[160px]">
             <span className="block overflow-hidden hero-word">
               <span className="block">Plan Less,</span>
             </span>
-            <span className="block overflow-hidden hero-word">
+            <span className="block hero-word">
               <span className="block text-secondary">
-                <TypingEffect words={["Celebrate More.", "Stress Less.", "Dream Bigger.", "Party Harder."]} />
+                <TypingEffect words={TYPING_PHRASES} />
               </span>
             </span>
           </h1>
