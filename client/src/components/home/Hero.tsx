@@ -89,7 +89,7 @@ function TypingEffect({ words }: { words: string[] }) {
   return (
     <>
       {words[index].substring(0, subIndex)}
-      <span className={`${blink ? "opacity-100" : "opacity-0"} transition-opacity duration-100 ml-1 font-light text-primary`}>|</span>
+      <span className={`${blink ? "opacity-100" : "opacity-0"} transition-opacity duration-100 ml-1 font-light text-secondary`}>|</span>
     </>
   );
 }
