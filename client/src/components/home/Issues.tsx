@@ -1,6 +1,10 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import tableImg from "@assets/stock_images/wedding_table_settin_c7e6dce8.jpg";
+import bouquetImg from "@assets/stock_images/wedding_bouquet_mode_ab76e613.jpg";
+import cakeImg from "@assets/stock_images/wedding_cake_modern__2868fc7b.jpg";
+import receptionImg from "@assets/stock_images/wedding_reception_li_3a8fab49.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,48 +41,42 @@ export function Issues() {
 
   const issues = [
     {
-      id: 24,
-      title: "The Void",
-      desc: "Exploring the concept of emptiness in digital spaces and urban architecture.",
-      img: "https://images.unsplash.com/photo-1480796927426-f609979314bd?q=80&w=2574&auto=format&fit=crop"
+      id: 1,
+      title: "Table Scapes",
+      desc: "Creating the perfect dining atmosphere for your guests.",
+      img: tableImg
     },
     {
-      id: 23,
-      title: "Synthetic",
-      desc: "The rise of AI generated realities and what it means for human creativity.",
-      img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2574&auto=format&fit=crop"
+      id: 2,
+      title: "Floral Art",
+      desc: "Modern bouquet trends for the contemporary bride.",
+      img: bouquetImg
     },
     {
-      id: 22,
-      title: "Origins",
-      desc: "Tracing back the roots of modern interface paradigms to the 1970s.",
-      img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2574&auto=format&fit=crop"
+      id: 3,
+      title: "Sweet Minimal",
+      desc: "Why simple cakes are making a big comeback.",
+      img: cakeImg
     },
     {
-      id: 21,
-      title: "Spectrum",
-      desc: "Analyzing color theory in the age of HDR displays and wide gamut color spaces.",
-      img: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop"
-    },
-    {
-      id: 20,
-      title: "Silence",
-      desc: "The importance of white space and silence in visual communication.",
-      img: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=2070&auto=format&fit=crop"
+      id: 4,
+      title: "Mood Lighting",
+      desc: "Transforming your venue with the right illumination.",
+      img: receptionImg
     }
   ];
 
   return (
     <div className="relative w-full"> 
     {/* Wrapper for pin spacer */}
-      <section ref={containerRef} id="issues" className="bg-surface text-primary py-20 md:py-24 overflow-hidden relative border-b border-border">
+      <section ref={containerRef} id="advice-ideas" className="bg-surface text-primary py-20 md:py-24 overflow-hidden relative border-b border-border">
         <div className="px-6 md:px-12 mb-16 flex justify-between items-end">
           <div>
             <span className="font-mono text-accent text-xs tracking-widest uppercase mb-2 block">
-              Library
+              Advice & Ideas
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight">
-              Recent <br /> Issues
+              Latest <br /> Stories
             </h2>
           </div>
           <div className="hidden md:flex gap-2">
@@ -95,13 +93,13 @@ export function Issues() {
                 <div className="absolute inset-0 bg-background rounded-xl overflow-hidden border border-border">
                   <img 
                     src={issue.img} 
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 filter grayscale group-hover:grayscale-0" 
-                    alt={`Issue ${issue.id}`} 
+                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" 
+                    alt={issue.title} 
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 dark:to-black/90"></div>
                   <div className="absolute bottom-0 left-0 p-8 w-full text-white">
                     <div className="flex justify-between items-end border-b border-white/20 pb-4 mb-4">
-                      <span className="text-4xl font-semibold tracking-tighter">
+                      <span className="text-3xl md:text-4xl font-semibold tracking-tighter">
                         {issue.title}
                       </span>
                       <span className="font-mono text-xs">NO. {issue.id}</span>
