@@ -8,6 +8,7 @@ import { Hero } from "@/components/home/Hero";
 import { Marquee } from "@/components/home/Marquee";
 import { Services } from "@/components/home/Services";
 import { Issues } from "@/components/home/Issues";
+import { Reviews } from "@/components/home/Reviews";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -71,6 +72,7 @@ export default function Home() {
         <Hero />
         {/* <Marquee /> */}
         <Services />
+        <Reviews />
         <Issues />
       </main>
     </div>
