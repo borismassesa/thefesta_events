@@ -20,27 +20,27 @@
     --background: #ffffff;
     --surface: #f4f4f5;
     --border: rgba(0, 0, 0, 0.08);
-    --primary: #18181b;
-    --secondary: #71717a;
+    --primary: #050505;
+    --secondary: #52525b;
     --accent: #3B82F6;
     
     --grid-line: rgba(0, 0, 0, 0.06);
     --selection-bg: rgba(59, 130, 246, 0.2);
-    --selection-text: #18181b;
+    --selection-text: #000;
   }
 
   .dark {
     /* Dark Mode (Original) */
-    --background: #09090b;
-    --surface: #18181b;
+    --background: #050505;
+    --surface: #0A0A0A;
     --border: rgba(255, 255, 255, 0.08);
-    --primary: #fafafa;
-    --secondary: #a1a1aa;
+    --primary: #FFFFFF;
+    --secondary: #888888;
     --accent: #3B82F6;
 
     --grid-line: rgba(255, 255, 255, 0.06);
     --selection-bg: rgba(59, 130, 246, 0.3);
-    --selection-text: #fafafa;
+    --selection-text: white;
   }
 
   body {
