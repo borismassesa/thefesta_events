@@ -231,6 +231,18 @@ export default function Signup() {
              </button>
           </div>
 
+          <p className="px-8 text-center text-xs text-muted-foreground">
+            By continuing, you agree to TheFesta's{" "}
+            <a href="#" className="underline underline-offset-4 hover:text-primary">
+              Terms of Service
+            </a>{" "}
+            and{" "}
+            <a href="#" className="underline underline-offset-4 hover:text-primary">
+              Privacy Policy
+            </a>
+            , and to receive periodic emails with updates.
+          </p>
+
           <div className="text-center text-sm text-muted-foreground">
             Already have an account?{" "}
             <Link href="/login">
