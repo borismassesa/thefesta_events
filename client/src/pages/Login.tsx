@@ -82,15 +82,7 @@ export default function Login() {
             </div>
 
             <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <div className="h-2"></div> {/* Spacer for alignment if label was here */}
-                <Link href="/forgot-password">
-                  <a className="text-xs text-primary/60 hover:text-primary transition-colors absolute right-0 -top-6">
-                    Forgot password?
-                  </a>
-                </Link>
-              </div>
-              <div className="relative group mt-0">
+              <div className="relative group">
                  <label className="absolute -top-2 left-2 bg-background px-1 text-xs font-medium text-primary/80 group-focus-within:text-primary transition-colors z-10">
                   Password
                 </label>
@@ -106,6 +98,13 @@ export default function Login() {
                 >
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
+              </div>
+              <div className="flex justify-end">
+                <Link href="/forgot-password">
+                  <a className="text-xs text-primary/60 hover:text-primary transition-colors">
+                    Forgot password?
+                  </a>
+                </Link>
               </div>
             </div>
 
