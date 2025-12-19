@@ -85,7 +85,7 @@ export function About() {
           {/* Subtle background glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[80%] bg-accent/10 blur-[120px] -z-10 rounded-full pointer-events-none"></div>
 
-          <h3 className="leading-[1.1] md:text-6xl lg:text-7xl text-5xl font-medium text-primary/40 tracking-tight max-w-6xl">
+          <h3 className="leading-[1.1] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-primary/40 tracking-tight max-w-6xl">
             {[
               { text: "We are a planning", highlight: true },
               { text: "intelligence engine" },
@@ -104,9 +104,9 @@ export function About() {
               { text: "speed of" },
               { text: "love.", highlight: true, italic: true }
             ].map((phrase, i) => (
-              <span key={i} className="inline mr-3">
+              <span key={i} className="inline mr-2 sm:mr-3">
                 {phrase.text.split(" ").map((word, j) => (
-                  <span key={j} className={`reveal-text inline-block mr-3 ${phrase.italic ? 'font-serif italic font-normal text-accent' : ''} ${phrase.highlight && !phrase.italic ? 'text-primary' : ''}`}>
+                  <span key={j} className={`reveal-text inline-block mr-2 sm:mr-3 ${phrase.italic ? 'font-serif italic font-normal text-accent' : ''} ${phrase.highlight && !phrase.italic ? 'text-primary' : ''}`}>
                     {word}
                   </span>
                 ))}
@@ -116,69 +116,69 @@ export function About() {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-8 mt-24 pt-12 border-t border-primary/10 animate-on-scroll">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 md:gap-y-12 gap-x-4 md:gap-x-8 mt-16 md:mt-24 pt-8 md:pt-12 border-t border-primary/10 animate-on-scroll">
           {/* Stat 1 */}
-          <div className="flex flex-col gap-2">
-            <div className="md:text-7xl lg:text-8xl leading-none text-6xl font-light text-primary tracking-tighter">
+          <div className="flex flex-col gap-1 md:gap-2">
+            <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none font-light text-primary tracking-tighter">
               15k+
             </div>
-            <div className="text-xl font-medium pl-1 text-secondary">
+            <div className="text-sm sm:text-base md:text-xl font-medium pl-1 text-secondary">
               Weddings Planned
             </div>
           </div>
 
           {/* Stat 2 */}
-          <div className="flex flex-col gap-2">
-            <div className="md:text-7xl lg:text-8xl leading-none text-6xl font-light text-primary tracking-tighter">
+          <div className="flex flex-col gap-1 md:gap-2">
+            <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none font-light text-primary tracking-tighter">
               99%
             </div>
-            <div className="text-xl font-medium pl-1 text-secondary">
+            <div className="text-sm sm:text-base md:text-xl font-medium pl-1 text-secondary">
               Couple Satisfaction
             </div>
           </div>
 
           {/* Stat 3 */}
-          <div className="flex flex-col gap-2">
-            <div className="md:text-7xl lg:text-8xl leading-none text-6xl font-light text-primary tracking-tighter">
+          <div className="flex flex-col gap-1 md:gap-2">
+            <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none font-light text-primary tracking-tighter">
               2M+
             </div>
-            <div className="text-xl font-medium pl-1 text-secondary">
+            <div className="text-sm sm:text-base md:text-xl font-medium pl-1 text-secondary">
               Guests Managed
             </div>
           </div>
 
           {/* Stat 4 */}
-          <div className="flex flex-col gap-2">
-            <div className="md:text-7xl lg:text-8xl leading-none text-6xl font-light text-primary tracking-tighter">
+          <div className="flex flex-col gap-1 md:gap-2">
+            <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none font-light text-primary tracking-tighter">
               4.9
             </div>
-            <div className="text-xl font-medium pl-1 text-secondary">
+            <div className="text-sm sm:text-base md:text-xl font-medium pl-1 text-secondary">
               Average Rating
             </div>
           </div>
         </div>
 
         {/* Company Logos */}
-        <div className="mt-24 animate-on-scroll">
-          <p className="text-lg font-medium mb-8 uppercase tracking-widest text-center md:text-left text-secondary">
+        <div className="mt-16 md:mt-24 animate-on-scroll">
+          <p className="text-sm md:text-lg font-medium mb-8 uppercase tracking-widest text-center md:text-left text-secondary">
             Featured in & Trusted By
           </p>
-          <div className="flex flex-wrap gap-8 md:gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500 gap-x-8 gap-y-8 items-center justify-between">
+          <div className="flex flex-wrap gap-6 md:gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500 gap-x-8 gap-y-8 items-center justify-between">
             
             {/* Vogue */}
-            <svg viewBox="0 0 24 24" className="h-8 w-auto fill-primary" xmlns="http://www.w3.org/2000/svg"><path d="M9.82 5.09h1.93V2.5H6.28v2.59h1.83c.96 0 .96.06.96 1.15v10.15l-4.5-12.2h-2.3L.02 18.91l-.02-13.8c0-1.12.02-1.15 1.15-1.15h1.94V2.5H.5v1.46h.88c.7 0 .86.23.86.8v15.93h2.6L10.38 6.6l5.72 14.09h2.51V4.76c0-.57.16-.8.86-.8h.88V2.5h-4.32v1.46h1.94c1.13 0 1.15.03 1.15 1.15l.02 13.06L14.6 4.21h-2.3l-3.3 11.2V6.24c0-1.09 0-1.15.82-1.15z"/></svg>
+            <svg viewBox="0 0 24 24" className="h-5 sm:h-6 md:h-8 w-auto fill-primary" xmlns="http://www.w3.org/2000/svg"><path d="M9.82 5.09h1.93V2.5H6.28v2.59h1.83c.96 0 .96.06.96 1.15v10.15l-4.5-12.2h-2.3L.02 18.91l-.02-13.8c0-1.12.02-1.15 1.15-1.15h1.94V2.5H.5v1.46h.88c.7 0 .86.23.86.8v15.93h2.6L10.38 6.6l5.72 14.09h2.51V4.76c0-.57.16-.8.86-.8h.88V2.5h-4.32v1.46h1.94c1.13 0 1.15.03 1.15 1.15l.02 13.06L14.6 4.21h-2.3l-3.3 11.2V6.24c0-1.09 0-1.15.82-1.15z"/></svg>
 
             {/* Brides */}
-            <svg viewBox="0 0 100 30" className="h-8 w-auto fill-primary" xmlns="http://www.w3.org/2000/svg"><text x="0" y="20" fontFamily="serif" fontSize="24" fontWeight="bold">BRIDES</text></svg>
+            <svg viewBox="0 0 100 30" className="h-5 sm:h-6 md:h-8 w-auto fill-primary" xmlns="http://www.w3.org/2000/svg"><text x="0" y="20" fontFamily="serif" fontSize="24" fontWeight="bold">BRIDES</text></svg>
 
             {/* The Knot (Mock) */}
-            <svg viewBox="0 0 120 30" className="h-8 w-auto fill-primary" xmlns="http://www.w3.org/2000/svg"><text x="0" y="20" fontFamily="sans-serif" fontSize="20" fontWeight="bold">The Knot</text></svg>
+            <svg viewBox="0 0 120 30" className="h-5 sm:h-6 md:h-8 w-auto fill-primary" xmlns="http://www.w3.org/2000/svg"><text x="0" y="20" fontFamily="sans-serif" fontSize="20" fontWeight="bold">The Knot</text></svg>
 
             {/* Martha Stewart Weddings (Mock) */}
-            <svg viewBox="0 0 250 30" className="h-8 w-auto fill-primary" xmlns="http://www.w3.org/2000/svg"><text x="0" y="20" fontFamily="serif" fontSize="20">Martha Stewart Weddings</text></svg>
+            <svg viewBox="0 0 250 30" className="h-5 sm:h-6 md:h-8 w-auto fill-primary" xmlns="http://www.w3.org/2000/svg"><text x="0" y="20" fontFamily="serif" fontSize="20">Martha Stewart Weddings</text></svg>
             
              {/* Bazaar (Mock) */}
-             <svg viewBox="0 0 100 30" className="h-8 w-auto fill-primary" xmlns="http://www.w3.org/2000/svg"><text x="0" y="20" fontFamily="serif" fontSize="22" fontWeight="bold">BAZAAR</text></svg>
+             <svg viewBox="0 0 100 30" className="h-5 sm:h-6 md:h-8 w-auto fill-primary" xmlns="http://www.w3.org/2000/svg"><text x="0" y="20" fontFamily="serif" fontSize="22" fontWeight="bold">BAZAAR</text></svg>
 
           </div>
         </div>
