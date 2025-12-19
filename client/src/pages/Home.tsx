@@ -69,7 +69,7 @@ export default function Home() {
       
       <main>
         <Hero />
-        <Marquee />
+        {/* <Marquee /> */}
         <Philosophy />
         <Issues />
       </main>
