@@ -71,13 +71,13 @@ export function Issues() {
   return (
     <div className="relative w-full"> 
     {/* Wrapper for pin spacer */}
-      <section ref={containerRef} id="issues" className="bg-surface text-primary py-24 overflow-hidden relative border-b border-border">
-        <div className="px-[5vw] mb-16 flex justify-between items-end">
+      <section ref={containerRef} id="issues" className="bg-surface text-primary py-20 md:py-24 overflow-hidden relative border-b border-border">
+        <div className="px-6 md:px-12 mb-16 flex justify-between items-end">
           <div>
             <span className="font-mono text-accent text-xs tracking-widest uppercase mb-2 block">
               Library
             </span>
-            <h2 className="text-3xl font-semibold tracking-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight">
               Recent <br /> Issues
             </h2>
           </div>

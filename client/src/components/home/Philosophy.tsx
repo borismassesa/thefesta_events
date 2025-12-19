@@ -39,12 +39,12 @@ export function Philosophy() {
   }, []);
 
   return (
-    <section ref={containerRef} id="philosophy" className="grid grid-cols-1 md:grid-cols-2 gap-12 px-[5vw] py-32 border-b border-border relative">
+    <section ref={containerRef} id="philosophy" className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 px-6 md:px-12 py-20 md:py-24 border-b border-border relative">
       <div className="sticky top-32 h-fit">
         <span className="font-mono text-accent text-xs tracking-widest uppercase mb-4 block">
           Philosophy
         </span>
-        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-tight text-primary mb-8 section-title">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-primary mb-8 section-title">
           <span className="inline-block overflow-hidden align-bottom">
             <span className="inline-block pb-1">Signal over</span>
           </span>
@@ -62,9 +62,9 @@ export function Philosophy() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-24">
+      <div className="flex flex-col gap-16 md:gap-24">
         <div className="reveal-card opacity-20 translate-y-12">
-          <p className="text-xl md:text-2xl leading-relaxed text-primary mb-6">
+          <p className="text-lg md:text-xl leading-relaxed text-primary mb-6">
             The internet is broken. Algorithmic feeds prioritize outrage over insight. Chronicle is a quiet space tailored for deep reading.
           </p>
           <div className="aspect-video bg-surface rounded-lg border border-border overflow-hidden relative group">
@@ -83,7 +83,7 @@ export function Philosophy() {
         </div>
 
         <div className="reveal-card opacity-20 translate-y-12">
-          <p className="text-xl md:text-2xl leading-relaxed text-primary mb-6">
+          <p className="text-lg md:text-xl leading-relaxed text-primary mb-6">
             We collaborate with the world's leading thinkers to produce issues that stand the test of time. No clickbait. No ads.
           </p>
           <div className="aspect-video bg-surface rounded-lg border border-border overflow-hidden relative group">
