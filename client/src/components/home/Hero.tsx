@@ -237,38 +237,41 @@ export function Hero() {
           <div className="hero-fade w-full max-w-lg flex flex-col gap-4 mt-2">
             
             {/* Quick Actions Row - Moved ABOVE search bar */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-2 items-center text-xs font-medium">
-              <span className="text-secondary/80 uppercase tracking-wider mr-1">Browse:</span>
-              {HERO_TABS.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`px-3 py-1.5 rounded-lg border transition-all duration-200 ${
-                    activeTab === tab.id
-                      ? 'bg-primary text-background border-primary'
-                      : 'bg-transparent border-border text-secondary hover:border-primary/50 hover:text-primary hover:bg-surface'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
+            <div className="w-full flex justify-center lg:justify-start">
+              <div className="flex flex-nowrap overflow-x-auto pb-2 -mb-2 mask-linear-fade lg:overflow-visible lg:pb-0 lg:mb-0 lg:flex-wrap gap-2 items-center text-xs font-medium no-scrollbar max-w-[100vw] px-4 lg:px-0 -mx-4 lg:mx-0">
+                <span className="text-secondary/80 uppercase tracking-wider mr-1 hidden lg:inline-block">Browse:</span>
+                {HERO_TABS.map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`px-3 py-1.5 rounded-lg border transition-all duration-200 whitespace-nowrap flex-shrink-0 ${
+                      activeTab === tab.id
+                        ? 'bg-primary text-background border-primary'
+                        : 'bg-transparent border-border text-secondary hover:border-primary/50 hover:text-primary hover:bg-surface'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* Search Bar with Beam Effect - Cleaner look */}
             <div className="group w-full shiny-beam-input relative bg-surface rounded-full border border-border/50 transition-all focus-within:ring-2 focus-within:ring-primary/5 hover:border-primary/20 shadow-sm hover:shadow-md">
-              <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none z-10">
-                <Search className="text-secondary group-focus-within:text-primary transition-colors" size={20} />
+              <div className="absolute inset-y-0 left-4 lg:left-5 flex items-center pointer-events-none z-10">
+                <Search className="text-secondary group-focus-within:text-primary transition-colors w-4 h-4 lg:w-5 lg:h-5" />
               </div>
               <input
                 type="text"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
                 placeholder={SEARCH_PLACEHOLDERS[activeTab] || "Search..."}
-                className="w-full pl-12 pr-4 py-4 bg-transparent border-none rounded-full text-primary placeholder:text-secondary/60 focus:outline-none focus:ring-0 text-base font-normal relative z-10"
+                className="w-full pl-10 lg:pl-12 pr-12 lg:pr-4 py-3 lg:py-4 bg-transparent border-none rounded-full text-primary placeholder:text-secondary/60 focus:outline-none focus:ring-0 text-sm lg:text-base font-normal relative z-10 truncate"
               />
               <div className="absolute right-1.5 top-1.5 bottom-1.5">
-                 <button className="h-full bg-primary hover:bg-primary/90 text-background px-6 rounded-full text-sm font-medium transition-all shadow-sm cursor-pointer flex items-center gap-2">
-                   Search
+                 <button className="h-full bg-primary hover:bg-primary/90 text-background w-10 lg:w-auto lg:px-6 rounded-full text-sm font-medium transition-all shadow-sm cursor-pointer flex items-center justify-center gap-2">
+                   <span className="hidden lg:inline">Search</span>
+                   <Search className="lg:hidden w-4 h-4" />
                  </button>
               </div>
             </div>
