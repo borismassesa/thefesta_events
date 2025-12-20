@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { SidebarProvider, Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarHeader } from "@/components/ui/sidebar";
+import { SidebarProvider, Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarHeader, SidebarTrigger } from "@/components/ui/sidebar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -197,6 +197,11 @@ export function AdminLayout() {
           {/* Subtle Grain Texture Overlay */}
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc0JyBoZWlnaHQ9JzQnPgo8cmVjdCB3aWR0aD0nNCcgaGVpZ2h0PSc0JyBmaWxsPScjZmZmJy8+CjxyZWN0IHdpZHRoPScxJyBoZWlnaHQ9JzEnIGZpbGw9JyNjY2MnLz4KPC9zdmc+')] opacity-[0.03] pointer-events-none z-0 fixed" />
           
+          {/* Top Left Sidebar Trigger */}
+          <div className="absolute top-6 left-6 md:top-10 md:left-10 z-50">
+            <SidebarTrigger className="w-10 h-10 rounded-full bg-background border border-border shadow-sm hover:shadow-md transition-all hover:bg-surface text-muted-foreground hover:text-primary" />
+          </div>
+
           {/* Top Right Theme Toggle */}
           <div className="absolute top-6 right-6 md:top-10 md:right-10 z-50">
             <button
