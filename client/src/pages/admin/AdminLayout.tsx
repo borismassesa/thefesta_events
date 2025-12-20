@@ -158,7 +158,7 @@ export function AdminLayout() {
                 </div>
               </DropdownMenuTrigger>
               <DropdownMenuContent 
-                className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg" 
+                className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg bg-popover text-popover-foreground border border-border shadow-xl z-50" 
                 side="bottom" 
                 align="end" 
                 sideOffset={4}
