@@ -12,6 +12,7 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   
@@ -28,6 +29,7 @@
     --primary-foreground: #ffffff;
     --secondary: #52525b;
     --accent: #18181b;
+    --accent-foreground: #fafafa;
     --popover: #ffffff;
     --popover-foreground: #050505;
     
@@ -45,6 +47,7 @@
     --primary-foreground: #050505;
     --secondary: #888888;
     --accent: #fafafa;
+    --accent-foreground: #18181b;
     --popover: #050505;
     --popover-foreground: #ffffff;
 
