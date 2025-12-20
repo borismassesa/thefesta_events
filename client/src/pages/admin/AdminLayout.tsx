@@ -126,20 +126,8 @@ export function AdminLayout() {
             ))}
           </SidebarContent>
           
-          {/* User Profile Snippet (Mock) with Theme Toggle */}
+          {/* User Profile Snippet (Mock) */}
           <div className="mt-auto p-4 border-t border-border/20 mx-3 mb-2 flex flex-col gap-2">
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="w-full flex items-center gap-3 p-2 rounded-xl hover:bg-surface/50 transition-colors cursor-pointer text-muted-foreground hover:text-primary"
-            >
-              <div className="w-9 h-9 rounded-full bg-surface border border-border flex items-center justify-center">
-                 {mounted && theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
-              </div>
-              <span className="text-xs font-medium">
-                {mounted && theme === "dark" ? "Light Mode" : "Dark Mode"}
-              </span>
-            </button>
-            
             <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-surface/50 transition-colors cursor-pointer group">
               <div className="w-9 h-9 rounded-full bg-zinc-200 border border-border flex items-center justify-center text-xs font-medium text-muted-foreground">
                 AD
@@ -158,6 +146,17 @@ export function AdminLayout() {
           {/* Subtle Grain Texture Overlay */}
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc0JyBoZWlnaHQ9JzQnPgo8cmVjdCB3aWR0aD0nNCcgaGVpZ2h0PSc0JyBmaWxsPScjZmZmJy8+CjxyZWN0IHdpZHRoPScxJyBoZWlnaHQ9JzEnIGZpbGw9JyNjY2MnLz4KPC9zdmc+')] opacity-[0.03] pointer-events-none z-0 fixed" />
           
+          {/* Top Right Theme Toggle */}
+          <div className="absolute top-6 right-6 md:top-10 md:right-10 z-50">
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-background border border-border shadow-sm hover:shadow-md transition-all hover:bg-surface text-muted-foreground hover:text-primary"
+              aria-label="Toggle theme"
+            >
+              {mounted && theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+          </div>
+
           <div className="p-6 md:p-10 max-w-[1600px] mx-auto min-h-full relative z-10 animate-in fade-in duration-500">
             <Switch>
                <Route path="/admin" component={Dashboard} />
