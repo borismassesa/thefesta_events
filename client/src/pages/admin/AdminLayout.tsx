@@ -214,7 +214,7 @@ export function AdminLayout() {
             </button>
           </div>
 
-          <div className="p-6 md:p-10 max-w-[1600px] mx-auto min-h-full relative z-10 animate-in fade-in duration-500">
+          <div className="p-6 pt-20 md:p-10 max-w-[1600px] mx-auto min-h-full relative z-10 animate-in fade-in duration-500">
             <Switch>
                <Route path="/admin" component={Dashboard} />
                <Route path="/admin/content/pages" component={PageEditor} />
