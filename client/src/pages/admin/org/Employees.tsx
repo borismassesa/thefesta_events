@@ -173,11 +173,11 @@ export default function Employees() {
               Total Employees: {employees.length}
             </CardDescription>
           </div>
-          <div className="relative w-64">
+          <div className="relative w-full sm:w-64">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               placeholder="Search employees..."
-              className="pl-9"
+              className="pl-9 w-full"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -341,14 +341,14 @@ function EmployeeDialog({
           <form id="employee-form" onSubmit={handleSubmit} className="space-y-6">
             
             <Tabs defaultValue="personal" className="w-full">
-              <TabsList className="grid w-full grid-cols-3">
+              <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 h-auto">
                 <TabsTrigger value="personal">Personal Info</TabsTrigger>
                 <TabsTrigger value="emergency">Emergency Contact</TabsTrigger>
                 <TabsTrigger value="documents">Documents</TabsTrigger>
               </TabsList>
               
               <TabsContent value="personal" className="space-y-4 py-4">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label>First Name</Label>
                     <Input required placeholder="Juma" defaultValue={initialData?.firstName} onChange={e => updateField('firstName', e.target.value)} />
@@ -359,7 +359,7 @@ function EmployeeDialog({
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label>Title / Position</Label>
                     <Input placeholder="Event Manager" defaultValue={initialData?.title} onChange={e => updateField('title', e.target.value)} />
@@ -370,7 +370,7 @@ function EmployeeDialog({
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label>Email Address</Label>
                     <Input type="email" placeholder="juma@example.com" defaultValue={initialData?.email} onChange={e => updateField('email', e.target.value)} />
@@ -386,7 +386,7 @@ function EmployeeDialog({
                   <Input placeholder="Street, City, Region" defaultValue={initialData?.address} onChange={e => updateField('address', e.target.value)} />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label>Government ID (NIDA)</Label>
                     <Input placeholder="NIDA Number" defaultValue={initialData?.govId} onChange={e => updateField('govId', e.target.value)} />
@@ -404,7 +404,7 @@ function EmployeeDialog({
                   <Input placeholder="Contact Person Name" defaultValue={initialData?.emergencyContact?.fullName} onChange={e => updateEmergency('fullName', e.target.value)} />
                 </div>
                 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label>Relationship</Label>
                     <Input placeholder="Spouse, Parent, etc." defaultValue={initialData?.emergencyContact?.relationship} onChange={e => updateEmergency('relationship', e.target.value)} />
