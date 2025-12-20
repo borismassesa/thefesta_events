@@ -26,6 +26,8 @@
     --primary-foreground: #ffffff;
     --secondary: #52525b;
     --accent: #9333ea;
+    --popover: #ffffff;
+    --popover-foreground: #050505;
     
     --grid-line: rgba(0, 0, 0, 0.06);
     --selection-bg: rgba(147, 51, 234, 0.2);
@@ -41,6 +43,8 @@
     --primary-foreground: #050505;
     --secondary: #888888;
     --accent: #9333ea;
+    --popover: #050505;
+    --popover-foreground: #ffffff;
 
     --grid-line: rgba(255, 255, 255, 0.06);
     --selection-bg: rgba(147, 51, 234, 0.3);

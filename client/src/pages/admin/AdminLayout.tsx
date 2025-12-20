@@ -158,7 +158,7 @@ export function AdminLayout() {
                 </div>
               </DropdownMenuTrigger>
               <DropdownMenuContent 
-                className="w-[200px]" 
+                className="w-[200px] bg-background border-border shadow-xl z-50" 
                 side="top" 
                 align="start"
                 sideOffset={10}
