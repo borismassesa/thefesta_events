@@ -141,10 +141,10 @@ export function AdminLayout() {
           </SidebarContent>
           
           {/* User Profile Dropdown */}
-          <div className="mt-auto p-4 border-t border-border/40 mx-3 mb-2 flex flex-col gap-2 mt-2">
+          <div className="mt-auto p-2 border-t border-border/40 m-2 flex flex-col gap-2">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-surface/50 transition-colors cursor-pointer group data-[state=open]:bg-surface/50">
+                <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-surface/50 transition-colors cursor-pointer group data-[state=open]:bg-surface/50 w-full">
                   <div className="w-9 h-9 rounded-full bg-zinc-200 border border-border flex items-center justify-center text-xs font-medium text-muted-foreground overflow-hidden">
                     <Avatar className="h-9 w-9">
                       <AvatarImage src="https://github.com/shadcn.png" alt="@admin" />
