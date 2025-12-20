@@ -97,6 +97,7 @@ export function AdminLayout() {
                 TheFesta
               </a>
             </Link>
+            <SidebarTrigger className="w-8 h-8 rounded-full bg-surface border border-border/50 shadow-none hover:bg-surface/80 hover:border-border text-muted-foreground hover:text-primary" />
           </SidebarHeader>
           
           <SidebarContent className="px-3 pt-2 pb-6 gap-6 no-scrollbar">
@@ -197,8 +198,8 @@ export function AdminLayout() {
           {/* Subtle Grain Texture Overlay */}
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc0JyBoZWlnaHQ9JzQnPgo8cmVjdCB3aWR0aD0nNCcgaGVpZ2h0PSc0JyBmaWxsPScjZmZmJy8+CjxyZWN0IHdpZHRoPScxJyBoZWlnaHQ9JzEnIGZpbGw9JyNjY2MnLz4KPC9zdmc+')] opacity-[0.03] pointer-events-none z-0 fixed" />
           
-          {/* Top Left Sidebar Trigger */}
-          <div className="absolute top-6 left-6 md:top-10 md:left-10 z-50">
+          {/* Top Left Sidebar Trigger (Mobile Only) */}
+          <div className="absolute top-6 left-6 md:top-10 md:left-10 z-50 md:hidden">
             <SidebarTrigger className="w-10 h-10 rounded-full bg-background border border-border shadow-sm hover:shadow-md transition-all hover:bg-surface text-muted-foreground hover:text-primary" />
           </div>
 
