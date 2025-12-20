@@ -22,12 +22,6 @@ export default function Dashboard() {
            <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
            <p className="text-muted-foreground mt-1">Overview of TheFesta platform performance.</p>
         </div>
-        <div className="flex gap-2">
-           <span className="px-3 py-1 rounded-full bg-green-500/10 text-green-600 text-xs font-medium flex items-center gap-1">
-             <Activity className="w-3 h-3" />
-             System Normal
-           </span>
-        </div>
       </div>
 
       {/* Stats Grid */}

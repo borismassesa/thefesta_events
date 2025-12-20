@@ -18,6 +18,7 @@ import { useState } from "react";
 import { SidebarProvider, Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarHeader } from "@/components/ui/sidebar";
 import Dashboard from "./Dashboard";
 import PageEditor from "./content/PageEditor";
+import Employees from "./org/Employees";
 
 // Admin Layout Component
 export function AdminLayout() {
@@ -140,6 +141,7 @@ export function AdminLayout() {
             <Switch>
                <Route path="/admin" component={Dashboard} />
                <Route path="/admin/content/pages" component={PageEditor} />
+               <Route path="/admin/org/employees" component={Employees} />
                <Route>
                   <div className="flex flex-col items-center justify-center h-[70vh] text-center opacity-60">
                     <div className="w-20 h-20 bg-surface/50 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 border border-border shadow-xl">
