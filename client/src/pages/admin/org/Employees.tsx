@@ -155,12 +155,12 @@ export default function Employees() {
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-500">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pr-16">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Employees</h1>
           <p className="text-muted-foreground mt-1">Manage organization staff and records.</p>
         </div>
-        <Button onClick={() => { setEditingEmployee(null); setIsAddDialogOpen(true); }} className="gap-2">
+        <Button onClick={() => { setEditingEmployee(null); setIsAddDialogOpen(true); }} className="gap-2 w-full sm:w-auto">
           <UserPlus className="w-4 h-4" /> Add Employee
         </Button>
       </div>
