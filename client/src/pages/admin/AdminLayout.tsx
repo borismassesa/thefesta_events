@@ -14,11 +14,25 @@ import {
   ListTodo,
   Menu,
   Moon,
-  Sun
+  Sun,
+  User,
+  CreditCard,
+  LogOut,
+  Bell
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { SidebarProvider, Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarHeader } from "@/components/ui/sidebar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Dashboard from "./Dashboard";
 import PageEditor from "./content/PageEditor";
 import Employees from "./org/Employees";
@@ -67,7 +81,6 @@ export function AdminLayout() {
       label: "Organization",
       items: [
         { label: "Employees", icon: Users, href: "/admin/org/employees" },
-        { label: "Settings", icon: Settings, href: "/admin/org/settings" },
       ]
     }
   ];
@@ -126,18 +139,62 @@ export function AdminLayout() {
             ))}
           </SidebarContent>
           
-          {/* User Profile Snippet (Mock) */}
+          {/* User Profile Dropdown */}
           <div className="mt-auto p-4 border-t border-border/40 mx-3 mb-2 flex flex-col gap-2 mt-2">
-            <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-surface/50 transition-colors cursor-pointer group">
-              <div className="w-9 h-9 rounded-full bg-zinc-200 border border-border flex items-center justify-center text-xs font-medium text-muted-foreground">
-                AD
-              </div>
-              <div className="flex flex-col overflow-hidden">
-                <span className="text-sm font-medium truncate group-hover:text-primary transition-colors">Admin User</span>
-                <span className="text-[10px] text-muted-foreground">Pro License</span>
-              </div>
-              <Settings className="w-4 h-4 ml-auto text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-surface/50 transition-colors cursor-pointer group data-[state=open]:bg-surface/50">
+                  <div className="w-9 h-9 rounded-full bg-zinc-200 border border-border flex items-center justify-center text-xs font-medium text-muted-foreground overflow-hidden">
+                    <Avatar className="h-9 w-9">
+                      <AvatarImage src="https://github.com/shadcn.png" alt="@admin" />
+                      <AvatarFallback>AD</AvatarFallback>
+                    </Avatar>
+                  </div>
+                  <div className="flex flex-col overflow-hidden text-left">
+                    <span className="text-sm font-medium truncate group-hover:text-primary transition-colors">Admin User</span>
+                    <span className="text-[10px] text-muted-foreground">Pro License</span>
+                  </div>
+                  <Settings className="w-4 h-4 ml-auto text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent 
+                className="w-56" 
+                align="start" 
+                side="right" 
+                sideOffset={20}
+              >
+                <DropdownMenuLabel className="font-normal">
+                  <div className="flex flex-col space-y-1">
+                    <p className="text-sm font-medium leading-none">Admin User</p>
+                    <p className="text-xs leading-none text-muted-foreground">admin@thefesta.com</p>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem className="cursor-pointer">
+                    <User className="mr-2 h-4 w-4" />
+                    <span>Profile</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer">
+                    <CreditCard className="mr-2 h-4 w-4" />
+                    <span>Billing</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer">
+                    <Settings className="mr-2 h-4 w-4" />
+                    <span>Settings</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer">
+                    <Bell className="mr-2 h-4 w-4" />
+                    <span>Notifications</span>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="cursor-pointer text-destructive focus:text-destructive">
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Log out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </Sidebar>
         
