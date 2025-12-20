@@ -1,20 +1,63 @@
-import { SidebarProvider, Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarHeader } from "@/components/ui/sidebar";
 import { Link, Route, Switch, useLocation } from "wouter";
-import { LayoutDashboard, FileText, ShoppingBag, Users, Calendar, Settings, ChevronRight } from "lucide-react";
+import { 
+  LayoutDashboard, 
+  FileText, 
+  ShoppingBag, 
+  Users, 
+  Calendar, 
+  Settings, 
+  ChevronRight,
+  Briefcase,
+  Store,
+  PenTool,
+  Image as ImageIcon,
+  ListTodo
+} from "lucide-react";
 
+import { SidebarProvider, Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarHeader } from "@/components/ui/sidebar";
 import Dashboard from "./Dashboard";
 
 // Admin Layout Component
 export function AdminLayout() {
   const [location] = useLocation();
 
-  const NAV_ITEMS = [
-    { label: "Overview", icon: LayoutDashboard, href: "/admin" },
-    { label: "Content (CMS)", icon: FileText, href: "/admin/content" },
-    { label: "Marketplace", icon: ShoppingBag, href: "/admin/marketplace" },
-    { label: "Vendors", icon: Users, href: "/admin/vendors" },
-    { label: "Events", icon: Calendar, href: "/admin/events" },
-    { label: "Settings", icon: Settings, href: "/admin/settings" },
+  const MENU_GROUPS = [
+    {
+      label: "Overview",
+      items: [
+        { label: "Dashboard", icon: LayoutDashboard, href: "/admin" },
+      ]
+    },
+    {
+      label: "Content (CMS)",
+      items: [
+        { label: "Pages", icon: FileText, href: "/admin/content/pages" },
+        { label: "Blog & Ideas", icon: PenTool, href: "/admin/content/blog" },
+        { label: "Media Library", icon: ImageIcon, href: "/admin/content/media" },
+      ]
+    },
+    {
+      label: "Marketplace",
+      items: [
+        { label: "Vendors", icon: Briefcase, href: "/admin/marketplace/vendors" },
+        { label: "Products", icon: ShoppingBag, href: "/admin/marketplace/products" },
+        { label: "Orders", icon: Store, href: "/admin/marketplace/orders" },
+      ]
+    },
+    {
+      label: "Event Management",
+      items: [
+        { label: "Bookings", icon: Calendar, href: "/admin/events/bookings" },
+        { label: "Planning Tools", icon: ListTodo, href: "/admin/events/tools" },
+      ]
+    },
+    {
+      label: "Organization",
+      items: [
+        { label: "Employees", icon: Users, href: "/admin/org/employees" },
+        { label: "Settings", icon: Settings, href: "/admin/org/settings" },
+      ]
+    }
   ];
 
   return (
@@ -32,32 +75,34 @@ export function AdminLayout() {
             </Link>
           </SidebarHeader>
           <SidebarContent>
-            <SidebarGroup>
-              <SidebarGroupLabel>Menu</SidebarGroupLabel>
-              <SidebarGroupContent>
-                <SidebarMenu>
-                  {NAV_ITEMS.map((item) => (
-                    <SidebarMenuItem key={item.label}>
-                      <SidebarMenuButton 
-                        asChild 
-                        isActive={location === item.href}
-                        className="h-10 transition-all hover:translate-x-1"
-                      >
-                        <Link href={item.href}>
-                          <a className="flex items-center gap-3">
-                            <item.icon className="w-4 h-4" />
-                            <span>{item.label}</span>
-                            {location === item.href && (
-                              <ChevronRight className="w-3 h-3 ml-auto opacity-50" />
-                            )}
-                          </a>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  ))}
-                </SidebarMenu>
-              </SidebarGroupContent>
-            </SidebarGroup>
+            {MENU_GROUPS.map((group, index) => (
+              <SidebarGroup key={index}>
+                <SidebarGroupLabel>{group.label}</SidebarGroupLabel>
+                <SidebarGroupContent>
+                  <SidebarMenu>
+                    {group.items.map((item) => (
+                      <SidebarMenuItem key={item.label}>
+                        <SidebarMenuButton 
+                          asChild 
+                          isActive={location === item.href}
+                          className="h-9 transition-all hover:translate-x-1"
+                        >
+                          <Link href={item.href}>
+                            <a className="flex items-center gap-3">
+                              <item.icon className="w-4 h-4" />
+                              <span>{item.label}</span>
+                              {location === item.href && (
+                                <ChevronRight className="w-3 h-3 ml-auto opacity-50" />
+                              )}
+                            </a>
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    ))}
+                  </SidebarMenu>
+                </SidebarGroupContent>
+              </SidebarGroup>
+            ))}
           </SidebarContent>
         </Sidebar>
         
@@ -65,15 +110,15 @@ export function AdminLayout() {
           <div className="p-6 md:p-10 max-w-7xl mx-auto min-h-full">
             <Switch>
                <Route path="/admin" component={Dashboard} />
-               <Route path="/admin/content">
+               <Route path="/admin/content/pages">
                   <div className="flex flex-col gap-4">
-                    <h1 className="text-3xl font-bold">Content Management</h1>
-                    <p className="text-muted-foreground">Select a section to edit.</p>
+                    <h1 className="text-3xl font-bold">Page Editor</h1>
+                    <p className="text-muted-foreground">Manage content for: Homepage, About, Contact.</p>
                   </div>
                </Route>
                <Route>
-                  <div className="flex flex-col items-center justify-center h-[60vh] text-center">
-                    <div className="w-16 h-16 bg-surface rounded-full flex items-center justify-center mb-4">
+                  <div className="flex flex-col items-center justify-center h-[60vh] text-center opacity-60">
+                    <div className="w-16 h-16 bg-surface rounded-full flex items-center justify-center mb-4 border border-border">
                        <Settings className="w-8 h-8 text-muted-foreground" />
                     </div>
                     <h2 className="text-xl font-semibold">Under Construction</h2>
