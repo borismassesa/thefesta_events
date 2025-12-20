@@ -158,10 +158,10 @@ export function AdminLayout() {
                 </div>
               </DropdownMenuTrigger>
               <DropdownMenuContent 
-                className="w-56" 
-                align="start" 
-                side="right" 
-                sideOffset={20}
+                className="w-[200px]" 
+                side="top" 
+                align="start"
+                sideOffset={10}
               >
                 <DropdownMenuLabel className="font-normal">
                   <div className="flex flex-col space-y-1">
