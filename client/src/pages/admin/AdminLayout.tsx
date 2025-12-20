@@ -12,9 +12,12 @@ import {
   PenTool,
   Image as ImageIcon,
   ListTodo,
-  Menu
+  Menu,
+  Moon,
+  Sun
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import { SidebarProvider, Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarHeader } from "@/components/ui/sidebar";
 import Dashboard from "./Dashboard";
 import PageEditor from "./content/PageEditor";
@@ -23,6 +26,12 @@ import Employees from "./org/Employees";
 // Admin Layout Component
 export function AdminLayout() {
   const [location] = useLocation();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const MENU_GROUPS = [
     {
@@ -117,8 +126,20 @@ export function AdminLayout() {
             ))}
           </SidebarContent>
           
-          {/* User Profile Snippet (Mock) */}
-          <div className="mt-auto p-4 border-t border-border/20 mx-3 mb-2">
+          {/* User Profile Snippet (Mock) with Theme Toggle */}
+          <div className="mt-auto p-4 border-t border-border/20 mx-3 mb-2 flex flex-col gap-2">
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="w-full flex items-center gap-3 p-2 rounded-xl hover:bg-surface/50 transition-colors cursor-pointer text-muted-foreground hover:text-primary"
+            >
+              <div className="w-9 h-9 rounded-full bg-surface border border-border flex items-center justify-center">
+                 {mounted && theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
+              </div>
+              <span className="text-xs font-medium">
+                {mounted && theme === "dark" ? "Light Mode" : "Dark Mode"}
+              </span>
+            </button>
+            
             <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-surface/50 transition-colors cursor-pointer group">
               <div className="w-9 h-9 rounded-full bg-zinc-200 border border-border flex items-center justify-center text-xs font-medium text-muted-foreground">
                 AD
