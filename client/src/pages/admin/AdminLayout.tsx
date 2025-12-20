@@ -17,6 +17,8 @@ import {
 import { SidebarProvider, Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarHeader } from "@/components/ui/sidebar";
 import Dashboard from "./Dashboard";
 
+import PageEditor from "./content/PageEditor";
+
 // Admin Layout Component
 export function AdminLayout() {
   const [location] = useLocation();
@@ -110,12 +112,7 @@ export function AdminLayout() {
           <div className="p-6 md:p-10 max-w-7xl mx-auto min-h-full">
             <Switch>
                <Route path="/admin" component={Dashboard} />
-               <Route path="/admin/content/pages">
-                  <div className="flex flex-col gap-4">
-                    <h1 className="text-3xl font-bold">Page Editor</h1>
-                    <p className="text-muted-foreground">Manage content for: Homepage, About, Contact.</p>
-                  </div>
-               </Route>
+               <Route path="/admin/content/pages" component={PageEditor} />
                <Route>
                   <div className="flex flex-col items-center justify-center h-[60vh] text-center opacity-60">
                     <div className="w-16 h-16 bg-surface rounded-full flex items-center justify-center mb-4 border border-border">

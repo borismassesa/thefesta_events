@@ -246,10 +246,20 @@ export function ContentProvider({ children }: { children: ReactNode }) {
   const [content, setContent] = useState<ContentState>(INITIAL_CONTENT);
 
   const updateContent = (section: keyof ContentState, data: any) => {
-    setContent((prev) => ({
-      ...prev,
-      [section]: { ...prev[section], ...data }
-    }));
+    setContent((prev) => {
+      // Handle array updates (replace entire array)
+      if (Array.isArray(prev[section])) {
+        return {
+          ...prev,
+          [section]: data
+        };
+      }
+      // Handle object updates (merge properties)
+      return {
+        ...prev,
+        [section]: { ...prev[section], ...data }
+      };
+    });
   };
 
   const resetContent = () => {
