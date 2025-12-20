@@ -12,6 +12,8 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
   
   --animate-loading-scan: loading-scan 2s infinite linear;
 }
