@@ -214,11 +214,10 @@ export default function Employees() {
                     </TableCell>
                     <TableCell>{employee.startDate}</TableCell>
                     <TableCell>
-                      <div className="flex gap-1">
-                         <Badge variant={Object.values(employee.documents).every(Boolean) ? "default" : "secondary"} className="text-[10px]">
-                            {Object.values(employee.documents).filter(Boolean).length}/5
-                         </Badge>
-                      </div>
+                      <CircularProgress 
+                        current={Object.values(employee.documents).filter(Boolean).length} 
+                        total={5} 
+                      />
                     </TableCell>
                     <TableCell className="text-right">
                       <DropdownMenu>
@@ -459,5 +458,60 @@ function EmployeeDialog({
         </DialogFooter>
       </DialogContent>
     </Dialog>
+  );
+}
+
+function CircularProgress({ current, total }: { current: number; total: number }) {
+  const percentage = Math.round((current / total) * 100);
+  const radius = 16;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference - (percentage / 100) * circumference;
+  
+  // Colors based on completion
+  let strokeColor = "text-red-500";
+  
+  if (percentage === 100) {
+    strokeColor = "text-emerald-500";
+  } else if (percentage >= 80) {
+    strokeColor = "text-blue-500";
+  } else if (percentage >= 60) {
+    strokeColor = "text-amber-500";
+  } else if (percentage >= 40) {
+    strokeColor = "text-orange-500";
+  }
+
+  return (
+    <div className="relative flex items-center justify-start pl-2">
+      <div className="relative h-10 w-10 group cursor-help">
+        <svg className="h-full w-full -rotate-90 transform" viewBox="0 0 36 36">
+          {/* Background Circle */}
+          <circle
+            className="text-muted/20"
+            strokeWidth="3"
+            stroke="currentColor"
+            fill="transparent"
+            r={radius}
+            cx="18"
+            cy="18"
+          />
+          {/* Progress Circle */}
+          <circle
+            className={`transition-all duration-1000 ease-out ${strokeColor}`}
+            strokeWidth="3"
+            strokeDasharray={circumference}
+            strokeDashoffset={strokeDashoffset}
+            strokeLinecap="round"
+            stroke="currentColor"
+            fill="transparent"
+            r={radius}
+            cx="18"
+            cy="18"
+          />
+        </svg>
+        <div className="absolute inset-0 flex items-center justify-center text-[10px] font-bold tabular-nums">
+          {current}/{total}
+        </div>
+      </div>
+    </div>
   );
 }
