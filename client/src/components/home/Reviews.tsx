@@ -269,14 +269,14 @@ export function Reviews() {
 }
 
 function ReviewCard({ review }: { review: typeof REVIEWS[0] }) {
-  // Determine badge color based on role content
+  // Determine badge color based on role content - Updated to Neutral/Monochrome for consistency
   let badgeColor = "bg-primary/5 text-primary";
   if (review.role.includes("Married") || review.role.includes("Groom")) {
-    badgeColor = "bg-blue-500/10 text-blue-600 dark:text-blue-400";
+    badgeColor = "bg-secondary/10 text-secondary-foreground dark:text-gray-300";
   } else if (review.role.includes("Planner") || review.role.includes("Photographer") || review.role.includes("Owner")) {
-    badgeColor = "bg-purple-500/10 text-purple-600 dark:text-purple-400";
+    badgeColor = "bg-primary/5 text-primary dark:text-gray-100";
   } else if (review.role.includes("Maid")) {
-    badgeColor = "bg-pink-500/10 text-pink-600 dark:text-pink-400";
+    badgeColor = "bg-zinc-500/10 text-zinc-600 dark:text-zinc-400";
   }
 
   return (
