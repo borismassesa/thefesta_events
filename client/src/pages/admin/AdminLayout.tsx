@@ -91,9 +91,9 @@ export function AdminLayout() {
         
         {/* Sidebar with Glassmorphism */}
         <Sidebar className="border-r border-border/40 bg-surface/40 backdrop-blur-xl shadow-sm transition-all duration-300" collapsible="icon">
-          <SidebarHeader className="p-4 md:p-6 border-b border-border/40 flex flex-row items-center justify-between mb-2">
+          <SidebarHeader className="p-4 md:p-6 border-b border-border/40 flex flex-row items-center justify-between mb-2 group-data-[collapsible=icon]:flex-col group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:p-2">
             <Link href="/">
-              <a className="font-serif text-2xl text-primary hover:text-primary/80 transition-colors select-none tracking-tight">
+              <a className="font-serif text-2xl text-primary hover:text-primary/80 transition-colors select-none tracking-tight group-data-[collapsible=icon]:hidden">
                 TheFesta
               </a>
             </Link>
@@ -103,7 +103,7 @@ export function AdminLayout() {
           <SidebarContent className="px-3 pt-2 pb-6 gap-6 no-scrollbar">
             {MENU_GROUPS.map((group, index) => (
               <SidebarGroup key={index} className="p-0">
-                <SidebarGroupLabel className="px-4 text-[10px] uppercase tracking-widest text-muted-foreground/60 font-medium mb-2">
+                <SidebarGroupLabel className="px-4 text-[10px] uppercase tracking-widest text-muted-foreground/60 font-medium mb-2 group-data-[collapsible=icon]:hidden">
                   {group.label}
                 </SidebarGroupLabel>
                 <SidebarGroupContent>
@@ -127,7 +127,7 @@ export function AdminLayout() {
                             <Link href={item.href}>
                               <a className="flex items-center gap-3 w-full">
                                 <item.icon className={`w-[18px] h-[18px] ${isActive ? "opacity-100" : "opacity-70"}`} />
-                                <span className="text-sm">{item.label}</span>
+                                <span className="text-sm group-data-[collapsible=icon]:hidden">{item.label}</span>
                               </a>
                             </Link>
                           </SidebarMenuButton>
@@ -141,21 +141,21 @@ export function AdminLayout() {
           </SidebarContent>
           
           {/* User Profile Dropdown */}
-          <div className="mt-auto p-2 border-t border-border/40 m-2 flex flex-col gap-2">
+          <div className="mt-auto p-2 border-t border-border/40 m-2 flex flex-col gap-2 group-data-[collapsible=icon]:m-0 group-data-[collapsible=icon]:border-none group-data-[collapsible=icon]:p-2">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-surface/50 transition-colors cursor-pointer group data-[state=open]:bg-surface/50 w-full">
+                <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-surface/50 transition-colors cursor-pointer group data-[state=open]:bg-surface/50 w-full group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:p-0 group-data-[collapsible=icon]:bg-transparent">
                   <div className="w-9 h-9 rounded-full bg-zinc-200 border border-border flex items-center justify-center text-xs font-medium text-muted-foreground overflow-hidden">
                     <Avatar className="h-9 w-9">
                       <AvatarImage src="https://github.com/shadcn.png" alt="@admin" />
                       <AvatarFallback>AD</AvatarFallback>
                     </Avatar>
                   </div>
-                  <div className="flex flex-col overflow-hidden text-left">
+                  <div className="flex flex-col overflow-hidden text-left group-data-[collapsible=icon]:hidden">
                     <span className="text-sm font-medium truncate group-hover:text-primary transition-colors">Admin User</span>
                     <span className="text-[10px] text-muted-foreground">Pro License</span>
                   </div>
-                  <Settings className="w-4 h-4 ml-auto text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <Settings className="w-4 h-4 ml-auto text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity group-data-[collapsible=icon]:hidden" />
                 </div>
               </DropdownMenuTrigger>
               <DropdownMenuContent 
