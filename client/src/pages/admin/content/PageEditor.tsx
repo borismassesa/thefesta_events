@@ -5,6 +5,9 @@ import { Eye, Save, RotateCcw, Monitor, Smartphone, Tablet } from "lucide-react"
 import { useContent } from "@/context/ContentContext";
 import { HeroEditor } from "./editors/HeroEditor";
 import { ServicesEditor } from "./editors/ServicesEditor";
+import { FAQEditor } from "./editors/FAQEditor";
+import { AboutEditor } from "./editors/AboutEditor";
+import { CommunityEditor } from "./editors/CommunityEditor";
 
 export default function PageEditor() {
   const { resetContent } = useContent();
@@ -62,21 +65,15 @@ export default function PageEditor() {
             </TabsContent>
             
             <TabsContent value="about">
-              <div className="p-12 border border-dashed rounded-lg text-center text-muted-foreground">
-                About Editor Coming Soon
-              </div>
+              <AboutEditor />
             </TabsContent>
             
              <TabsContent value="community">
-              <div className="p-12 border border-dashed rounded-lg text-center text-muted-foreground">
-                Community Editor Coming Soon
-              </div>
+              <CommunityEditor />
             </TabsContent>
 
             <TabsContent value="faq">
-              <div className="p-12 border border-dashed rounded-lg text-center text-muted-foreground">
-                FAQ Editor Coming Soon
-              </div>
+              <FAQEditor />
             </TabsContent>
           </Tabs>
         </div>
