@@ -83,7 +83,7 @@ export interface ContentState {
 const INITIAL_CONTENT: ContentState = {
   hero: {
     headlinePrefix: "Plan the wedding",
-    typingPhrases: ["of the century.", "you've dreamed of.", "that is uniquely yours."],
+    typingPhrases: ["of the century.", "you've dreamed of.", "that's uniquely yours."],
     subhead: "The world's most sophisticated platform for modern couples. Curated venues, verified professionals, and intelligent planning tools—all in one place.",
     slides: [
       {

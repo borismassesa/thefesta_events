@@ -91,23 +91,37 @@ export function Hero() {
 
       // Common Text Animation (Intro)
       const tl = gsap.timeline();
-      tl.from('.hero-word span', { 
-        y: '110%', 
-        duration: 1, 
-        stagger: 0.1, 
-        ease: "power4.out" 
-      }, 0.5);
+      tl.from(
+        ".hero-word span",
+        {
+          y: "110%",
+          duration: 1,
+          stagger: 0.1,
+          ease: "power4.out",
+          immediateRender: false,
+        },
+        0.5,
+      );
 
-      tl.from('.hero-fade', { 
-        y: 20, 
-        opacity: 0, 
-        duration: 0.8, 
-        stagger: 0.1, 
-        ease: "power2.out" 
-      }, "-=0.5");
+      tl.from(
+        ".hero-fade",
+        {
+          y: 20,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power2.out",
+          immediateRender: false,
+        },
+        "-=0.5",
+      );
 
       // Desktop & Tablet Specifics
       mm.add("(min-width: 768px)", () => {
+        const navOffset = 80;
+        // Ensure text is visible before scroll animations in Strict Mode
+        gsap.set(contentRef.current, { opacity: 1, y: 0 });
+
         // Remove Intro animation for visual to prevent conflict and ensure visibility
         gsap.set(visualRef.current, { opacity: 1, x: 0, y: 0, scale: 1 });
 
@@ -167,11 +181,11 @@ export function Hero() {
               },
               {
                 left: "50%",
-                top: "50%",
+                top: `calc(50% + ${navOffset / 2}px)`,
                 xPercent: -50,
                 yPercent: -50,
                 width: "94vw",
-                height: "90vh",
+                height: `calc(90vh - ${navOffset}px)`,
                 borderRadius: "1.5rem",
                 boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
                 duration: 1,
@@ -197,6 +211,7 @@ export function Hero() {
 
       // Mobile Specifics
       mm.add("(max-width: 767px)", () => {
+        const navOffset = 72;
         // No intro animation for visual (it stays hidden/opacity 0 via CSS or set here)
         gsap.set(visualRef.current, { opacity: 0, y: 50 }); // Ensure hidden initially
 
@@ -235,12 +250,12 @@ export function Hero() {
           {
              opacity: 1,
              scale: 1,
-             top: '50%',      // Move to vertical center
+             top: `calc(50% + ${navOffset / 2}px)`, // Move to vertical center with nav offset
              yPercent: -50,   // Center alignment
              left: '50%',
              xPercent: -50,
              width: '94vw',
-             height: '50vh',
+             height: `calc(50vh - ${navOffset}px)`,
              borderRadius: "1.5rem",
              duration: 1,
              ease: "power3.out" // Smoother easing

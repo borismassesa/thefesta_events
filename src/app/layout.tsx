@@ -4,6 +4,9 @@ import "@/app/globals.css";
 import { Providers } from "@/app/providers";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+  ),
   title: "THE FESTA | Plan Your Perfect Wedding",
   description:
     "The all-in-one marketplace for venues, vendors, and planning tools. Discover inspiration and manage every detail in one place.",
