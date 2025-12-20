@@ -86,7 +86,7 @@ export function AdminLayout() {
             </Link>
           </SidebarHeader>
           
-          <SidebarContent className="px-3 py-6 gap-6 no-scrollbar">
+          <SidebarContent className="px-3 pt-2 pb-6 gap-6 no-scrollbar">
             {MENU_GROUPS.map((group, index) => (
               <SidebarGroup key={index} className="p-0">
                 <SidebarGroupLabel className="px-4 text-[10px] uppercase tracking-widest text-muted-foreground/60 font-medium mb-2">
