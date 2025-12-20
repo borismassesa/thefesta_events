@@ -78,7 +78,7 @@ export function AdminLayout() {
         
         {/* Sidebar with Glassmorphism */}
         <Sidebar className="border-r border-border/40 bg-surface/40 backdrop-blur-xl shadow-sm transition-all duration-300" collapsible="icon">
-          <SidebarHeader className="p-4 md:p-6 border-b border-border/20 flex flex-row items-center justify-between">
+          <SidebarHeader className="p-4 md:p-6 border-b border-border/40 flex flex-row items-center justify-between mb-2">
             <Link href="/">
               <a className="font-serif text-2xl text-primary hover:text-primary/80 transition-colors select-none tracking-tight">
                 TheFesta
@@ -86,7 +86,7 @@ export function AdminLayout() {
             </Link>
           </SidebarHeader>
           
-          <SidebarContent className="px-3 py-4 gap-6 no-scrollbar">
+          <SidebarContent className="px-3 py-6 gap-6 no-scrollbar">
             {MENU_GROUPS.map((group, index) => (
               <SidebarGroup key={index} className="p-0">
                 <SidebarGroupLabel className="px-4 text-[10px] uppercase tracking-widest text-muted-foreground/60 font-medium mb-2">
@@ -127,7 +127,7 @@ export function AdminLayout() {
           </SidebarContent>
           
           {/* User Profile Snippet (Mock) */}
-          <div className="mt-auto p-4 border-t border-border/20 mx-3 mb-2 flex flex-col gap-2">
+          <div className="mt-auto p-4 border-t border-border/40 mx-3 mb-2 flex flex-col gap-2 mt-2">
             <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-surface/50 transition-colors cursor-pointer group">
               <div className="w-9 h-9 rounded-full bg-zinc-200 border border-border flex items-center justify-center text-xs font-medium text-muted-foreground">
                 AD
