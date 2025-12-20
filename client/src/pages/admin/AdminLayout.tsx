@@ -22,7 +22,6 @@ import PageEditor from "./content/PageEditor";
 // Admin Layout Component
 export function AdminLayout() {
   const [location] = useLocation();
-  const [collapsed, setCollapsed] = useState(false);
 
   const MENU_GROUPS = [
     {
@@ -71,13 +70,8 @@ export function AdminLayout() {
         <Sidebar className="border-r border-border/40 bg-surface/40 backdrop-blur-xl shadow-sm transition-all duration-300" collapsible="icon">
           <SidebarHeader className="p-4 md:p-6 border-b border-border/20 flex flex-row items-center justify-between">
             <Link href="/">
-              <a className="flex items-center gap-3 group">
-                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center text-background font-serif font-bold text-xl shadow-lg group-hover:scale-105 transition-transform duration-300">
-                   F
-                 </div>
-                 <span className="font-semibold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60 group-hover:to-primary transition-all">
-                   TheFesta
-                 </span>
+              <a className="font-serif text-2xl text-primary hover:text-primary/80 transition-colors select-none tracking-tight">
+                TheFesta
               </a>
             </Link>
           </SidebarHeader>
@@ -101,18 +95,15 @@ export function AdminLayout() {
                             className={`
                               h-10 rounded-lg px-3 transition-all duration-200
                               ${isActive 
-                                ? "bg-accent/10 text-accent font-medium shadow-[0_0_15px_-3px_rgba(147,51,234,0.15)]" 
+                                ? "bg-primary text-primary-foreground font-medium shadow-md" 
                                 : "text-muted-foreground hover:bg-surface hover:text-primary hover:translate-x-1"
                               }
                             `}
                           >
                             <Link href={item.href}>
                               <a className="flex items-center gap-3 w-full">
-                                <item.icon className={`w-[18px] h-[18px] ${isActive ? "text-accent" : "opacity-70"}`} />
+                                <item.icon className={`w-[18px] h-[18px] ${isActive ? "opacity-100" : "opacity-70"}`} />
                                 <span className="text-sm">{item.label}</span>
-                                {isActive && (
-                                  <div className="ml-auto w-1.5 h-1.5 rounded-full bg-accent shadow-[0_0_8px_rgba(147,51,234,0.5)]" />
-                                )}
                               </a>
                             </Link>
                           </SidebarMenuButton>
@@ -128,9 +119,11 @@ export function AdminLayout() {
           {/* User Profile Snippet (Mock) */}
           <div className="mt-auto p-4 border-t border-border/20 mx-3 mb-2">
             <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-surface/50 transition-colors cursor-pointer group">
-              <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-indigo-400 to-purple-400 border-2 border-background shadow-sm" />
+              <div className="w-9 h-9 rounded-full bg-zinc-200 border border-border flex items-center justify-center text-xs font-medium text-muted-foreground">
+                AD
+              </div>
               <div className="flex flex-col overflow-hidden">
-                <span className="text-sm font-medium truncate group-hover:text-accent transition-colors">Admin User</span>
+                <span className="text-sm font-medium truncate group-hover:text-primary transition-colors">Admin User</span>
                 <span className="text-[10px] text-muted-foreground">Pro License</span>
               </div>
               <Settings className="w-4 h-4 ml-auto text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
