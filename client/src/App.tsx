@@ -9,11 +9,14 @@ import ServiceDetail from "@/pages/ServiceDetail";
 import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
 import ForgotPassword from "@/pages/ForgotPassword";
+import { AdminLayout } from "@/pages/admin/AdminLayout";
+import { ContentProvider } from "@/context/ContentContext";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/admin*" component={AdminLayout} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
       <Route path="/forgot-password" component={ForgotPassword} />
@@ -27,8 +30,10 @@ function App() {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <QueryClientProvider client={queryClient}>
-        <Router />
-        <Toaster />
+        <ContentProvider>
+          <Router />
+          <Toaster />
+        </ContentProvider>
       </QueryClientProvider>
     </ThemeProvider>
   );

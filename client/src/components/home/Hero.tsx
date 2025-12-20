@@ -3,33 +3,7 @@ import { Search, Sparkles } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
-
-const HERO_SLIDES = [
-  {
-    id: 1,
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
-    poster: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerJoyrides.jpg",
-    author: "Evergreen Films",
-    avatar: "https://picsum.photos/seed/vid1/50/50",
-    color: "var(--surface)"
-  },
-  {
-    id: 2,
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    poster: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg",
-    author: "Love & Lens",
-    avatar: "https://picsum.photos/seed/vid2/50/50",
-    color: "var(--surface)"
-  },
-  {
-    id: 3,
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-    poster: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerEscapes.jpg",
-    author: "Rustic Barns Co.",
-    avatar: "https://picsum.photos/seed/vid3/50/50",
-    color: "var(--surface)"
-  },
-];
+import { useContent } from "@/context/ContentContext";
 
 function TypingEffect({ words }: { words: string[] }) {
   const [index, setIndex] = useState(0);
@@ -86,6 +60,9 @@ function TypingEffect({ words }: { words: string[] }) {
 
 export function Hero() {
   const { t } = useTranslation();
+  const { content } = useContent();
+  const { hero } = content;
+  
   const containerRef = useRef<HTMLDivElement>(null);
   const visualRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -101,7 +78,9 @@ export function Hero() {
     { id: 'inspiration', label: t('tabs.inspiration') }
   ];
 
-  const TYPING_PHRASES = t('hero.typing', { returnObjects: true }) as string[];
+  // Use content from context instead of i18n for typing phrases if available, fallback to i18n
+  // For this demo, we'll use the context exclusively to demonstrate CMS
+  const TYPING_PHRASES = hero.typingPhrases; 
 
   useEffect(() => {
     // Hero Animations with GSAP
@@ -273,14 +252,14 @@ export function Hero() {
 
     // Slide Interval
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+      setCurrentSlide((prev) => (prev + 1) % hero.slides.length);
     }, 5000); 
 
     return () => {
       ctx.revert();
       clearInterval(timer);
     };
-  }, []);
+  }, [hero.slides.length]);
 
   return (
     <div ref={containerRef} className="relative min-h-[100dvh] w-full overflow-hidden border-b border-border bg-background flex flex-col justify-center">
@@ -292,7 +271,7 @@ export function Hero() {
           {/* Headline with Masked Reveal */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.1] tracking-tight max-w-full lg:max-w-none min-h-[100px] sm:min-h-[120px] md:min-h-[140px] lg:min-h-[160px]">
             <span className="block overflow-hidden hero-word">
-              <span className="block">{t('hero.headline.prefix')}</span>
+              <span className="block">{hero.headlinePrefix}</span>
             </span>
             <span className="block hero-word">
               <span className="block text-secondary">
@@ -303,7 +282,7 @@ export function Hero() {
           
           {/* Subhead - Simplified */}
           <p className="hero-fade text-secondary text-sm sm:text-base md:text-lg max-w-md leading-relaxed px-1 sm:px-0">
-            {t('hero.subhead')}
+            {hero.subhead}
           </p>
 
           {/* Input Area Wrapper - Simplified */}
@@ -374,7 +353,7 @@ export function Hero() {
         {/* Hero Visual - Video Carousel */}
         <div ref={visualRef} className="hero-visual block relative w-full aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl group bg-surface border border-border z-20">
           
-          {HERO_SLIDES.map((slide, index) => (
+          {hero.slides.map((slide, index) => (
             <div 
               key={slide.id}
               className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
@@ -400,10 +379,10 @@ export function Hero() {
           {/* Dynamic Artist Credit */}
           <div className="absolute bottom-4 right-4 lg:bottom-6 lg:right-6 flex items-center gap-2 lg:gap-3 bg-surface/90 backdrop-blur-sm px-3 py-1.5 lg:px-4 lg:py-2 rounded-full shadow-lg hover:scale-105 transition-all cursor-pointer z-20 border border-border">
             <span className="text-xs lg:text-sm font-semibold text-primary transition-all duration-300">
-              {HERO_SLIDES[currentSlide].author}
+              {hero.slides[currentSlide].author}
             </span>
             <img 
-              src={HERO_SLIDES[currentSlide].avatar} 
+              src={hero.slides[currentSlide].avatar} 
               alt="Artist" 
               className="w-6 h-6 lg:w-8 lg:h-8 rounded-full border border-border" 
             />
@@ -411,7 +390,7 @@ export function Hero() {
           
           {/* Slide Indicators */}
           <div className="absolute bottom-4 left-4 lg:bottom-6 lg:left-6 flex gap-2 z-20">
-              {HERO_SLIDES.map((_, idx) => (
+              {hero.slides.map((_, idx) => (
                   <div 
                       key={idx} 
                       className={`h-1.5 rounded-full transition-all duration-300 ${
