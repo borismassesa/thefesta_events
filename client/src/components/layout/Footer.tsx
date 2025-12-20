@@ -125,6 +125,7 @@ export function Footer() {
             <FooterLink href="/privacy" className="text-xs">Privacy Policy</FooterLink>
             <FooterLink href="/terms" className="text-xs">Terms of Service</FooterLink>
             <FooterLink href="/cookies" className="text-xs">Cookie Settings</FooterLink>
+            <FooterLink href="/admin" className="text-xs text-primary/40 hover:text-primary">Admin</FooterLink>
           </div>
         </div>
       </div>
