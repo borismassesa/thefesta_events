@@ -1,0 +1,39 @@
+
+> rest-express@1.0.0 build
+> next build
+
+   ▲ Next.js 15.5.9
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 2.5s
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+   Generating static pages (0/10) ...
+   Generating static pages (2/10) 
+   Generating static pages (4/10) 
+   Generating static pages (7/10) 
+ ✓ Generating static pages (10/10)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                    72.7 kB         241 kB
+├ ○ /_not-found                            127 B         102 kB
+├ ○ /admin                                101 kB         211 kB
+├ ƒ /admin/[...slug]                       127 B         102 kB
+├ ○ /admin/content/pages                 9.03 kB         132 kB
+├ ○ /admin/org/employees                 11.7 kB         154 kB
+├ ○ /forgot-password                     3.01 kB         108 kB
+├ ○ /login                               4.05 kB         109 kB
+├ ƒ /services/[id]                         163 B         105 kB
+└ ○ /signup                               4.4 kB         110 kB
++ First Load JS shared by all             102 kB
+  ├ chunks/255-dc5f45a243dc3a80.js       45.6 kB
+  ├ chunks/4bd1b696-409494caf8c83275.js  54.2 kB
+  └ other shared chunks (total)          1.98 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

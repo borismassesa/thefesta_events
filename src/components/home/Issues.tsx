@@ -5,16 +5,14 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import tableImg from "@assets/stock_images/wedding_table_settin_c7e6dce8.jpg";
-import bouquetImg from "@assets/stock_images/wedding_bouquet_mode_ab76e613.jpg";
-import cakeImg from "@assets/stock_images/wedding_cake_modern__2868fc7b.jpg";
-
-import receptionImg from "@assets/stock_images/wedding_reception_li_3a8fab49.jpg";
 import { resolveAssetSrc } from "@/lib/assets";
+import { useContent } from "@/context/ContentContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function Issues() {
+  const { content } = useContent();
+  const issues = content.issues;
   const containerRef = useRef<HTMLElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -39,31 +37,32 @@ export function Issues() {
         );
       }
 
-      // Mobile Grid Animation
-      const mobileCards = containerRef.current?.querySelectorAll(".mobile-issue-card");
-      if (mobileCards) {
-        gsap.fromTo(mobileCards,
-          { y: 50, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: ".mobile-issues-grid",
-              start: "top 80%",
-            }
-          }
-        );
-      }
-
       ScrollTrigger.matchMedia({
+        "(max-width: 767px)": function() {
+          const mobileCards = containerRef.current?.querySelectorAll<HTMLElement>(".mobile-issue-card");
+          if (!mobileCards) return;
+
+          mobileCards.forEach((card) => {
+            gsap.set(card, { y: 32, autoAlpha: 0 });
+            gsap.to(card, {
+              y: 0,
+              autoAlpha: 1,
+              duration: 0.7,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+                toggleActions: "play none none reverse"
+              }
+            });
+          });
+        },
         "(min-width: 768px)": function() {
           const wrapper = wrapperRef.current;
-          if (!wrapper) return;
-          
-          const getScrollAmount = () => -(wrapper.scrollWidth - window.innerWidth);
+          const container = containerRef.current;
+          if (!wrapper || !container) return;
+
+          const getScrollAmount = () => -(wrapper.scrollWidth - container.offsetWidth);
           
           gsap.to(wrapper, {
             x: getScrollAmount,
@@ -72,7 +71,7 @@ export function Issues() {
               trigger: containerRef.current,
               pin: true,
               scrub: 1,
-              end: () => `+=${wrapper.scrollWidth - window.innerWidth}`,
+              end: () => `+=${wrapper.scrollWidth - container.offsetWidth}`,
               invalidateOnRefresh: true
             }
           });
@@ -82,33 +81,6 @@ export function Issues() {
 
     return () => ctx.revert();
   }, []);
-
-  const issues = [
-    {
-      id: 1,
-      title: "Table Scapes",
-      desc: "Creating the perfect dining atmosphere for your guests.",
-      img: tableImg
-    },
-    {
-      id: 2,
-      title: "Floral Art",
-      desc: "Modern bouquet trends for the contemporary bride.",
-      img: bouquetImg
-    },
-    {
-      id: 3,
-      title: "Sweet Minimal",
-      desc: "Why simple cakes are making a big comeback.",
-      img: cakeImg
-    },
-    {
-      id: 4,
-      title: "Mood Lighting",
-      desc: "Transforming your venue with the right illumination.",
-      img: receptionImg
-    }
-  ];
 
   return (
     <div className="relative w-full"> 
@@ -136,14 +108,6 @@ export function Issues() {
               <p className="text-secondary text-base md:text-lg max-w-md text-center md:text-right leading-relaxed font-light">
                 Expert guides, trending styles, and real wedding stories to help you plan a celebration that's uniquely yours.
               </p>
-              
-              <Link
-                href="/services/advice"
-                className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-background text-sm font-medium transition-all hover:bg-primary/90 hover:scale-105"
-              >
-                Browse All Articles
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
             </div>
           </div>
         </div>
@@ -173,7 +137,7 @@ export function Issues() {
         <div className="hidden md:flex horizontal-scroll-container w-full overflow-visible no-scrollbar flex-grow items-center">
           <div ref={wrapperRef} className="horizontal-wrapper flex gap-[4vw] px-[5vw] w-fit items-center h-full">
             {issues.map((issue) => (
-              <div key={issue.id} className="w-[30vw] h-[45vh] lg:h-[50vh] relative flex-shrink-0 group cursor-pointer">
+              <div key={issue.id} className="w-[26vw] h-[45vh] lg:h-[50vh] relative flex-shrink-0 group cursor-pointer">
                 <div className="absolute inset-0 bg-background rounded-xl overflow-hidden border border-border">
                   <img 
                     src={resolveAssetSrc(issue.img)} 
@@ -190,8 +154,8 @@ export function Issues() {
                     <p className="text-xs sm:text-sm text-zinc-300 line-clamp-2 mb-3 md:mb-4 leading-relaxed">
                       {issue.desc}
                     </p>
-                    <div className="flex justify-between items-end w-full">
-                      <button className="ml-auto flex items-center gap-2 text-xs sm:text-sm font-medium uppercase tracking-wider hover:text-accent transition-colors">
+                    <div className="flex items-end w-full">
+                      <button className="flex items-center gap-2 text-xs sm:text-sm font-medium uppercase tracking-wider hover:text-accent transition-colors">
                         View Article
                         <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4" />
                       </button>
@@ -201,9 +165,17 @@ export function Issues() {
               </div>
             ))}
             
-            {/* Last Spacer Card */}
-            <div className="w-[5vw]"></div>
           </div>
+        </div>
+
+        <div className="max-w-[1400px] mx-auto w-full px-6 lg:px-12 pt-8 md:pt-10 pb-4 flex justify-center md:justify-end">
+          <Link
+            href="/services/advice"
+            className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-background text-sm font-medium transition-all hover:bg-primary/90 hover:scale-105"
+          >
+            Browse All Articles
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
         </div>
       </section>
     </div>
